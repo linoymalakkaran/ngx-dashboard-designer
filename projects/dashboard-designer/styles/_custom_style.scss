@@ -1,0 +1,98 @@
+::ng-deep {
+  .dash-designer-accordion {
+    padding: 0;
+    .panel-group {
+      .panel {
+        .card {
+          padding: 0 !important;
+          .card-header {
+            padding: 10px;
+            background-color: #e6e8f3;
+            .panel-title {
+            }
+          }
+
+          .panel-collapse {
+            border: 1px solid #eee;
+
+            .panel-body {
+              padding: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .widget-list {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    flex-wrap: wrap;
+
+    li {
+      width: 49%;
+      margin-bottom: 1rem;
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+
+        small {
+          line-height: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .dashDesignerModal {
+    padding: 0;
+    .modal-header {
+      background: $primary-color;
+      color: #fff;
+      padding: 0.6rem 1rem;
+      button {
+        color: #fff !important;
+      }
+    }
+    .modal-body {
+      padding: 1rem;
+    }
+  }
+
+  .mgDashGridsterItem {
+    .page-wrap.card {
+      width: 100%;
+      height: 100%;
+      display: flex !important;
+      flex-direction: column !important;
+      flex-wrap: nowrap;
+    }
+
+    .card > .card-header {
+      flex: 0 0 auto;
+    }
+
+    .card > .card-body {
+      flex: 1 0 0%;
+      overflow: auto;
+      > div {
+        width: 100%;
+        height: 100%;
+      }
+
+      app-widget-wrapper {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+    }
+  }
+}
