@@ -1,27 +1,24 @@
 # ngx-dashboard designer
 
-[![npm version](https://badge.fury.io/js/angular-gridster2.svg)](https://www.npmjs.com/package/ngx-dashboard-designer)
-![Node CI](https://github.com/tiberiuzuld/angular-gridster2/workflows/Node%20CI/badge.svg)
-[![downloads](https://img.shields.io/npm/dm/angular-gridster2.svg)](https://www.npmjs.com/package/angular-gridster2)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/tiberiuzuld)
+[![npm version](https://github.com/linoymalakkaran/ngx-dashboard-designer/blob/angular-v13/src/assets/github-assets/npm.png)](https://www.npmjs.com/package/ngx-dashboard-designer)
 
-### Angular implementation of angular-gridster [Demo](http://tiberiuzuld.github.io/angular-gridster2)
+### Angular implementation of ngx-dashboard designer [Demo](http://10.0.98.21/MGDashboardAppUI)
 
-### Requires Angular 14.x
+### Requires Angular 13.x
 
 ### For other Angular versions check the other branches.
 
 ## Install
 
-`npm install angular-gridster2 --save`
+`npm install ngx-dashboard-designer --save`
 
 Should work out of the box with webpack, respectively angular-cli.
 
 ```javascript
-import { GridsterModule } from 'angular-gridster2';
+import { NgxDashboardDesignerModule } from 'ngx-dashboard-designer';
 
 @NgModule({
-  imports: [ GridsterModule ],
+  imports: [ NgxDashboardDesignerModule ],
   ...
 })
 ```
@@ -30,127 +27,57 @@ import { GridsterModule } from 'angular-gridster2';
 
 What Angular supports [here](https://github.com/angular/angular)
 
-## How to use
+## How to use dashboard designer
 
 ```html
-<gridster [options]="options">
-  <gridster-item [item]="item" *ngFor="let item of dashboard">
-    <!-- your content here -->
-  </gridster-item>
-</gridster>
+<button (click)="saveLayout()">Save Layout</button>
+<ngx-dasboard-designer [widgetOptions]="widgetOptions">
+</ngx-dasboard-designer>
 ```
 
 Initialize a simple dashboard:
 
 ```typescript
-   import { GridsterConfig, GridsterItem }  from 'angular-gridster2';
-   options: GridsterConfig;
-   dashboard: Array<GridsterItem>;
+   @ViewChild(NgxDashboardDesigner) ngxDashboardDesigner: NgxDashboardDesigner;
+  widgetOptions: IDashboardWidgetOption = {
+    ismfeWidgets: true,
+    mfeWidgetTypes: [
+      {
+        displayName: 'Bar Chart',
+        icon: 'Barchart',
+        description: 'Bar Chart',
+        hostUrl: 'http://localhost:5203/remoteEntry.js', // this will be generated using the module federation. Sample Git link is provided,
+        componentName: 'SampleBarChartComponent',
+        type: 'module',
+        exposedModule: './Component'
+      }
+    ]
+  };
 
-   static itemChange(item, itemComponent) {
-     console.info('itemChanged', item, itemComponent);
-   }
+  constructor() {}
 
-   static itemResize(item, itemComponent) {
-     console.info('itemResized', item, itemComponent);
-   }
-
-   ngOnInit() {
-     this.options = {
-       itemChangeCallback: AppComponent.itemChange,
-       itemResizeCallback: AppComponent.itemResize,
-     };
-
-     this.dashboard = [
-       {cols: 2, rows: 1, y: 0, x: 0},
-       {cols: 2, rows: 2, y: 0, x: 2}
-     ];
-   }
-
-   changedOptions() {
-     this.options.api.optionsChanged();
-   }
-
-   removeItem(item) {
-     this.dashboard.splice(this.dashboard.indexOf(item), 1);
-   }
-
-   addItem() {
-     this.dashboard.push({});
-   }
+  saveLayout() {
+    const layout = this.ngxDashboardDesigner.getDashboardData;
+    console.log(layout);
+  }
 ```
 
-##### Note: The gridster will take all the available space from the parent. It will not size depending on content. The parent of the component needs to have a size.
+##### Note: The dashboard designer will take all the available space from the parent. It will not size depending on content. The parent of the component needs to have a size.
 
-### Having iFrame in widgets content
 
-iFrames can interfere with drag/resize of widgets. For a workaround please read [this issue #233](https://github.com/tiberiuzuld/angular-gridster2/issues/233)
+### Interact with dashboard with drag and drop
 
-### Interact with content without dragging
+you can interact dashboard with drag and drop. 
 
-Option 1 (without text selection):
-
-```html
-<gridster-item>
-  <div
-    (mousedown)="$event.stopPropagation()"
-    (touchstart)="$event.stopPropagation()"
-  >
-    Some content to click without dragging the widget
-  </div>
-  <div class="item-buttons">
-    <button md-icon-button md-raised-button class="drag-handler">
-      <md-icon>open_with</md-icon>
-    </button>
-    <button
-      md-icon-button
-      md-raised-button
-      class="remove-button"
-      (click)="removeItem($event, item)"
-      (touchstart)="removeItem($event, item)"
-      mdTooltip="Remove"
-    >
-      <md-icon>clear</md-icon>
-    </button>
-  </div>
-</gridster-item>
-```
-
-Option 2 (with text selection):
-
-```html
-<gridster-item>
-  <div class="gridster-item-content">
-    Some content to select and click without dragging the widget
-  </div>
-  <div class="item-buttons">
-    <button md-icon-button md-raised-button class="drag-handler">
-      <md-icon>open_with</md-icon>
-    </button>
-    <button
-      md-icon-button
-      md-raised-button
-      class="remove-button"
-      (click)="removeItem($event, item)"
-      (touchstart)="removeItem($event, item)"
-      mdTooltip="Remove"
-    >
-      <md-icon>clear</md-icon>
-    </button>
-  </div>
-</gridster-item>
-```
-
-### Contributors [here](https://github.com/tiberiuzuld/angular-gridster2/graphs/contributors)
-
-### [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/tiberiuzuld)
+### Contributors [here](https://github.com/linoymalakkaran/ngx-dashboard-designer/graphs/contributors)
 
 ### License
 
 The MIT License
 
 Copyright (c) 2022 Linoy Pappachan Malakkaran  
-  # Commit format
+
+## Commit format for contributers (husky)
   eg: type: your commit message
   
   - type must be one of [build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test] [type-enum]
