@@ -1,6 +1,6 @@
 {
   "name": "ngx-dashboard-designer",
-  "version": "1.1.10",
+  "version": "2.0.0",
   "peerDependencies": {
     "angular-resize-element": "^1.2.0",
     "ngx-bootstrap": "^8.0.0",
@@ -40,11 +40,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://10.0.131.131/mg_core/mg-dashboard/dashboard-libs"
+    "url": "https://github.com/linoymalakkaran/ngx-dashboard-designer"
   },
   "keywords": [
-    "angular",
-    "gridster",
+    "angular v13",
+    "gridster2",
     "dashboard"
   ],
   "author": "Linoy Pappachan Malakkaran",
