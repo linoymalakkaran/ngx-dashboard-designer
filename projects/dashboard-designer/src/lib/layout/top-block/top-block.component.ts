@@ -1,17 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  TemplateRef
-} from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -23,16 +10,10 @@ export class TopBlockComponent implements OnInit {
   @Input() layout: any;
   modalRef?: BsModalRef;
   title = 'Dashboard Designer';
-  form: FormGroup;
 
-  constructor(private modalService: BsModalService, private fb: FormBuilder) {}
+  constructor(private modalService: BsModalService) {}
 
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      layoutname: new FormControl('', [Validators.required]),
-      layoutid: new FormControl('', [Validators.required])
-    });
-  }
+  ngOnInit(): void {}
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(

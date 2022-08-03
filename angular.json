@@ -35,8 +35,11 @@
                 "output": "./assets/dashboard-designer/"
               }
             ],
-            "styles": ["src/styles.scss", "src/theme.scss"],
-            "scripts": ["node_modules/marked/marked.min.js"],
+            "styles": [
+              "src/styles.scss",
+              "dist/dashboard-designer/assets/dashboard-designer/dashboard-designer-theme.css"
+            ],
+            "scripts": [],
             "extraWebpackConfig": "webpack.config.js",
             "commonChunk": false
           },
@@ -108,8 +111,8 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss", "src/theme.scss"],
-            "scripts": ["node_modules/marked/marked.min.js"]
+            "styles": ["src/styles.scss"],
+            "scripts": []
           }
         },
         "lint": {

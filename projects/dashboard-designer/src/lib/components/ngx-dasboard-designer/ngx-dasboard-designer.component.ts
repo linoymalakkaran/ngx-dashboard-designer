@@ -6,17 +6,15 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import {
-  AngularResizeElementDirection,
-  AngularResizeElementEvent
-} from 'angular-resize-element';
 import { Subject } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
 import { CenterBlockComponent } from '../../layout';
 import { IDashboardWidgetOption } from '../../models/dashboard-widget-options.model';
 import { GridLayOutInstance } from '../../models/dashboard.models';
 import { DashboardDesignerService } from '../../services/dashboard-designer.service';
 import { DashboardLayoutService } from '../../services/dashboard-layout.service';
+import { TranslationService } from '../../services/translation.service';
+import { AngularResizeElementEvent } from '../dashboard-resizer/angular-resize-element-event.interface';
+import { AngularResizeElementDirection } from '../dashboard-resizer/angular-resize-element.enum';
 
 @Component({
   selector: 'ngx-dasboard-designer',
@@ -49,11 +47,11 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
   constructor(
     private dashboardDesignerService: DashboardDesignerService,
     private dashboardLayoutService: DashboardLayoutService,
-    public translate: TranslateService
+    private translationService: TranslationService
   ) {}
 
   ngOnInit(): void {
-    this.setDashboardLang();
+    this.translationService.language = this.lang;
     this.layout.toggleLeft = () => {
       this.toggleLeft();
     };
@@ -61,14 +59,6 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
     this.layout.toggleRight = () => {
       this.toggleRight();
     };
-  }
-
-  setDashboardLang() {
-    this.translate.addLangs(['en', 'ar']);
-    this.translate.setDefaultLang(this.lang);
-    this.translate.use(this.lang ? this.lang : 'en');
-    // const browserLang = this.translate.getBrowserLang();
-    // this.translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
   }
 
   get getDashboardData(): GridLayOutInstance {

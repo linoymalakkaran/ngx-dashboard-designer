@@ -1,10 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  AngularResizeElementDirection,
-  AngularResizeElementEvent
-} from 'angular-resize-element';
 import { Subject } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
 import {
   GridsterConfig,
   Draggable,
@@ -14,6 +9,9 @@ import {
 import { IDashboardWidgetOption } from '../../models/dashboard-widget-options.model';
 import { GridLayOutInstance } from '../../models/dashboard.models';
 import { DashboardDesignerService } from '../../services/dashboard-designer.service';
+import { AngularResizeElementEvent } from '../dashboard-resizer/angular-resize-element-event.interface';
+import { AngularResizeElementDirection } from '../dashboard-resizer/angular-resize-element.enum';
+import { TranslationService } from '../../services/translation.service';
 
 interface Safe extends GridsterConfig {
   draggable: Draggable;
@@ -47,20 +45,12 @@ export class DashboardViewerComponent implements OnInit {
 
   constructor(
     private dashboardDesignerService: DashboardDesignerService,
-    public translate: TranslateService
+    private translationService: TranslationService
   ) {}
 
   ngOnInit(): void {
-    this.setDashboardLang();
+    this.translationService.language = this.lang;
     this.setSelectedDashBoardConfig();
-  }
-
-  setDashboardLang() {
-    this.translate.addLangs(['en', 'ar']);
-    this.translate.setDefaultLang(this.lang);
-    this.translate.use(this.lang ? this.lang : 'en');
-    // const browserLang = this.translate.getBrowserLang();
-    // this.translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
   }
 
   setSelectedDashBoardConfig() {

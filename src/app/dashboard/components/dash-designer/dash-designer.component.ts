@@ -1,9 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IDashboardWidgetOption } from 'projects/dashboard-designer/src/lib/models/dashboard-widget-options.model';
 import { NgxDashboardDesigner } from 'projects/dashboard-designer/src/public-api';
-import { WidgetsBarChartComponent } from 'src/app/widgets/bar-chart/bar-chart.component';
-import { NotificationComponent } from 'src/app/widgets/notification/notification.component';
-import { WidgetsPieChartComponent } from 'src/app/widgets/pie-chart/pie-chart.component';
 
 @Component({
   selector: 'app-dash-designer',
