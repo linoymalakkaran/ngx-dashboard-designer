@@ -1,6 +1,6 @@
 {
   "name": "ngx-dashboard-designer",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "peerDependencies": {
     "ngx-bootstrap": "^6.2.0",
     "angular-gridster2": "^13.3.0"
