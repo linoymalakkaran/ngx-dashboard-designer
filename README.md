@@ -2,7 +2,7 @@
 
 [![npm version](https://github.com/linoymalakkaran/ngx-dashboard-designer/blob/angular-v13/src/assets/github-assets/npm.png)](https://www.npmjs.com/package/ngx-dashboard-designer)
 
-### Angular implementation of ngx-dashboard designer [Demo](http://10.0.98.21/MGDashboardAppUI)
+### Angular implementation of ngx-dashboard designer [Demo git repo](https://github.com/linoymalakkaran/ngx-dashboard-designer-demo/tree/main)
 
 ### Requires Angular 13.x
 
@@ -33,8 +33,7 @@ What Angular supports [here](https://github.com/angular/angular)
 
 ```html
 <button (click)="saveLayout()">Save Layout</button>
-<ngx-dasboard-designer [widgetOptions]="widgetOptions">
-</ngx-dasboard-designer>
+<ngx-dasboard-designer [widgetOptions]="widgetOptions"> </ngx-dasboard-designer>
 ```
 
 Initialize a simple dashboard:
@@ -203,10 +202,9 @@ Initialize a simple dashboard:
 
 ##### Note: The dashboard designer will take all the available space from the parent. It will not size depending on content. The parent of the component needs to have a size.
 
-
 ### Interact with dashboard with drag and drop
 
-you can interact dashboard with drag and drop. 
+you can interact dashboard with drag and drop.
 
 ### Contributors [here](https://github.com/linoymalakkaran/ngx-dashboard-designer/graphs/contributors)
 
@@ -214,9 +212,10 @@ you can interact dashboard with drag and drop.
 
 The MIT License
 
-Copyright (c) 2022 Linoy Pappachan Malakkaran  
+Copyright (c) 2022 Linoy Pappachan Malakkaran
 
 ## Commit format for contributers (husky)
-  eg: type: your commit message
-  
-  - type must be one of [build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test] [type-enum]
+
+eg: type: your commit message
+
+- type must be one of [build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test] [type-enum]
