@@ -37,7 +37,7 @@
     "@angular/platform-browser": "13.3.9",
     "@angular/platform-browser-dynamic": "13.3.9",
     "@angular/router": "13.3.9",
-    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "angular-gridster2": "^13.3.0",
     "angular-resize-element": "^1.2.0",
@@ -78,6 +78,16 @@
     "prettier": "2.6.2",
     "typescript": "4.6.4"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linoymalakkaran/ngx-dashboard-designer"
+  },
+  "keywords": [
+    "angular v13",
+    "gridster2",
+    "dashboard"
+  ],
+  "author": "Linoy Pappachan Malakkaran",
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"

@@ -136,7 +136,7 @@
   max-width: 350px !important;
 }
 #DashboardDesigner .mainBlock .leftBlock .tab-content {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding: 1rem;
   width: 250px !important;
 }
@@ -2321,7 +2321,7 @@ a > #DashboardDesigner code {
   color: #212529;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #70707038;
+  border: 1px solid rgba(112, 112, 112, 0.2196078431);
   appearance: none;
   border-radius: 0.375rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2802,7 +2802,7 @@ a > #DashboardDesigner code {
   text-align: center;
   white-space: nowrap;
   background-color: transparent;
-  border: 1px solid #70707038;
+  border: 1px solid rgba(112, 112, 112, 0.2196078431);
   border-radius: 0.375rem;
 }
 #DashboardDesigner .input-group-lg > .form-control,

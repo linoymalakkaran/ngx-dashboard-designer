@@ -3,20 +3,14 @@
   "version": "2.0.0",
   "peerDependencies": {
     "angular-resize-element": "^1.2.0",
-    "ngx-bootstrap": "^8.0.0",
-    "angular-gridster2": "^14.1.0",
-    "@angular-architects/module-federation": "^14.3.9",
-    "@ngx-translate/core": "^14.0.0",
+    "ngx-bootstrap": "^6.2.0",
+    "angular-gridster2": "^13.3.0",
+    "@angular-architects/module-federation": "^14.3.10",
+    "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^7.0.0"
   },
   "dependencies": {
-    "tslib": "^2.3.0",
-    "angular-resize-element": "^1.2.0",
-    "ngx-bootstrap": "^8.0.0",
-    "angular-gridster2": "^14.1.0",
-    "@angular-architects/module-federation": "^14.3.9",
-    "@ngx-translate/core": "^14.0.0",
-    "@ngx-translate/http-loader": "^7.0.0"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "copyfiles": "file:../node_modules/copyfiles",
