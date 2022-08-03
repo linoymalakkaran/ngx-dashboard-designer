@@ -328,6 +328,9 @@
   width: 16px !important;
   height: 16px !important;
 }
+#DashboardDesigner ::ng-deep .delete-icon:after {
+  background-image: url(/assets/dashboard-designer/images/layout-icons/delete-icon.svg);
+}
 #DashboardDesigner ::ng-deep .layoutIcon-1:after {
   background-image: url(/assets/dashboard-designer/images/layout-icons/layout-1.svg);
 }
