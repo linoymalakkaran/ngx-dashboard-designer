@@ -71,5 +71,10 @@
     }
   }
 
+  .delete-icon {
+    &:after {
+      background-image: url(/assets/dashboard-designer/images/delete-icon.svg);
+    }
+  }
   @include layoutIcon;
 }

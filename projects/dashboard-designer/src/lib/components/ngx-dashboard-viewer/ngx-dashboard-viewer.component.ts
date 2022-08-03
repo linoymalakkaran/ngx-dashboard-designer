@@ -43,20 +43,24 @@ export class DashboardViewerComponent implements OnInit {
     widgetTypes: null,
     mfeWidgetTypes: null
   };
+  @Input() lang: 'en' | 'ar' = 'en';
 
   constructor(
     private dashboardDesignerService: DashboardDesignerService,
     public translate: TranslateService
-  ) {
-    translate.addLangs(['en', 'ar']);
-    translate.setDefaultLang('en');
-
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
-  }
+  ) {}
 
   ngOnInit(): void {
+    this.setDashboardLang();
     this.setSelectedDashBoardConfig();
+  }
+
+  setDashboardLang() {
+    this.translate.addLangs(['en', 'ar']);
+    this.translate.setDefaultLang(this.lang);
+    this.translate.use(this.lang ? this.lang : 'en');
+    // const browserLang = this.translate.getBrowserLang();
+    // this.translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
   }
 
   setSelectedDashBoardConfig() {

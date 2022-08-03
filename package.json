@@ -24,7 +24,7 @@
     "publish-lib": "npm run build_lib_dashboard_designer && cd dist/dashboard-designer && npm publish --access public",
     "build:all": "npm run package:all && npm run build"
   },
-  "description": "Dashboard designer",
+  "description": "ngx dashboard designer",
   "dependencies": {
     "@angular-architects/module-federation": "^14.3.10",
     "@angular/animations": "13.3.9",

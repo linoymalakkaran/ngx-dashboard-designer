@@ -8,5 +8,6 @@
   "LAYOUT_NAME": "Layout Name",
   "LAYOUT_ID": "Layout ID",
   "CANCEL": "Cancel",
-  "DRAG_WIDGET_HERE": "Drag Widget here"
+  "DRAG_WIDGET_HERE": "Drag Widget here",
+  "DELETE_WIDGET": "Delete Widget"
 }

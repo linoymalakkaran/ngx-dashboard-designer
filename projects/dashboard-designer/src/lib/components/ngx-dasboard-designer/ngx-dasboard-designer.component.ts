@@ -44,20 +44,16 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
 
   @ViewChild('leftBlock', { read: ElementRef })
   public readonly leftBlockEle: any;
+  @Input() lang: 'en' | 'ar' = 'en';
 
   constructor(
     private dashboardDesignerService: DashboardDesignerService,
     private dashboardLayoutService: DashboardLayoutService,
     public translate: TranslateService
-  ) {
-    translate.addLangs(['en', 'ar']);
-    translate.setDefaultLang('en');
-
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
-  }
+  ) {}
 
   ngOnInit(): void {
+    this.setDashboardLang();
     this.layout.toggleLeft = () => {
       this.toggleLeft();
     };
@@ -65,6 +61,14 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
     this.layout.toggleRight = () => {
       this.toggleRight();
     };
+  }
+
+  setDashboardLang() {
+    this.translate.addLangs(['en', 'ar']);
+    this.translate.setDefaultLang(this.lang);
+    this.translate.use(this.lang ? this.lang : 'en');
+    // const browserLang = this.translate.getBrowserLang();
+    // this.translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
   }
 
   get getDashboardData(): GridLayOutInstance {
