@@ -31,6 +31,7 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
   @Input() widgetOptions: IDashboardWidgetOption;
   @Input() editLayoutJSON: any;
   @Input() isEditMode: boolean;
+  @Input()isSettings:boolean;
   @ViewChild(CenterBlockComponent, { static: false })
   centerBlockComponent: CenterBlockComponent;
 
@@ -40,7 +41,7 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
   public readonly layoutDirection = AngularResizeElementDirection;
   public layout: any = {
     left: { show: true, slideOut: false },
-    right: { show: true, slideOut: false },
+    right: { show: true, slideOut: false,isShowSettings:true },
     top: { show: true, slideOut: false },
     bottom: { show: true, slideOut: false },
     center: { show: true, slideOut: false },
@@ -71,6 +72,10 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
       this.dashboardDesignerService.emitSelectedLayoutEvent(
         this.editLayoutJSON
       );
+    }
+    if(!this.isSettings){
+      this.layout.right.show = false;
+      this.layout.right.isShowSettings = false
     }
   }
 

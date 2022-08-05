@@ -30,6 +30,7 @@
           class="rightblock-trigger fit-height"
           [ngClass]="{ active: layout.right.show }"
           (click)="layout.right.show = !layout.right.show"
+          *ngIf="layout.right.isShowSettings"
         >
           <a class="svgBgIcon inheritSize layout_settings_icon"> </a>
         </li>
