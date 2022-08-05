@@ -1,4 +1,10 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import {
   Draggable,
   GridsterConfig,
@@ -25,6 +31,7 @@ interface Safe extends GridsterConfig {
 })
 export class DashboardWidgetDesignerComponent implements OnInit {
   @Input() widgetOptions?: IDashboardWidgetOption;
+  @Input() editLayoutJSON: any;
   options: Safe;
   gridBoxItemList: SingleGridBoxItem[] = [];
   activeLayout: any = null;
