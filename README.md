@@ -4,6 +4,8 @@
 
 ### Angular implementation of ngx-dashboard designer [Demo git repo](https://github.com/linoymalakkaran/ngx-dashboard-designer-demo/tree/main)
 
+### Demo application url: [application url](https://linoymalakkaran.github.io/ngx-dashboard-designer-demo)
+
 ### Requires Angular 13.x
 
 ### For other Angular versions check the other branches.
