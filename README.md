@@ -2,9 +2,9 @@
 
 [![npm version](https://github.com/linoymalakkaran/ngx-dashboard-designer/blob/angular-v13/src/assets/github-assets/npm.png)](https://www.npmjs.com/package/ngx-dashboard-designer)
 
-### Angular implementation of ngx-dashboard designer [Demo git repo](https://github.com/linoymalakkaran/ngx-dashboard-designer-demo/tree/main)
+### Angular implementation of ngx-dashboard designer [git repo](https://github.com/linoymalakkaran/ngx-dashboard-designer-demo/tree/main)
 
-### Demo application url: [application url](https://linoymalakkaran.github.io/ngx-dashboard-designer-demo)
+### Demo application url: [click here](https://linoymalakkaran.github.io/ngx-dashboard-designer-demo)
 
 ### Requires Angular 13.x
 
