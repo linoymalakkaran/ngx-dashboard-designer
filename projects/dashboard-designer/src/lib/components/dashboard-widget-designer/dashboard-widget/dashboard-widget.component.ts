@@ -21,6 +21,7 @@ import { SingleGridBoxItem } from '../../../models/dashboard.models';
 })
 export class DashboardWidgetComponent implements OnInit {
   @Input() widgetOptions: IDashboardWidgetOption;
+  @Input() editLayoutJSON: any;
   @ViewChild('vc', { read: ViewContainerRef, static: false })
   viewContainer: ViewContainerRef | undefined;
   widgetOptionDragged: MfeWidgetType[];
@@ -32,7 +33,7 @@ export class DashboardWidgetComponent implements OnInit {
   constructor(private ref: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    if (this.isViewMode) {
+    if (this.isViewMode || this.editLayoutJSON) {
       this.applyWideget();
     }
   }

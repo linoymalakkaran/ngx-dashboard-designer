@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-center-block',
   templateUrl: './center-block.component.html',
@@ -7,6 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CenterBlockComponent implements OnInit {
   @Input() widgetOptions: any;
+  @Input() editLayoutJSON: any;
   isEditMode: boolean;
 
   constructor() {}
