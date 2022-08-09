@@ -13,6 +13,7 @@ import {
   MfeWidgetType
 } from '../../../models/dashboard-widget-options.model';
 import { SingleGridBoxItem } from '../../../models/dashboard.models';
+import { DashboardDesignerService } from '../../../services/dashboard-designer.service';
 
 @Component({
   selector: 'dashboard-widget',
@@ -30,7 +31,10 @@ export class DashboardWidgetComponent implements OnInit {
   @Input() singleGridBoxItem: SingleGridBoxItem;
   @Input() isViewMode?: boolean = false;
 
-  constructor(private ref: ChangeDetectorRef) {}
+  constructor(
+    private ref: ChangeDetectorRef,
+    private dashboardDesignerService: DashboardDesignerService
+  ) {}
 
   ngOnInit(): void {
     if (this.isViewMode || this.editLayoutJSON) {
@@ -82,6 +86,10 @@ export class DashboardWidgetComponent implements OnInit {
     this.selectedWidgetOption = null;
     this.viewContainer.remove();
     this.isWidgetDropped = false;
-    this.singleGridBoxItem.widgetOption = null;
+   // this.singleGridBoxItem.widgetOption = null;
+    setInterval(() => {
+      this.singleGridBoxItem.widgetOption = null;
+      this.ref.markForCheck();
+    }, 1000);
   }
 }
