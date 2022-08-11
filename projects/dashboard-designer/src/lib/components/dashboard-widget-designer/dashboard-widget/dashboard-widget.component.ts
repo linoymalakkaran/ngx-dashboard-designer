@@ -14,6 +14,7 @@ import {
 } from '../../../models/dashboard-widget-options.model';
 import { SingleGridBoxItem } from '../../../models/dashboard.models';
 import { DashboardDesignerService } from '../../../services/dashboard-designer.service';
+import { DashboardIconService } from '../../../services/dashboard-icon.service';
 
 @Component({
   selector: 'dashboard-widget',
@@ -33,8 +34,11 @@ export class DashboardWidgetComponent implements OnInit {
 
   constructor(
     private ref: ChangeDetectorRef,
-    private dashboardDesignerService: DashboardDesignerService
-  ) {}
+    private dashboardDesignerService: DashboardDesignerService,
+    private _iconsService: DashboardIconService
+  ) {
+    this._iconsService.registerIcons(this.icons);
+  }
 
   ngOnInit(): void {
     if (this.isViewMode || this.editLayoutJSON) {
@@ -86,10 +90,14 @@ export class DashboardWidgetComponent implements OnInit {
     this.selectedWidgetOption = null;
     this.viewContainer.remove();
     this.isWidgetDropped = false;
-   // this.singleGridBoxItem.widgetOption = null;
+    // this.singleGridBoxItem.widgetOption = null;
     setInterval(() => {
       this.singleGridBoxItem.widgetOption = null;
       this.ref.markForCheck();
     }, 1000);
+  }
+
+  private get icons(): Array<string> {
+    return ['widget-layout-ico', 'layout-svg-ico'];
   }
 }

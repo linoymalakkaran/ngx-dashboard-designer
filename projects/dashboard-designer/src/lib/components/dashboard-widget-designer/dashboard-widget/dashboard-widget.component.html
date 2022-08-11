@@ -9,10 +9,10 @@
     <div class="card-title col-11">{{ selectedWidgetOption?.displayName }}</div>
     <div class="card-actions col-1 row justify-content-end">
       <ng-container *ngIf="isWidgetDropped">
-        <!-- <mat-icon class="delete-icon" (click)="deleteWidget()">delete</mat-icon> -->
-        <a (click)="deleteWidget()" title="{{ 'DELETE_WIDGET' | translate }}"
+        <dash-icon svgIcon="widget-layout-ico" aria-hidden="false"></dash-icon>
+        <!-- <a (click)="deleteWidget()" title="{{ 'DELETE_WIDGET' | translate }}"
           ><i class="svgBgIcon delete-icon"></i
-        ></a>
+        ></a> -->
       </ng-container>
     </div>
   </div>
