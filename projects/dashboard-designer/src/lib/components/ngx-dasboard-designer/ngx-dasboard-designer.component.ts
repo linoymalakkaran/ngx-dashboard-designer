@@ -15,6 +15,7 @@ import {
 } from '../../models/dashboard-widget-options.model';
 import { GridLayOutInstance } from '../../models/dashboard.models';
 import { DashboardDesignerService } from '../../services/dashboard-designer.service';
+import { DashboardIconService } from '../../services/dashboard-icon.service';
 import { DashboardLayoutService } from '../../services/dashboard-layout.service';
 import { TranslationService } from '../../services/translation.service';
 import { AngularResizeElementEvent } from '../dashboard-resizer/angular-resize-element-event.interface';
@@ -31,7 +32,8 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
   @Input() widgetOptions: IDashboardWidgetOption;
   @Input() editLayoutJSON: any;
   @Input() isEditMode: boolean;
-  @Input()isSettings:boolean;
+  @Input() isSettings: boolean;
+  @Input() baseAssetsPath: string;
   @ViewChild(CenterBlockComponent, { static: false })
   centerBlockComponent: CenterBlockComponent;
 
@@ -41,7 +43,7 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
   public readonly layoutDirection = AngularResizeElementDirection;
   public layout: any = {
     left: { show: true, slideOut: false },
-    right: { show: true, slideOut: false,isShowSettings:true },
+    right: { show: true, slideOut: false, isShowSettings: true },
     top: { show: true, slideOut: false },
     bottom: { show: true, slideOut: false },
     center: { show: true, slideOut: false },
@@ -55,10 +57,14 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
   constructor(
     private dashboardDesignerService: DashboardDesignerService,
     private dashboardLayoutService: DashboardLayoutService,
-    private translationService: TranslationService
+    private translationService: TranslationService,
+    private dashboardIconService: DashboardIconService
   ) {}
 
   ngOnInit(): void {
+    if (this.baseAssetsPath) {
+      this.dashboardIconService.baseAssetsPath = this.baseAssetsPath;
+    }
     this.translationService.language = this.lang;
     this.layout.toggleLeft = () => {
       this.toggleLeft();
@@ -73,9 +79,9 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
         this.editLayoutJSON
       );
     }
-    if(!this.isSettings){
+    if (!this.isSettings) {
       this.layout.right.show = false;
-      this.layout.right.isShowSettings = false
+      this.layout.right.isShowSettings = false;
     }
   }
 

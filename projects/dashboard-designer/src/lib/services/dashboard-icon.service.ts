@@ -4,6 +4,8 @@ import { DashIconRegistry } from '../components/icons-loader/utils/icon-registry
 
 @Injectable({ providedIn: 'root' })
 export class DashboardIconService {
+  baseAssetsPath: string = 'assets/dashboard-designer/';
+
   constructor(
     private _iconRegistry: DashIconRegistry,
     private _sanitizer: DomSanitizer
@@ -15,7 +17,7 @@ export class DashboardIconService {
       this._iconRegistry.addSvgIcon(
         icon,
         this._sanitizer.bypassSecurityTrustResourceUrl(
-          `assets/dashboard-designer/images/${icon}.svg`
+          `${this.baseAssetsPath}images/${icon}.svg`
         )
       );
     });

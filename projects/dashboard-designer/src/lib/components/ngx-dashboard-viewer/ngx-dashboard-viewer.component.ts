@@ -1,23 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import {
-  GridsterConfig,
-  Draggable,
-  Resizable,
-  PushDirections
-} from 'angular-gridster2';
 import { IDashboardWidgetOption } from '../../models/dashboard-widget-options.model';
 import { GridLayOutInstance } from '../../models/dashboard.models';
 import { DashboardDesignerService } from '../../services/dashboard-designer.service';
 import { AngularResizeElementEvent } from '../dashboard-resizer/angular-resize-element-event.interface';
 import { AngularResizeElementDirection } from '../dashboard-resizer/angular-resize-element.enum';
 import { TranslationService } from '../../services/translation.service';
-
-interface Safe extends GridsterConfig {
-  draggable: Draggable;
-  resizable: Resizable;
-  pushDirections: PushDirections;
-}
+import { DashboardIconService } from '../../services/dashboard-icon.service';
 
 @Component({
   selector: 'ngx-dashboard-viewer',
@@ -35,6 +24,7 @@ export class DashboardViewerComponent implements OnInit {
     resizeFn$: new Subject()
   };
   @Input() dashboardLayout: GridLayOutInstance;
+  @Input() baseAssetsPath: string;
   widgetOptions: IDashboardWidgetOption = {
     filter: false,
     ismfeWidgets: true,
@@ -45,10 +35,14 @@ export class DashboardViewerComponent implements OnInit {
 
   constructor(
     private dashboardDesignerService: DashboardDesignerService,
-    private translationService: TranslationService
+    private translationService: TranslationService,
+    private dashboardIconService: DashboardIconService
   ) {}
 
   ngOnInit(): void {
+    if (this.baseAssetsPath) {
+      this.dashboardIconService.baseAssetsPath = this.baseAssetsPath;
+    }
     this.translationService.language = this.lang;
     this.setSelectedDashBoardConfig();
   }
