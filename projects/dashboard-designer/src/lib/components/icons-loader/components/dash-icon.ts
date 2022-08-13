@@ -87,8 +87,8 @@ const funcIriPattern = /^url\(['"]?#(.*?)['"]?\)$/;
     role: 'img',
     class: 'dash-icon notranslate',
     '[attr.data-dash-icon-type]': 'svg',
-    '[attr.data-dash-icon-name]': '_svgName || fontIcon',
-    '[attr.data-dash-icon-namespace]': '_svgNamespace || fontSet',
+    '[attr.data-dash-icon-name]': '_svgName',
+    '[attr.data-dash-icon-namespace]': '_svgNamespace',
     '[class.dash-icon-inline]': 'inline',
     '[class.dash-icon-no-color]':
       'color !== "primary" && color !== "accent" && color !== "warn"'
@@ -185,11 +185,7 @@ export class DashIcon implements OnInit, AfterViewChecked, OnDestroy {
     }
   }
 
-  ngOnInit() {
-    // Update font classes because ngOnChanges won't be called if none of the inputs are present,
-    // e.g. <dash-icon>arrow</dash-icon> In this case we need to add a CSS class for the default font.
-    //this._updateFontIconClasses();
-  }
+  ngOnInit() {}
 
   ngAfterViewChecked() {
     const cachedElements = this._elementsWithExternalReferences;

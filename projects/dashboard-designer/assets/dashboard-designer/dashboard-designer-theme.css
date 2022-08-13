@@ -309,9 +309,9 @@
   top: 0;
   left: 0;
 }
-#DashboardDesigner ::ng-deep .widget_tab_icon:after {
+/* #DashboardDesigner ::ng-deep .widget_tab_icon:after {
   background-image: url(/assets/dashboard-designer/images/widget-layout-ico.svg);
-}
+} */
 #DashboardDesigner ::ng-deep .layout_tab_icon:after {
   background-image: url(/assets/dashboard-designer/images/layout-svg-ico.svg);
 }

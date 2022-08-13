@@ -98,6 +98,6 @@ export class DashboardWidgetComponent implements OnInit {
   }
 
   private get icons(): Array<string> {
-    return ['widget-layout-ico', 'layout-svg-ico', 'delete-icon'];
+    return ['delete-icon'];
   }
 }

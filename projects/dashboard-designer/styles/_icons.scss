@@ -18,17 +18,17 @@
     }
   }
 
-  .widget_tab_icon {
-    &:after {
-      background-image: url(/assets/dashboard-designer/images/widget-layout-ico.svg);
-    }
-  }
+  // .widget_tab_icon {
+  //   &:after {
+  //     background-image: url(/assets/dashboard-designer/images/widget-layout-ico.svg);
+  //   }
+  // }
 
-  .layout_tab_icon {
-    &:after {
-      background-image: url(/assets/dashboard-designer/images/layout-svg-ico.svg);
-    }
-  }
+  // .layout_tab_icon {
+  //   &:after {
+  //     background-image: url(/assets/dashboard-designer/images/layout-svg-ico.svg);
+  //   }
+  // }
 
   .layout_settings_icon {
     &:after {
@@ -71,10 +71,10 @@
     }
   }
 
-  .delete-icon {
-    &:after {
-      background-image: url(/assets/dashboard-designer/images/delete-icon.svg);
-    }
-  }
+  // .delete-icon {
+  //   &:after {
+  //     background-image: url(/assets/dashboard-designer/images/delete-icon.svg);
+  //   }
+  // }
   @include layoutIcon;
 }
