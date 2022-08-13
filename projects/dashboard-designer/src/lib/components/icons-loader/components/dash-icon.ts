@@ -18,7 +18,7 @@ import {
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { DashIconRegistry } from '../utils/icon-registry';
+import { DashIconRegistry } from '../utils/dash-registry';
 
 /**
  * Injection token used to provide the current location to `DashIcon`.
@@ -80,13 +80,13 @@ const funcIriPattern = /^url\(['"]?#(.*?)['"]?\)$/;
 @Component({
   template: '<ng-content></ng-content>',
   selector: 'dash-icon',
-  exportAs: 'matIcon',
-  styleUrls: ['icon.scss'],
+  exportAs: 'dashIcon',
+  styleUrls: ['dash-icon.scss'],
   inputs: ['color'],
   host: {
     role: 'img',
     class: 'dash-icon notranslate',
-    '[attr.data-dash-icon-type]': '_usingFontIcon() ? "font" : "svg"',
+    '[attr.data-dash-icon-type]': 'svg',
     '[attr.data-dash-icon-name]': '_svgName || fontIcon',
     '[attr.data-dash-icon-namespace]': '_svgNamespace || fontSet',
     '[class.dash-icon-inline]': 'inline',

@@ -18,7 +18,7 @@ import { NgxDashboardDesigner } from './components/ngx-dasboard-designer/ngx-das
 import { AngularResizeElementModule } from './components/dashboard-resizer/angular-resize-element.module';
 import { TranslationService } from './services/translation.service';
 import { TranslatePipe } from './pipes/translate.pipe';
-import { DashIconModule } from './components/icons-loader/icon-module';
+import { DashIconModule } from './components/icons-loader/dash-icon-module';
 
 @NgModule({
   declarations: [

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { DashIcon } from './components/icon';
+import { DashIcon } from './components/dash-icon';
 
 @NgModule({
   imports: [],

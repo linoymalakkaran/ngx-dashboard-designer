@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { DashIconRegistry } from '../components/icons-loader/utils/icon-registry';
+import { DashIconRegistry } from '../components/icons-loader/utils/dash-registry';
 
 @Injectable({ providedIn: 'root' })
 export class DashboardIconService {
@@ -17,7 +17,7 @@ export class DashboardIconService {
       this._iconRegistry.addSvgIcon(
         icon,
         this._sanitizer.bypassSecurityTrustResourceUrl(
-          `${this.baseAssetsPath}images/${icon}.svg`
+          `${this.baseAssetsPath}svg/${icon}.svg`
         )
       );
     });
