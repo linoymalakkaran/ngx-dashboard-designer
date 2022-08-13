@@ -6,6 +6,10 @@
   font-family: $font-family-normal;
   background-color: #eee;
 
+  * {
+    font-family: $font-family-normal;
+  }
+
   ::-webkit-scrollbar-track {
     background-color: $primary-color;
   }
