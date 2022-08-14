@@ -50,6 +50,11 @@ export class LeftBlockComponent implements OnInit {
     this.onCreateNewLayoutClick.emit(e?.target?.id);
   }
 
+  createNewDynamicLayout(e) {
+    this.isEditMode = false;
+    this.onCreateNewLayoutClick.emit('new');
+  }
+
   loadDashboard(item): void {
     this.isEditMode = true;
     setTimeout(() => {
@@ -70,6 +75,10 @@ export class LeftBlockComponent implements OnInit {
     //   event.previousIndex,
     //   event.currentIndex
     // );
+  }
+
+  toggleWidgetDragMode(val): void {
+    this.dashboardDesignerService.isWidgetDragModeEnabled$.next(val);
   }
 
   private get icons(): Array<string> {

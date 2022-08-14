@@ -27,7 +27,9 @@ export class DashboardIconService {
       this.fontBaseUrl = this.config?.fontBaseUrl || this.fontBaseUrl;
     }
 
-    this.registerFonts();
+    if (this.config?.isDynamicFontLoading) {
+      this.registerFonts();
+    }
   }
 
   public registerIcons(icons: Array<string>): void {

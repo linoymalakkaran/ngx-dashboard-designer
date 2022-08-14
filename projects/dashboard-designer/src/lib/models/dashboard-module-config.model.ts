@@ -1,4 +1,5 @@
 export interface DashboardModuleConfigModel {
-  baseAssetsPath: string;
-  fontBaseUrl: string;
+  baseAssetsPath?: string;
+  fontBaseUrl?: string;
+  isDynamicFontLoading?: boolean;
 }

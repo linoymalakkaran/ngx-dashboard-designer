@@ -19,7 +19,31 @@
       </ng-container>
     </div>
   </div>
-  <div class="card-body">
+  <div class="card-body-warpper" *ngIf="!isWidgetDragModeEnabled">
+    <div class="card-body card-container">
+      <div class="drag-container">
+        <a href="javascript:void(0)" title="Drag">
+          <dash-icon svgIcon="drag-icon" aria-hidden="false"></dash-icon>
+        </a>
+        <!-- <span *ngIf="!isWidgetDropped">{{
+          'DRAG_WIDGET_HERE' | translate
+        }}</span> -->
+        <ng-container #vc></ng-container>
+      </div>
+      <a
+        title="delete"
+        href="javascript:void(0)"
+        *ngIf="isNewLayoutSelected"
+        class="cursor-pointer"
+        (mousedown)="removeItem($event)"
+        (touchstart)="removeItem($event)"
+      >
+        <dash-icon svgIcon="delete-icon" aria-hidden="false"></dash-icon>
+      </a>
+    </div>
+  </div>
+
+  <div class="card-body" *ngIf="isWidgetDragModeEnabled">
     <ng-container>
       <div>
         <span *ngIf="!isWidgetDropped">{{

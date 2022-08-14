@@ -2,3 +2,28 @@
   display: flex;
   justify-content: center;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.card-container {
+  display: flex;
+  gap: 20px;
+  width: 11vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.drag-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-body-warpper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}

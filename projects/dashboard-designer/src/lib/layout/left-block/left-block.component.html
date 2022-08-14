@@ -2,10 +2,11 @@
   <tabset [vertical]="true" type="pills" class="v-tabs inheritSize">
     <tab>
       <ng-template tabHeading>
-        <!-- <dash-icon svgIcon="delete-icon" aria-hidden="false"></dash-icon> -->
-        <dash-icon svgIcon="layout-svg-ico" aria-hidden="false"></dash-icon
-        ><small>{{ 'LAYOUTS' | translate }}</small></ng-template
-      >
+        <a href="javascript:void(0);" (click)="toggleWidgetDragMode(false)">
+          <dash-icon svgIcon="layout-svg-ico" aria-hidden="false"></dash-icon
+          ><small>{{ 'LAYOUTS' | translate }}</small></a
+        >
+      </ng-template>
       <div class="dash-designer-accordion">
         <accordion [isAnimated]="true">
           <accordion-group class="accordion-group" [isOpen]="true">
@@ -30,10 +31,12 @@
                   ></div>
                 </ng-container>
 
-                <div
+                <a
+                  href="javascript:void(0)"
+                  (click)="createNewDynamicLayout($event)"
                   class="fa fas fa-plus svgBgIcon"
                   style="font-size: 32px"
-                ></div>
+                ></a>
               </div>
             </div>
           </accordion-group>
@@ -64,10 +67,14 @@
     </tab>
     <tab>
       <ng-template tabHeading>
-        <dash-icon svgIcon="widget-layout-ico" aria-hidden="false"></dash-icon>
-        <!-- <i class="svgBgIcon widget_tab_icon iconSize32"></i> -->
-        <small> {{ 'WIDGETS' | translate }}</small></ng-template
-      >
+        <a href="javascript:void(0);" (click)="toggleWidgetDragMode(true)">
+          <dash-icon
+            svgIcon="widget-layout-ico"
+            aria-hidden="false"
+          ></dash-icon>
+          <small> {{ 'WIDGETS' | translate }}</small></a
+        >
+      </ng-template>
 
       <div class="dash-designer-accordion">
         <accordion [isAnimated]="true">

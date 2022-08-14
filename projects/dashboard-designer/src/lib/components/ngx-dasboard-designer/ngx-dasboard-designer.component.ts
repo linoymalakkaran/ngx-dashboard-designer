@@ -59,6 +59,8 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.registerIcons();
+    this.dashboardDesignerService.dynamicDashboardData = null;
+    this.dashboardDesignerService.isNewLayoutSelected$.next(false);
     this.translationService.language = this.lang;
     this.layout.toggleLeft = () => {
       this.toggleLeft();
@@ -115,7 +117,24 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
   onCreateNewLayoutClick(layoutid) {
     let layoutJSON: GridLayOutInstance =
       this.dashboardLayoutService.getLayoutconfigByLayoutId(layoutid);
-    this.dashboardDesignerService.emitSelectedLayoutEvent(layoutJSON);
+    if (layoutid == 'new') {
+      this.dashboardDesignerService.isNewLayoutSelected$.next(true);
+      if (this.dashboardDesignerService.dynamicDashboardData == null) {
+        this.dashboardDesignerService.dynamicDashboardData = layoutJSON;
+      } else {
+        this.dashboardDesignerService.dynamicDashboardData.dashboardItems =
+          this.dashboardDesignerService.dynamicDashboardData.dashboardItems.concat(
+            layoutJSON.dashboardItems
+          );
+      }
+      this.dashboardDesignerService.emitSelectedLayoutEvent(
+        this.dashboardDesignerService.dynamicDashboardData
+      );
+    } else {
+      this.dashboardDesignerService.isNewLayoutSelected$.next(false);
+      this.dashboardDesignerService.dynamicDashboardData = null;
+      this.dashboardDesignerService.emitSelectedLayoutEvent(layoutJSON);
+    }
   }
 
   private get icons(): Array<string> {
