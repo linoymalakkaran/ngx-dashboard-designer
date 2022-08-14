@@ -14,7 +14,7 @@ export class DashDesignerComponent {
     mfeWidgetTypes: [
       {
         displayName: 'Bar Chart',
-        icon: 'Barchart',
+        icon: 'bar-chart',
         description: 'Bar Chart',
         //   event'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgets/remoteEntry.js',
         //'http://127.0.0.1:5555/dashboard-widgets/remoteEntry.js',

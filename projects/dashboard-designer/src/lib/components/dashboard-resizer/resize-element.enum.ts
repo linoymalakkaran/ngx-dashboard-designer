@@ -1,4 +1,4 @@
-export enum AngularResizeElementDirection {
+export enum DashResizeElementDirection {
   TOP = 'top',
   TOP_RIGHT = 'top-right',
   RIGHT = 'right',

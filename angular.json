@@ -20,6 +20,7 @@
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
+            "baseHref": "/DASHBOARD/",
             "preserveSymlinks": true,
             "outputPath": "dist/gridster-app",
             "index": "src/index.html",

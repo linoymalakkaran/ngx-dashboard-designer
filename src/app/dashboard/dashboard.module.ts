@@ -7,6 +7,13 @@ import { DashViewerComponent } from './components/dash-viewer/components/dash-vi
 
 @NgModule({
   declarations: [DashDesignerComponent, DashViewerComponent],
-  imports: [CommonModule, DashboardRoutingModule, NgxDashboardDesignerModule]
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    NgxDashboardDesignerModule.forRoot({
+      baseAssetsPath: 'assets/dashboard-designer/',
+      fontBaseUrl: 'assets/dashboard-designer/'
+    })
+  ]
 })
 export class DashboardModule {}

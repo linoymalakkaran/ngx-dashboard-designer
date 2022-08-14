@@ -73,6 +73,6 @@ export class LeftBlockComponent implements OnInit {
   }
 
   private get icons(): Array<string> {
-    return ['layout-svg-ico', 'widget-layout-ico'];
+    return ['layout-svg-ico', 'widget-layout-ico', 'bar-chart'];
   }
 }

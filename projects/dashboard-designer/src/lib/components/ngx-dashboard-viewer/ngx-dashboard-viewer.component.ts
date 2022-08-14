@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, Optional } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IDashboardWidgetOption } from '../../models/dashboard-widget-options.model';
 import { GridLayOutInstance } from '../../models/dashboard.models';
 import { DashboardDesignerService } from '../../services/dashboard-designer.service';
-import { AngularResizeElementEvent } from '../dashboard-resizer/angular-resize-element-event.interface';
-import { AngularResizeElementDirection } from '../dashboard-resizer/angular-resize-element.enum';
+import { DashResizeElementEvent } from '../dashboard-resizer/resize-element-event.interface';
+import { DashResizeElementDirection } from '../dashboard-resizer/resize-element.enum';
 import { TranslationService } from '../../services/translation.service';
 import { DashboardIconService } from '../../services/dashboard-icon.service';
 
@@ -14,7 +14,7 @@ import { DashboardIconService } from '../../services/dashboard-icon.service';
   styleUrls: ['./ngx-dashboard-viewer.component.scss']
 })
 export class DashboardViewerComponent implements OnInit {
-  public readonly layoutDirection = AngularResizeElementDirection;
+  public readonly layoutDirection = DashResizeElementDirection;
   public layout: any = {
     left: { show: true, slideOut: false },
     right: { show: true, slideOut: false },
@@ -36,15 +36,23 @@ export class DashboardViewerComponent implements OnInit {
   constructor(
     private dashboardDesignerService: DashboardDesignerService,
     private translationService: TranslationService,
-    private dashboardIconService: DashboardIconService
-  ) {}
+    private _iconsService: DashboardIconService
+  ) {
+    this._iconsService.registerIcons(this.icons);
+  }
 
   ngOnInit(): void {
-    if (this.baseAssetsPath) {
-      this.dashboardIconService.baseAssetsPath = this.baseAssetsPath;
-    }
+    this.registerIcons();
     this.translationService.language = this.lang;
     this.setSelectedDashBoardConfig();
+  }
+
+  registerIcons(): void {
+    const icons = [];
+    this.widgetOptions.mfeWidgetTypes.forEach(type => {
+      icons.push(type.icon);
+    });
+    this._iconsService.registerIcons(icons);
   }
 
   setSelectedDashBoardConfig() {
@@ -59,15 +67,19 @@ export class DashboardViewerComponent implements OnInit {
     this.dashboardDesignerService.emitSelectedLayoutEvent(gridItem);
   }
 
-  public onResize(evt: AngularResizeElementEvent, _block: any): void {
+  public onResize(evt: DashResizeElementEvent, _block: any): void {
     this.layout[_block].width = evt.currentWidthValue;
     this.layout[_block].height = evt.currentHeightValue;
     this.layout[_block].top = evt.currentTopValue;
     this.layout[_block].left = evt.currentLeftValue;
   }
 
-  public resizeEnd(evt: AngularResizeElementEvent, _block: any): void {
+  public resizeEnd(evt: DashResizeElementEvent, _block: any): void {
     this.layout.resizeFn$.next();
+  }
+
+  private get icons(): Array<string> {
+    return ['menu-ico'];
   }
 
   ngOnDestroy(): void {

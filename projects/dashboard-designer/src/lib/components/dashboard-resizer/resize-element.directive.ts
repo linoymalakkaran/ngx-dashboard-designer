@@ -11,15 +11,15 @@ import {
   SimpleChanges
 } from '@angular/core';
 import {
-  AngularResizeElementEvent,
+  DashResizeElementEvent,
   Position
-} from './angular-resize-element-event.interface';
-import { AngularResizeElementDirection } from './angular-resize-element.enum';
+} from './resize-element-event.interface';
+import { DashResizeElementDirection } from './resize-element.enum';
 
 @Directive({
   selector: '[resize], [resizeStart], [resizeEnd]'
 })
-export class AngularResizeElementDirective implements OnChanges, OnDestroy {
+export class DashResizeElementDirective implements OnChanges, OnDestroy {
   private mouseClickListener: () => void;
   private mouseUpListener: () => void;
   private mouseMoveListener: () => void;
@@ -36,7 +36,7 @@ export class AngularResizeElementDirective implements OnChanges, OnDestroy {
   public targetElement: HTMLElement | ElementRef;
 
   @Input()
-  public direction: AngularResizeElementDirection;
+  public direction: DashResizeElementDirection;
 
   @Input()
   public proportionalResize: boolean;
@@ -48,13 +48,13 @@ export class AngularResizeElementDirective implements OnChanges, OnDestroy {
   public applyClass = 'resizing';
 
   @Output()
-  public readonly resizeStart: EventEmitter<AngularResizeElementEvent> = new EventEmitter();
+  public readonly resizeStart: EventEmitter<DashResizeElementEvent> = new EventEmitter();
 
   @Output()
-  public readonly resize: EventEmitter<AngularResizeElementEvent> = new EventEmitter();
+  public readonly resize: EventEmitter<DashResizeElementEvent> = new EventEmitter();
 
   @Output()
-  public readonly resizeEnd: EventEmitter<AngularResizeElementEvent> = new EventEmitter();
+  public readonly resizeEnd: EventEmitter<DashResizeElementEvent> = new EventEmitter();
 
   @Input()
   @HostBinding('attr.draggable')
@@ -153,7 +153,7 @@ export class AngularResizeElementDirective implements OnChanges, OnDestroy {
       : this.targetElement;
   }
 
-  private generateValuesForEvent(evt: MouseEvent): AngularResizeElementEvent {
+  private generateValuesForEvent(evt: MouseEvent): DashResizeElementEvent {
     const originalXValue = this.originalEvent.clientX;
     const originalYValue = this.originalEvent.clientY;
 
@@ -163,46 +163,46 @@ export class AngularResizeElementDirective implements OnChanges, OnDestroy {
     let diffLeftValue = diffWidthValue;
 
     switch (this.direction) {
-      case AngularResizeElementDirection.TOP: {
+      case DashResizeElementDirection.TOP: {
         diffHeightValue *= -1;
         diffWidthValue = 0;
         diffLeftValue = 0;
         break;
       }
-      case AngularResizeElementDirection.TOP_RIGHT: {
+      case DashResizeElementDirection.TOP_RIGHT: {
         diffHeightValue *= -1;
         diffLeftValue = 0;
         break;
       }
-      case AngularResizeElementDirection.RIGHT: {
+      case DashResizeElementDirection.RIGHT: {
         diffHeightValue = 0;
         diffTopValue = 0;
         diffLeftValue = 0;
         break;
       }
-      case AngularResizeElementDirection.BOTTOM_RIGHT: {
+      case DashResizeElementDirection.BOTTOM_RIGHT: {
         diffTopValue = 0;
         diffLeftValue = 0;
         break;
       }
-      case AngularResizeElementDirection.BOTTOM: {
+      case DashResizeElementDirection.BOTTOM: {
         diffWidthValue = 0;
         diffLeftValue = 0;
         diffTopValue = 0;
         break;
       }
-      case AngularResizeElementDirection.BOTTOM_LEFT: {
+      case DashResizeElementDirection.BOTTOM_LEFT: {
         diffWidthValue *= -1;
         diffTopValue = 0;
         break;
       }
-      case AngularResizeElementDirection.LEFT: {
+      case DashResizeElementDirection.LEFT: {
         diffWidthValue *= -1;
         diffHeightValue = 0;
         diffTopValue = 0;
         break;
       }
-      case AngularResizeElementDirection.TOP_LEFT: {
+      case DashResizeElementDirection.TOP_LEFT: {
         diffHeightValue *= -1;
         diffWidthValue *= -1;
       }

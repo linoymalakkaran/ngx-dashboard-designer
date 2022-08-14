@@ -1,4 +1,4 @@
-import { AngularResizeElementDirection } from './angular-resize-element.enum';
+import { DashResizeElementDirection } from './resize-element.enum';
 
 export interface Position {
   top: number;
@@ -7,7 +7,7 @@ export interface Position {
   left: number;
 }
 
-export interface AngularResizeElementEvent {
+export interface DashResizeElementEvent {
   currentWidthValue: number;
   currentHeightValue: number;
 
@@ -27,5 +27,5 @@ export interface AngularResizeElementEvent {
   differenceLeftValue: number;
 
   originalEvent: MouseEvent;
-  direction: AngularResizeElementDirection;
+  direction: DashResizeElementDirection;
 }

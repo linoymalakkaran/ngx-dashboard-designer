@@ -95,7 +95,11 @@
                     cdkDrag
                   >
                     <a>
-                      <i class="svgBgIcon iconSize32 widget_tab_icon"></i>
+                      <dash-icon
+                        svgIcon="{{ widgetOption.icon }}"
+                        aria-hidden="false"
+                      ></dash-icon>
+                      <!-- <i class="svgBgIcon iconSize32 widget_tab_icon"></i> -->
                       <small>{{ widgetOption.displayName }}</small>
                     </a>
                   </li>
