@@ -13,9 +13,13 @@
         <!-- <a (click)="deleteWidget()" title="{{ 'DELETE_WIDGET' | translate }}"
           ><i class="svgBgIcon delete-icon"></i
         ></a> -->
-        <a (click)="deleteWidget()" title="{{ 'DELETE_WIDGET' | translate }}"
-          ><dash-icon svgIcon="delete-icon" aria-hidden="false"></dash-icon
-        ></a>
+        <a
+          (click)="deleteWidget()"
+          title="{{ 'DELETE_WIDGET' | translate }}"
+          class="cursor-pointer"
+        >
+          <dash-icon svgIcon="delete-icon" aria-hidden="false"></dash-icon>
+        </a>
       </ng-container>
     </div>
   </div>
