@@ -51,7 +51,7 @@ export class DashboardWidgetComponent implements OnInit {
     this.dashboardDesignerService.isWidgetDragModeEnabled$.subscribe(
       (isWidgetDragModeEnabled: boolean) => {
         this.isWidgetDragModeEnabled = isWidgetDragModeEnabled;
-        if (!this.isWidgetDragModeEnabled) {
+        if (!this.isWidgetDragModeEnabled && !this.editLayoutJSON) {
           this.deleteWidget();
         }
       }
