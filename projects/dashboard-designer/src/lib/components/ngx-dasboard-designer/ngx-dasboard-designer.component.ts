@@ -65,6 +65,10 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
     this.layout.toggleLeft = () => {
       this.toggleLeft();
     };
+   // the gridster picks the old layout of the last added record - added this to create new layout
+    if(!this.editLayoutJSON){
+      this.onCreateNewLayoutClick('new');
+    }
 
     this.layout.toggleRight = () => {
       this.toggleRight();
