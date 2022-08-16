@@ -11,7 +11,7 @@ import { DashViewerComponent } from './components/dash-viewer/components/dash-vi
 const dashboardConfig: DashboardModuleConfigModel = {
   baseAssetsPath: 'assets/dashboard-designer/',
   fontBaseUrl: 'assets/dashboard-designer/',
-  isDynamicFontLoading: true
+  isDynamicFontLoading: false
 };
 @NgModule({
   declarations: [DashDesignerComponent, DashViewerComponent],

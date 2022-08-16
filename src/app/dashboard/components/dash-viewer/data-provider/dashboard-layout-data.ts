@@ -75,12 +75,13 @@ export const layoutData: GridLayOutInstance = {
       hasContent: true,
       widgetOption: {
         displayName: 'Bar Chart',
-        icon: 'Barchart',
+        icon: 'bar-chart',
         description: 'Bar Chart',
-        hostUrl: 'http://localhost:5203/remoteEntry.js',
-        componentName: 'SampleBarChartComponent',
+        hostUrl:
+          'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+        componentName: 'BarchartWidgetComponent',
         type: 'module',
-        exposedModule: './Component'
+        exposedModule: './BarChartWidget'
       }
     },
     {
@@ -91,12 +92,13 @@ export const layoutData: GridLayOutInstance = {
       hasContent: true,
       widgetOption: {
         displayName: 'Bar Chart',
-        icon: 'Barchart',
+        icon: 'bar-chart',
         description: 'Bar Chart',
-        hostUrl: 'http://localhost:5203/remoteEntry.js',
-        componentName: 'SampleBarChartComponent',
+        hostUrl:
+          'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+        componentName: 'BarchartWidgetComponent',
         type: 'module',
-        exposedModule: './Component'
+        exposedModule: './BarChartWidget'
       }
     },
     {

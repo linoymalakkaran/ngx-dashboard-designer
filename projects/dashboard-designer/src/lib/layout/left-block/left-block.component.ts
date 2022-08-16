@@ -78,10 +78,16 @@ export class LeftBlockComponent implements OnInit {
   }
 
   toggleWidgetDragMode(val): void {
-    //  this.dashboardDesignerService.isWidgetDragModeEnabled$.next(val);
+    this.dashboardDesignerService.isWidgetDragModeEnabled$.next(val);
   }
 
   private get icons(): Array<string> {
-    return ['layout-svg-ico', 'widget-layout-ico', 'bar-chart'];
+    return [
+      'layout-svg-ico',
+      'widget-layout-ico',
+      'bar-chart',
+      'down-chevron',
+      'plus-icon'
+    ];
   }
 }

@@ -204,10 +204,11 @@
         flex-direction: column;
         gap: 6px;
         border-radius: 0;
-        background: rgba(255, 255, 255, 0.2);
+        // background: rgba(255, 255, 255, 0.2);
         color: #fff !important;
         &.active {
-          background: #fff !important;
+          background: #a29dc1 !important;
+          // background: #fff !important;
           color: $secondary-color !important;
         }
       }

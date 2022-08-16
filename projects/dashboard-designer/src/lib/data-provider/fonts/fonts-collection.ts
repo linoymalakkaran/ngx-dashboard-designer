@@ -13,7 +13,13 @@ export const fontsToLoad: {
   {
     fontName: 'dash_layout_icon',
     fontUrl: '/fonts/dash_layout_icon.woff'
-  },
+  }
+];
+
+export const externalFonts: {
+  fontName: string;
+  fontUrl: string;
+}[] = [
   {
     fontName: 'Font Awesome 5 Pro',
     fontUrl: '/webfonts/fa-light-300.woff'

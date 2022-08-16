@@ -2,7 +2,8 @@
   <tabset [vertical]="true" type="pills" class="v-tabs inheritSize">
     <tab>
       <ng-template tabHeading>
-        <a href="javascript:void(0);" (click)="toggleWidgetDragMode(false)">
+        <!-- (click)="toggleWidgetDragMode(false)" -->
+        <a href="javascript:void(0);">
           <dash-icon svgIcon="layout-svg-ico" aria-hidden="false"></dash-icon
           ><small>{{ 'LAYOUTS' | translate }}</small></a
         >
@@ -15,7 +16,8 @@
               class="d-flex align-items-center justify-content-between"
             >
               <span>{{ 'CREATE_NEW_LAYOUT' | translate }}</span>
-              <span class="fa fas fa-chevron-down"> </span>
+              <dash-icon svgIcon="down-chevron" aria-hidden="false"></dash-icon>
+              <!-- <span class="fa fas fa-chevron-down"> </span> -->
             </div>
 
             <div class="accordion-body p-0">
@@ -30,12 +32,12 @@
                     "
                   ></div>
                 </ng-container>
-
+                <!-- class="fa fas fa-plus svgBgIcon" -->
                 <a
                   href="javascript:void(0)"
                   (click)="createNewDynamicLayout($event)"
-                  class="fa fas fa-plus svgBgIcon"
-                  style="font-size: 32px"
+                >
+                  <dash-icon svgIcon="plus-icon" aria-hidden="false"></dash-icon
                 ></a>
               </div>
             </div>
@@ -84,9 +86,10 @@
               class="d-flex align-items-center justify-content-between"
             >
               <span> {{ 'SAVED_WIDGETS' | translate }} </span>
-              <span class="fa fas fa-chevron-down">
-                <!-- <button  class="fas fa-plus btn"  (click)="createNewLayout()"></button> -->
-              </span>
+              <!-- <span class="fa fas fa-chevron-down"> -->
+              <dash-icon svgIcon="down-chevron" aria-hidden="false"></dash-icon>
+              <!-- <button  class="fas fa-plus btn"  (click)="createNewLayout()"></button> -->
+              <!-- </span> -->
             </div>
             <!-- <cdk-drop> -->
             <div>

@@ -37,8 +37,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
-              "dist/dashboard-designer/assets/dashboard-designer/dashboard-designer-theme.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "extraWebpackConfig": "webpack.config.js",

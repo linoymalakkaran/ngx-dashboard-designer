@@ -65,8 +65,8 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
     this.layout.toggleLeft = () => {
       this.toggleLeft();
     };
-   // the gridster picks the old layout of the last added record - added this to create new layout
-    if(!this.editLayoutJSON){
+    // the gridster picks the old layout of the last added record - added this to create new layout
+    if (!this.editLayoutJSON) {
       this.onCreateNewLayoutClick('new');
     }
 
@@ -123,6 +123,7 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
     let layoutJSON: GridLayOutInstance =
       this.dashboardLayoutService.getLayoutconfigByLayoutId(layoutid);
     if (layoutid == 'new') {
+      // this.dashboardDesignerService.isWidgetDragModeEnabled$.next(true);
       this.dashboardDesignerService.isNewLayoutSelected$.next(true);
       if (this.dashboardDesignerService.dynamicDashboardData == null) {
         this.dashboardDesignerService.dynamicDashboardData = layoutJSON;

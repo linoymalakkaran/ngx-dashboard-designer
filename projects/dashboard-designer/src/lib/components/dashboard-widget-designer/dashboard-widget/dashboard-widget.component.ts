@@ -51,7 +51,7 @@ export class DashboardWidgetComponent implements OnInit {
     this.dashboardDesignerService.isWidgetDragModeEnabled$.subscribe(
       (isWidgetDragModeEnabled: boolean) => {
         this.isWidgetDragModeEnabled = isWidgetDragModeEnabled;
-        if (!this.isWidgetDragModeEnabled && !this.editLayoutJSON) {
+        if (!this.isWidgetDragModeEnabled) {
           this.deleteWidget();
         }
       }
@@ -102,7 +102,7 @@ export class DashboardWidgetComponent implements OnInit {
   }
 
   deleteWidget() {
-    if (this.singleGridBoxItem.widgetOption != null) {
+    if (this.singleGridBoxItem.widgetOption != null && this.viewContainer) {
       this.selectedWidgetOption = null;
       this.viewContainer.remove();
       this.isWidgetDropped = false;

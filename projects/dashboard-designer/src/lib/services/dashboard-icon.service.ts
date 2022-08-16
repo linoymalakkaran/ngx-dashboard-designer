@@ -1,7 +1,10 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DashIconRegistry } from '../components/icons-loader/utils/dash-registry';
-import { fontsToLoad } from '../data-provider/fonts/fonts-collection';
+import {
+  externalFonts,
+  fontsToLoad
+} from '../data-provider/fonts/fonts-collection';
 import { DASHBOARD_CONFIG } from '../injectors/dashboard-injectors';
 import { DashboardModuleConfigModel } from '../models/dashboard-module-config.model';
 
@@ -28,8 +31,9 @@ export class DashboardIconService {
     }
 
     if (this.config?.isDynamicFontLoading) {
-      this.registerFonts();
+      this.fontsToLoad = this.fontsToLoad.concat(externalFonts);
     }
+    this.registerFonts();
   }
 
   public registerIcons(icons: Array<string>): void {

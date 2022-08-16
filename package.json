@@ -21,7 +21,7 @@
     "package_dashboard_designer": "npm run build_lib_dashboard_designer && npm run npm_pack_dashboard_designer",
     "package:all": "npm run package_dashboard_designer",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
-    "publish-lib": "npm run build_lib_dashboard_designer && cd dist/dashboard-designer && npm publish --access public",
+    "publish_lib": "npm run build_lib_dashboard_designer && cd dist/dashboard-designer && npm publish --access public",
     "build:all": "npm run package:all && npm run build"
   },
   "description": "ngx dashboard designer",

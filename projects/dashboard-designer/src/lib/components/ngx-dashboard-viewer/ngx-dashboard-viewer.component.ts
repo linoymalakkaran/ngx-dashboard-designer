@@ -1,6 +1,5 @@
-import { Component, Inject, Input, OnInit, Optional } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IDashboardWidgetOption } from '../../models/dashboard-widget-options.model';
 import { GridLayOutInstance } from '../../models/dashboard.models';
 import { DashboardDesignerService } from '../../services/dashboard-designer.service';
 import { DashResizeElementEvent } from '../dashboard-resizer/resize-element-event.interface';
@@ -25,12 +24,6 @@ export class DashboardViewerComponent implements OnInit {
   };
   @Input() dashboardLayout: GridLayOutInstance;
   @Input() baseAssetsPath: string;
-  widgetOptions: IDashboardWidgetOption = {
-    filter: false,
-    ismfeWidgets: true,
-    widgetTypes: null,
-    mfeWidgetTypes: null
-  };
   @Input() lang: 'en' | 'ar' = 'en';
 
   constructor(
@@ -42,17 +35,8 @@ export class DashboardViewerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.registerIcons();
     this.translationService.language = this.lang;
     this.setSelectedDashBoardConfig();
-  }
-
-  registerIcons(): void {
-    const icons = [];
-    this.widgetOptions.mfeWidgetTypes.forEach(type => {
-      icons.push(type.icon);
-    });
-    this._iconsService.registerIcons(icons);
   }
 
   setSelectedDashBoardConfig() {
