@@ -16,11 +16,10 @@ export class DashDesignerComponent {
         displayName: 'Bar Chart',
         icon: 'bar-chart',
         description: 'Bar Chart',
-        //   event'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
         //'http://127.0.0.1:5555/dashboard-widgets/remoteEntry.js',
-        // 'http://localhost:5203/remoteEntry.js',
-        hostUrl:
-          'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+        hostUrl: 'http://localhost:5203/remoteEntry.js',
+        // hostUrl:
+        //   'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
         componentName: 'BarchartWidgetComponent',
         type: 'module',
         exposedModule: './BarChartWidget'

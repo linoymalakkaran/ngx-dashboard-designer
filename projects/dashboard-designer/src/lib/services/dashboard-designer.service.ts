@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { GridLayOutInstance } from '../models/dashboard.models';
+import { ObservableEventsModel } from '../models/observable-events.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,9 @@ export class DashboardDesignerService {
   );
   isWidgetDragModeEnabled$: BehaviorSubject<boolean> =
     new BehaviorSubject<boolean>(false);
+
+  dynamicWidgetLoadEvent$: BehaviorSubject<ObservableEventsModel> =
+    new BehaviorSubject<ObservableEventsModel>(null);
 
   constructor() {}
 

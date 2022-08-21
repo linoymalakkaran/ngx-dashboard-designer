@@ -15,6 +15,11 @@ import {
 import { SingleGridBoxItem } from '../../../models/dashboard.models';
 import { DashboardDesignerService } from '../../../services/dashboard-designer.service';
 import { DashboardIconService } from '../../../services/dashboard-icon.service';
+import { Observable } from 'rxjs';
+import {
+  MfeEventsTypes,
+  ObservableEventsModel
+} from '../../../models/observable-events.model';
 
 @Component({
   selector: 'dashboard-widget',
@@ -56,6 +61,23 @@ export class DashboardWidgetComponent implements OnInit {
         }
       }
     );
+    this.dashboardDesignerService.dynamicWidgetLoadEvent$.subscribe(
+      (mfeConfig: ObservableEventsModel) => {
+        if (
+          mfeConfig?.data &&
+          mfeConfig?.eventsType == MfeEventsTypes.LOAD_WIDGET
+        ) {
+          if (mfeConfig.data?.location) {
+            if (
+              this.singleGridBoxItem.x == mfeConfig.data?.location.x &&
+              this.singleGridBoxItem.y == mfeConfig.data?.location.y
+            ) {
+              this.loadMfeWidget(mfeConfig?.data);
+            }
+          }
+        }
+      }
+    );
     if (this.isViewMode || this.editLayoutJSON) {
       this.applyWideget();
     }
@@ -77,11 +99,30 @@ export class DashboardWidgetComponent implements OnInit {
     const ref = this.viewContainer.createComponent(
       m[widgetOption.componentName]
     );
-    // const compInstance = ref.instance;
+    const compInstance: any = ref.instance;
+    compInstance.events$?.forEach((events: Observable<any>) => {
+      events.subscribe((eventData: ObservableEventsModel) => {
+        this.eventsHandler(eventData);
+      });
+    });
     setInterval(() => {
       this.singleGridBoxItem.widgetOption = widgetOption;
       this.ref.markForCheck();
     }, 1000);
+  }
+
+  eventsHandler(eventData: ObservableEventsModel) {
+    if (eventData.data) {
+      switch (eventData.eventsType) {
+        case MfeEventsTypes.LOAD_WIDGET: {
+          this.dashboardDesignerService.dynamicWidgetLoadEvent$.next(eventData);
+          break;
+        }
+        default:
+          break;
+      }
+    }
+    console.log(eventData);
   }
 
   drop(event: CdkDragDrop<MfeWidgetType[]>) {
