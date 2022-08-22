@@ -1,6 +1,6 @@
 {
   "name": "ngx-dashboard-designer",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "peerDependencies": {
     "ngx-bootstrap": "^6.2.0",
     "angular-gridster2": "^13.3.0"
@@ -22,6 +22,7 @@
     "build:schematics": "tsc -p tsconfig.schematics.json",
     "postbuild:schematics": "copyfiles schematics/collection.json ../../../dist/dashboard-designer/"
   },
+  "schematics": "./schematics/collection.json",
   "exports": {
     "./styles": {
       "default": "./styles/styles.scss"
