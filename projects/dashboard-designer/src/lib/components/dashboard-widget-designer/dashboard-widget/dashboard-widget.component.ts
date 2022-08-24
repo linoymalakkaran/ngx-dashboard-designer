@@ -14,6 +14,12 @@ import {
 } from '../../../models/dashboard-widget-options.model';
 import { SingleGridBoxItem } from '../../../models/dashboard.models';
 import { DashboardDesignerService } from '../../../services/dashboard-designer.service';
+import { DashboardIconService } from '../../../services/dashboard-icon.service';
+import { Observable } from 'rxjs';
+import {
+  MfeEventsTypes,
+  ObservableEventsModel
+} from '../../../models/observable-events.model';
 
 @Component({
   selector: 'dashboard-widget',
@@ -30,13 +36,48 @@ export class DashboardWidgetComponent implements OnInit {
   selectedWidgetOption: MfeWidgetType = null;
   @Input() singleGridBoxItem: SingleGridBoxItem;
   @Input() isViewMode?: boolean = false;
+  isNewLayoutSelected: boolean;
+  isWidgetDragModeEnabled: boolean;
 
   constructor(
     private ref: ChangeDetectorRef,
-    private dashboardDesignerService: DashboardDesignerService
-  ) {}
+    private dashboardDesignerService: DashboardDesignerService,
+    private _iconsService: DashboardIconService
+  ) {
+    this._iconsService.registerIcons(this.icons);
+  }
 
   ngOnInit(): void {
+    this.dashboardDesignerService.isNewLayoutSelected$.subscribe(
+      (isNewLayoutSelected: boolean) => {
+        this.isNewLayoutSelected = isNewLayoutSelected;
+      }
+    );
+    this.dashboardDesignerService.isWidgetDragModeEnabled$.subscribe(
+      (isWidgetDragModeEnabled: boolean) => {
+        this.isWidgetDragModeEnabled = isWidgetDragModeEnabled;
+        if (!this.isWidgetDragModeEnabled) {
+          this.deleteWidget();
+        }
+      }
+    );
+    this.dashboardDesignerService.dynamicWidgetLoadEvent$.subscribe(
+      (mfeConfig: ObservableEventsModel) => {
+        if (
+          mfeConfig?.data &&
+          mfeConfig?.eventsType == MfeEventsTypes.LOAD_WIDGET
+        ) {
+          if (mfeConfig.data?.location) {
+            if (
+              this.singleGridBoxItem.x == mfeConfig.data?.location.x &&
+              this.singleGridBoxItem.y == mfeConfig.data?.location.y
+            ) {
+              this.loadMfeWidget(mfeConfig?.data);
+            }
+          }
+        }
+      }
+    );
     if (this.isViewMode || this.editLayoutJSON) {
       this.applyWideget();
     }
@@ -58,11 +99,30 @@ export class DashboardWidgetComponent implements OnInit {
     const ref = this.viewContainer.createComponent(
       m[widgetOption.componentName]
     );
-    // const compInstance = ref.instance;
+    const compInstance: any = ref.instance;
+    compInstance.events$?.forEach((events: Observable<any>) => {
+      events.subscribe((eventData: ObservableEventsModel) => {
+        this.eventsHandler(eventData);
+      });
+    });
     setInterval(() => {
       this.singleGridBoxItem.widgetOption = widgetOption;
       this.ref.markForCheck();
     }, 1000);
+  }
+
+  eventsHandler(eventData: ObservableEventsModel) {
+    if (eventData.data) {
+      switch (eventData.eventsType) {
+        case MfeEventsTypes.LOAD_WIDGET: {
+          this.dashboardDesignerService.dynamicWidgetLoadEvent$.next(eventData);
+          break;
+        }
+        default:
+          break;
+      }
+    }
+    console.log(eventData);
   }
 
   drop(event: CdkDragDrop<MfeWidgetType[]>) {
@@ -83,13 +143,25 @@ export class DashboardWidgetComponent implements OnInit {
   }
 
   deleteWidget() {
-    this.selectedWidgetOption = null;
-    this.viewContainer.remove();
-    this.isWidgetDropped = false;
-   // this.singleGridBoxItem.widgetOption = null;
-    setInterval(() => {
-      this.singleGridBoxItem.widgetOption = null;
-      this.ref.markForCheck();
-    }, 1000);
+    if (this.singleGridBoxItem.widgetOption != null && this.viewContainer) {
+      this.selectedWidgetOption = null;
+      this.viewContainer.remove();
+      this.isWidgetDropped = false;
+      // this.singleGridBoxItem.widgetOption = null;
+      setInterval(() => {
+        this.singleGridBoxItem.widgetOption = null;
+        this.ref.markForCheck();
+      }, 1000);
+    }
+  }
+
+  removeItem($event: MouseEvent | TouchEvent): void {
+    $event.preventDefault();
+    $event.stopPropagation();
+    this.dashboardDesignerService.removeDashboardItem(this.singleGridBoxItem);
+  }
+
+  private get icons(): Array<string> {
+    return ['delete-icon', 'drag-icon'];
   }
 }

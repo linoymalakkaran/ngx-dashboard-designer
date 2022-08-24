@@ -17,6 +17,7 @@ import {
 } from '../../models/dashboard-widget-options.model';
 import { GridLayOutInstance } from '../../models/dashboard.models';
 import { DashboardDesignerService } from '../../services/dashboard-designer.service';
+import { DashboardIconService } from '../../services/dashboard-icon.service';
 
 @Component({
   selector: 'app-left-block',
@@ -32,8 +33,11 @@ export class LeftBlockComponent implements OnInit {
   layoutList: any = [];
   constructor(
     private dashboardDesignerService: DashboardDesignerService,
-    private ref: ChangeDetectorRef
-  ) {}
+    private ref: ChangeDetectorRef,
+    private _iconsService: DashboardIconService
+  ) {
+    this._iconsService.registerIcons(this.icons);
+  }
 
   ngOnInit(): void {
     for (let i = 1; i <= 21; i++) {
@@ -44,6 +48,11 @@ export class LeftBlockComponent implements OnInit {
   createNewLayout(e) {
     this.isEditMode = false;
     this.onCreateNewLayoutClick.emit(e?.target?.id);
+  }
+
+  createNewDynamicLayout(e) {
+    this.isEditMode = false;
+    this.onCreateNewLayoutClick.emit('new');
   }
 
   loadDashboard(item): void {
@@ -66,5 +75,19 @@ export class LeftBlockComponent implements OnInit {
     //   event.previousIndex,
     //   event.currentIndex
     // );
+  }
+
+  toggleWidgetDragMode(val): void {
+    this.dashboardDesignerService.isWidgetDragModeEnabled$.next(val);
+  }
+
+  private get icons(): Array<string> {
+    return [
+      'layout-svg-ico',
+      'widget-layout-ico',
+      'bar-chart',
+      'down-chevron',
+      'plus-icon'
+    ];
   }
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { GridsterModule } from 'angular-gridster2';
 import { DashboardViewerComponent } from './components/ngx-dashboard-viewer/ngx-dashboard-viewer.component';
 import { DashboardWidgetDesignerComponent } from './components/dashboard-widget-designer/dashboard-widget-designer.component';
@@ -15,9 +15,13 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxDashboardDesigner } from './components/ngx-dasboard-designer/ngx-dasboard-designer.component';
-import { AngularResizeElementModule } from './components/dashboard-resizer/angular-resize-element.module';
+import { DashResizeElementModule } from './components/dashboard-resizer/resize-element.module';
 import { TranslationService } from './services/translation.service';
 import { TranslatePipe } from './pipes/translate.pipe';
+import { DashIconModule } from './components/icons-loader/dash-icon-module';
+import { DashboardModuleConfigModel } from './models/dashboard-module-config.model';
+import { DASHBOARD_CONFIG } from './injectors/dashboard-injectors';
+import { DashboardIconService } from './services/dashboard-icon.service';
 
 @NgModule({
   declarations: [
@@ -34,11 +38,12 @@ import { TranslatePipe } from './pipes/translate.pipe';
   imports: [
     CommonModule,
     GridsterModule,
-    AngularResizeElementModule,
+    DashResizeElementModule,
     DragDropModule,
     TabsModule.forRoot(),
     AccordionModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    DashIconModule
   ],
   exports: [
     DashboardWidgetDesignerComponent,
@@ -49,9 +54,18 @@ import { TranslatePipe } from './pipes/translate.pipe';
     RightBlockComponent,
     CenterBlockComponent,
     TopBlockComponent,
-    AngularResizeElementModule,
+    DashResizeElementModule,
     DragDropModule
   ],
-  providers: [TranslationService]
+  providers: [TranslationService, DashboardIconService]
 })
-export class NgxDashboardDesignerModule {}
+export class NgxDashboardDesignerModule {
+  static forRoot(
+    config?: DashboardModuleConfigModel
+  ): ModuleWithProviders<NgxDashboardDesignerModule> {
+    return {
+      ngModule: NgxDashboardDesignerModule,
+      providers: [{ provide: DASHBOARD_CONFIG, useValue: config }]
+    };
+  }
+}

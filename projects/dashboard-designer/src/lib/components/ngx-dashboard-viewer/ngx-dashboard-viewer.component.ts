@@ -1,23 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import {
-  GridsterConfig,
-  Draggable,
-  Resizable,
-  PushDirections
-} from 'angular-gridster2';
-import { IDashboardWidgetOption } from '../../models/dashboard-widget-options.model';
 import { GridLayOutInstance } from '../../models/dashboard.models';
 import { DashboardDesignerService } from '../../services/dashboard-designer.service';
-import { AngularResizeElementEvent } from '../dashboard-resizer/angular-resize-element-event.interface';
-import { AngularResizeElementDirection } from '../dashboard-resizer/angular-resize-element.enum';
+import { DashResizeElementEvent } from '../dashboard-resizer/resize-element-event.interface';
+import { DashResizeElementDirection } from '../dashboard-resizer/resize-element.enum';
 import { TranslationService } from '../../services/translation.service';
-
-interface Safe extends GridsterConfig {
-  draggable: Draggable;
-  resizable: Resizable;
-  pushDirections: PushDirections;
-}
+import { DashboardIconService } from '../../services/dashboard-icon.service';
 
 @Component({
   selector: 'ngx-dashboard-viewer',
@@ -25,7 +13,7 @@ interface Safe extends GridsterConfig {
   styleUrls: ['./ngx-dashboard-viewer.component.scss']
 })
 export class DashboardViewerComponent implements OnInit {
-  public readonly layoutDirection = AngularResizeElementDirection;
+  public readonly layoutDirection = DashResizeElementDirection;
   public layout: any = {
     left: { show: true, slideOut: false },
     right: { show: true, slideOut: false },
@@ -35,18 +23,16 @@ export class DashboardViewerComponent implements OnInit {
     resizeFn$: new Subject()
   };
   @Input() dashboardLayout: GridLayOutInstance;
-  widgetOptions: IDashboardWidgetOption = {
-    filter: false,
-    ismfeWidgets: true,
-    widgetTypes: null,
-    mfeWidgetTypes: null
-  };
+  @Input() baseAssetsPath: string;
   @Input() lang: 'en' | 'ar' = 'en';
 
   constructor(
     private dashboardDesignerService: DashboardDesignerService,
-    private translationService: TranslationService
-  ) {}
+    private translationService: TranslationService,
+    private _iconsService: DashboardIconService
+  ) {
+    this._iconsService.registerIcons(this.icons);
+  }
 
   ngOnInit(): void {
     this.translationService.language = this.lang;
@@ -65,15 +51,19 @@ export class DashboardViewerComponent implements OnInit {
     this.dashboardDesignerService.emitSelectedLayoutEvent(gridItem);
   }
 
-  public onResize(evt: AngularResizeElementEvent, _block: any): void {
+  public onResize(evt: DashResizeElementEvent, _block: any): void {
     this.layout[_block].width = evt.currentWidthValue;
     this.layout[_block].height = evt.currentHeightValue;
     this.layout[_block].top = evt.currentTopValue;
     this.layout[_block].left = evt.currentLeftValue;
   }
 
-  public resizeEnd(evt: AngularResizeElementEvent, _block: any): void {
+  public resizeEnd(evt: DashResizeElementEvent, _block: any): void {
     this.layout.resizeFn$.next();
+  }
+
+  private get icons(): Array<string> {
+    return ['menu-ico'];
   }
 
   ngOnDestroy(): void {

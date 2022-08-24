@@ -14,12 +14,15 @@ export class DashDesignerComponent {
     mfeWidgetTypes: [
       {
         displayName: 'Bar Chart',
-        icon: 'Barchart',
+        icon: 'bar-chart',
         description: 'Bar Chart',
-        hostUrl: 'http://localhost:5203/remoteEntry.js', //'http://127.0.0.1:5555/dashboard-widgets/remoteEntry.js',
-        componentName: 'SampleBarChartComponent',
+        //'http://127.0.0.1:5555/dashboard-widgets/remoteEntry.js',
+        hostUrl: 'http://localhost:5203/remoteEntry.js',
+        // hostUrl:
+        //   'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+        componentName: 'BarchartWidgetComponent',
         type: 'module',
-        exposedModule: './Component'
+        exposedModule: './BarChartWidget'
       }
     ]
   };

@@ -61,19 +61,19 @@ export class DashboardWidgetDesignerComponent implements OnInit {
     }
   }
 
-  removeItem($event: MouseEvent | TouchEvent, item): void {
-    $event.preventDefault();
-    $event.stopPropagation();
-    this.gridBoxItemList.splice(this.gridBoxItemList.indexOf(item), 1);
-  }
+  // removeItem($event: MouseEvent | TouchEvent, item): void {
+  //   $event.preventDefault();
+  //   $event.stopPropagation();
+  //   this.gridBoxItemList.splice(this.gridBoxItemList.indexOf(item), 1);
+  // }
 
-  addItem(): void {
-    this.gridBoxItemList.push({
-      x: 0,
-      y: 0,
-      cols: 1,
-      rows: 1,
-      hasContent: false
-    });
-  }
+  // addItem(): void {
+  //   this.gridBoxItemList.push({
+  //     x: 0,
+  //     y: 0,
+  //     cols: 1,
+  //     rows: 1,
+  //     hasContent: false
+  //   });
+  // }
 }

@@ -20,6 +20,7 @@
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
+            "baseHref": "/DASHBOARD/",
             "preserveSymlinks": true,
             "outputPath": "dist/gridster-app",
             "index": "src/index.html",
@@ -36,8 +37,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
-              "dist/dashboard-designer/assets/dashboard-designer/dashboard-designer-theme.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "extraWebpackConfig": "webpack.config.js",
@@ -182,7 +182,6 @@
   },
   "cli": {
     "packageManager": "npm",
-    "analytics": "43f0cc4d-52e0-4bb5-a18d-b0bb569a75d1",
-    "schematicCollections": ["@angular-eslint/schematics"]
+    "analytics": "43f0cc4d-52e0-4bb5-a18d-b0bb569a75d1"
   }
 }

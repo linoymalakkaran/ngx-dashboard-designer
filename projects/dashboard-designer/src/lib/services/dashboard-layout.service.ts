@@ -14,6 +14,10 @@ export class DashboardLayoutService {
     let layoutJSON: SingleGridBoxItem[] = [];
     const gridItem = new GridLayOutInstance();
     switch (layoutid) {
+      case 'new': {
+        layoutJSON = [{ x: 0, y: 0, cols: 1, rows: 1, hasContent: true }];
+        break;
+      }
       case 'Layout1': {
         layoutJSON = [{ x: 0, y: 0, cols: 1, rows: 1, hasContent: true }];
         break;
