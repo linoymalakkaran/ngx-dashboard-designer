@@ -31,11 +31,10 @@ interface Safe extends GridsterConfig {
 })
 export class DashboardWidgetDesignerComponent implements OnInit {
   @Input() widgetOptions?: IDashboardWidgetOption;
-  @Input() editLayoutJSON: any;
-  options: Safe;
-  gridBoxItemList: SingleGridBoxItem[] = [];
-  activeLayout: any = null;
-  @Input() isViewMode?: boolean = false;
+  dashboardLayout: GridLayOutInstance;
+  // options: Safe;
+  // gridBoxItemList: SingleGridBoxItem[] = [];
+  // activeLayout: any = null;
 
   constructor(
     private dashboardDesignerService: DashboardDesignerService,
@@ -43,12 +42,11 @@ export class DashboardWidgetDesignerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dashboardDesignerService.selectedLayoutEvent.subscribe(
+    this.dashboardDesignerService.selectedLayoutEvent$.subscribe(
       (griditem: GridLayOutInstance) => {
         if (griditem) {
-          this.options = griditem.options;
-          this.gridBoxItemList = griditem.dashboardItems;
-          this.activeLayout = griditem;
+          this.dashboardLayout = griditem;
+          // this.activeLayout = griditem;
           this.ref.detectChanges();
         }
       }
@@ -56,8 +54,11 @@ export class DashboardWidgetDesignerComponent implements OnInit {
   }
 
   changedOptions(): void {
-    if (this.options.api && this.options.api.optionsChanged) {
-      this.options.api.optionsChanged();
+    if (
+      this.dashboardLayout.options.api &&
+      this.dashboardLayout.options.api.optionsChanged
+    ) {
+      this.dashboardLayout.options.api.optionsChanged();
     }
   }
 

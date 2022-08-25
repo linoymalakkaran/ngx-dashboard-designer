@@ -7,9 +7,23 @@
       >
         <div class="layoutContent inheritSize">
           <div class="inheritSize">
-            <dashboard-widget-designer
-              [isViewMode]="true"
-            ></dashboard-widget-designer>
+            <div
+              class="inheritSize"
+              *ngIf="dashboardLayout.dashboardItems?.length > 0"
+            >
+              <gridster [options]="dashboardLayout.options">
+                <gridster-item
+                  class="mgDashGridsterItem"
+                  [item]="item"
+                  *ngFor="let item of dashboardLayout.dashboardItems"
+                >
+                  <dashboard-widget-view
+                    [singleGridBoxItem]="item"
+                    [lang]="lang"
+                  ></dashboard-widget-view>
+                </gridster-item>
+              </gridster>
+            </div>
           </div>
         </div>
       </div>

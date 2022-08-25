@@ -6,7 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CenterBlockComponent implements OnInit {
   @Input() widgetOptions: any;
-  @Input() editLayoutJSON: any;
   isEditMode: boolean;
 
   constructor() {}

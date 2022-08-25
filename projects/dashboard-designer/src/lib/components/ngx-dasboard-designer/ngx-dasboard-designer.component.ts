@@ -1,13 +1,5 @@
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnDestroy,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { CenterBlockComponent } from '../../layout';
 import { IDashboardWidgetOption } from '../../models/dashboard-widget-options.model';
 import { GridLayOutInstance } from '../../models/dashboard.models';
 import { DashboardDesignerService } from '../../services/dashboard-designer.service';
@@ -23,17 +15,10 @@ import { DashResizeElementDirection } from '../dashboard-resizer/resize-element.
   styleUrls: ['./ngx-dasboard-designer.component.scss']
 })
 export class NgxDashboardDesigner implements OnInit, OnDestroy {
-  editMode: boolean = false;
   @Input() widgetOptions: IDashboardWidgetOption;
-  @Input() editLayoutJSON: any;
+  @Input() editLayoutJSON: GridLayOutInstance;
   @Input() isEditMode: boolean;
   @Input() isSettings: boolean;
-  @ViewChild(CenterBlockComponent, { static: false })
-  centerBlockComponent: CenterBlockComponent;
-
-  selectedWidget: any;
-  addedLayout: any;
-
   public readonly layoutDirection = DashResizeElementDirection;
   public layout: any = {
     left: { show: true, slideOut: false },
@@ -43,9 +28,6 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
     center: { show: true, slideOut: false },
     resizeFn$: new Subject()
   };
-
-  @ViewChild('leftBlock', { read: ElementRef })
-  public readonly leftBlockEle: any;
   @Input() lang: 'en' | 'ar' = 'en';
 
   constructor(
@@ -123,7 +105,6 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
     let layoutJSON: GridLayOutInstance =
       this.dashboardLayoutService.getLayoutconfigByLayoutId(layoutid);
     if (layoutid == 'new') {
-      // this.dashboardDesignerService.isWidgetDragModeEnabled$.next(true);
       this.dashboardDesignerService.isNewLayoutSelected$.next(true);
       if (this.dashboardDesignerService.dynamicDashboardData == null) {
         this.dashboardDesignerService.dynamicDashboardData = layoutJSON;

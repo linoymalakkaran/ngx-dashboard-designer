@@ -22,6 +22,7 @@ import { DashIconModule } from './components/icons-loader/dash-icon-module';
 import { DashboardModuleConfigModel } from './models/dashboard-module-config.model';
 import { DASHBOARD_CONFIG } from './injectors/dashboard-injectors';
 import { DashboardIconService } from './services/dashboard-icon.service';
+import { DashboardWidgetViewComponent } from './components/ngx-dashboard-viewer/components/dashboard-widget-view/dashboard-widget-view.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DashboardIconService } from './services/dashboard-icon.service';
     RightBlockComponent,
     CenterBlockComponent,
     TopBlockComponent,
-    TranslatePipe
+    TranslatePipe,
+    DashboardWidgetViewComponent
   ],
   imports: [
     CommonModule,

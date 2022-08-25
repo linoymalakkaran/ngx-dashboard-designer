@@ -15,4 +15,13 @@ export class DashViewerComponent implements OnInit {
   ngOnInit(): void {
     this.dashboardLayout = layoutData;
   }
+
+  changedOptions(): void {
+    if (
+      this.dashboardLayout.options.api &&
+      this.dashboardLayout.options.api.optionsChanged
+    ) {
+      this.dashboardLayout.options.api.optionsChanged();
+    }
+  }
 }

@@ -7,7 +7,7 @@ import { ObservableEventsModel } from '../models/observable-events.model';
   providedIn: 'root'
 })
 export class DashboardDesignerService {
-  selectedLayoutEvent: BehaviorSubject<GridLayOutInstance> =
+  selectedLayoutEvent$: BehaviorSubject<GridLayOutInstance> =
     new BehaviorSubject<GridLayOutInstance>(null);
   dashboardData: GridLayOutInstance = null;
   dynamicDashboardData: GridLayOutInstance = null;
@@ -24,7 +24,7 @@ export class DashboardDesignerService {
 
   emitSelectedLayoutEvent(data: GridLayOutInstance) {
     this.dashboardData = data;
-    this.selectedLayoutEvent.next(data);
+    this.selectedLayoutEvent$.next(data);
   }
 
   removeDashboardItem(item) {

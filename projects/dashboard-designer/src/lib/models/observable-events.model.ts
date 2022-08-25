@@ -5,5 +5,6 @@ export interface ObservableEventsModel {
 
 export enum MfeEventsTypes {
   LOAD_WIDGET = 'LOAD_WIDGET',
-  GENERIC = 'GENERIC'
+  GENERIC = 'GENERIC',
+  INITIAL_LOAD_WIDGET = 'INITIAL_LOAD_WIDGET'
 }

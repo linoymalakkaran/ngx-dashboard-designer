@@ -10,7 +10,7 @@ import {
 } from 'angular-gridster2';
 import { MfeWidgetType } from './dashboard-widget-options.model';
 
-interface Safe extends GridsterConfig {
+export interface Safe extends GridsterConfig {
   draggable: Draggable;
   resizable: Resizable;
   pushDirections: PushDirections;

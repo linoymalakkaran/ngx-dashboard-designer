@@ -16,18 +16,16 @@
   </div> -->
 </div>
 
-<div class="inheritSize" *ngIf="gridBoxItemList?.length > 0">
-  <gridster [options]="options">
+<div class="inheritSize" *ngIf="dashboardLayout.dashboardItems?.length > 0">
+  <gridster [options]="dashboardLayout.options">
     <gridster-item
       class="mgDashGridsterItem"
       [item]="item"
-      *ngFor="let item of gridBoxItemList"
+      *ngFor="let item of dashboardLayout.dashboardItems"
     >
       <dashboard-widget
         [widgetOptions]="widgetOptions"
         [singleGridBoxItem]="item"
-        [isViewMode]="isViewMode"
-        [editLayoutJSON]="editLayoutJSON"
       ></dashboard-widget>
     </gridster-item>
   </gridster>
