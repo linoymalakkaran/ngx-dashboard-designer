@@ -8,9 +8,11 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { SingleGridBoxItem } from 'dist/dashboard-designer/lib/models/dashboard.models';
 import { DASHBOARD_CONFIG } from 'projects/dashboard-designer/src/lib/injectors/dashboard-injectors';
-import { DashboardModuleConfigModel } from 'projects/dashboard-designer/src/lib/models';
+import {
+  DashboardModuleConfigModel,
+  SingleGridBoxItem
+} from 'projects/dashboard-designer/src/lib/models';
 import { MfeWidgetType } from 'projects/dashboard-designer/src/lib/models/dashboard-widget-options.model';
 import {
   MfeEventsTypes,
