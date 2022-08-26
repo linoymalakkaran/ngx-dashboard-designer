@@ -8,18 +8,16 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { DASHBOARD_CONFIG } from 'projects/dashboard-designer/src/lib/injectors/dashboard-injectors';
+import { SingleGridBoxItem } from '../../../../../lib/models/dashboard.models';
+import { Observable } from 'rxjs';
+import { DashboardDesignerService } from '../../../../../lib/services/dashboard-designer.service';
+import { DASHBOARD_CONFIG } from '../../../../../lib/injectors/dashboard-injectors';
 import {
   DashboardModuleConfigModel,
-  SingleGridBoxItem
-} from 'projects/dashboard-designer/src/lib/models';
-import { MfeWidgetType } from 'projects/dashboard-designer/src/lib/models/dashboard-widget-options.model';
-import {
   MfeEventsTypes,
+  MfeWidgetType,
   ObservableEventsModel
-} from 'projects/dashboard-designer/src/lib/models/observable-events.model';
-import { DashboardDesignerService } from 'projects/dashboard-designer/src/lib/services/dashboard-designer.service';
-import { Observable } from 'rxjs';
+} from '../../../../../lib/models';
 
 @Component({
   selector: 'dashboard-widget-view',
