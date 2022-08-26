@@ -3,14 +3,14 @@
   "version": "2.0.9",
   "peerDependencies": {
     "ngx-bootstrap": "^6.2.0",
-    "angular-gridster2": "^13.3.0",
-    "rxjs": "7.5.5"
+    "angular-gridster2": "^12.1.1",
+    "rxjs": "6.6.7"
   },
   "dependencies": {
     "tslib": "^2.3.0",
     "ngx-bootstrap": "^6.2.0",
-    "angular-gridster2": "^13.3.0",
-    "rxjs": "7.5.5"
+    "angular-gridster2": "^12.1.1",
+    "rxjs": "6.6.7"
   },
   "devDependencies": {
     "copyfiles": "file:../node_modules/copyfiles",
