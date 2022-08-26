@@ -18,7 +18,7 @@
         <button (click)="layout.right.show = true">show Right</button> -->
       </div>
     </div>
-    <div class="contentBlock col d-flex flex-row fit-width">
+    <div class="contentBlock o-hidden col d-flex flex-row fit-width">
       <div
         #leftBlock
         [style.width.px]="layout.left.width"
@@ -43,7 +43,7 @@
       </div>
 
       <div
-        class="centerBlock p-3 col fit-height p-relative layoutEle"
+        class="centerBlock o-auto p-3 col fit-height p-relative layoutEle"
         *ngIf="layout.center.show"
       >
         <div class="layoutContent inheritSize">

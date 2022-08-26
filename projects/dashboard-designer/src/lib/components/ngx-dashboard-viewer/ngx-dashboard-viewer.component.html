@@ -1,32 +1,16 @@
-<div id="DashboardDesigner" class="inheritSize o-hidden">
-  <div class="mainBlock d-flex flex-column inheritSize o-hidden">
-    <div class="contentBlock col d-flex flex-row fit-width">
-      <div
-        class="centerBlock p-3 col fit-height p-relative layoutEle"
-        *ngIf="layout.center.show"
+<div id="DashboardDesigner" class="inheritSize">
+  <div class="inheritSize" *ngIf="dashboardLayout.dashboardItems?.length > 0">
+    <gridster [options]="dashboardLayout.options">
+      <gridster-item
+        class="mgDashGridsterItem"
+        [item]="item"
+        *ngFor="let item of dashboardLayout.dashboardItems"
       >
-        <div class="layoutContent inheritSize">
-          <div class="inheritSize">
-            <div
-              class="inheritSize"
-              *ngIf="dashboardLayout.dashboardItems?.length > 0"
-            >
-              <gridster [options]="dashboardLayout.options">
-                <gridster-item
-                  class="mgDashGridsterItem"
-                  [item]="item"
-                  *ngFor="let item of dashboardLayout.dashboardItems"
-                >
-                  <dashboard-widget-view
-                    [singleGridBoxItem]="item"
-                    [lang]="lang"
-                  ></dashboard-widget-view>
-                </gridster-item>
-              </gridster>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        <dashboard-widget-view
+          [singleGridBoxItem]="item"
+          [lang]="lang"
+        ></dashboard-widget-view>
+      </gridster-item>
+    </gridster>
   </div>
 </div>

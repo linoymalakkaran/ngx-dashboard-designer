@@ -39,7 +39,7 @@ export class GridLayOutInstance implements IGridLayOutInstance {
   options: Safe = {
     gridType: GridType.Fit,
     compactType: CompactType.None,
-    margin: 10,
+    margin: 4,
     outerMargin: true,
     outerMarginTop: null,
     outerMarginRight: null,

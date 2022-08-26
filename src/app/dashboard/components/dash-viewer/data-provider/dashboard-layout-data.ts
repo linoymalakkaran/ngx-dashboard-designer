@@ -46,7 +46,7 @@ const options: Safe = {
     enabled: true
   },
   resizable: {
-    enabled: true
+    enabled: false
   },
   swap: false,
   pushItems: true,
@@ -54,7 +54,7 @@ const options: Safe = {
   disablePushOnResize: false,
   pushDirections: { north: true, east: true, south: true, west: true },
   pushResizeItems: false,
-  displayGrid: DisplayGrid.Always,
+  displayGrid: DisplayGrid.OnDragAndResize,
   disableWindowResize: false,
   disableWarnings: false,
   scrollToNewItems: false
