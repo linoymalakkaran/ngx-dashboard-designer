@@ -9,6 +9,6 @@ export class TranslatePipe implements PipeTransform {
   constructor(private translationService: TranslationService) {}
 
   transform(value: any, args?: any): any {
-    return this.translationService.translate(value);
+    return this.translationService.translate(value) || value;
   }
 }

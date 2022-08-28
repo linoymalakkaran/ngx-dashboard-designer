@@ -3,7 +3,6 @@ import {
   DisplayGrid,
   Draggable,
   GridsterConfig,
-  GridsterItem,
   GridType,
   PushDirections,
   Resizable

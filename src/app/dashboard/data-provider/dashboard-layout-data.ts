@@ -60,7 +60,7 @@ const options: Safe = {
   scrollToNewItems: false
 };
 
-export const layoutData: GridLayOutInstance = {
+export const layoutDefaultData: GridLayOutInstance = {
   options: options,
   layoutName: 'Layout8',
   layoutDescription: '',
@@ -74,6 +74,7 @@ export const layoutData: GridLayOutInstance = {
       rows: 1,
       hasContent: true,
       widgetOption: {
+        isMfeWidget: true,
         displayName: 'Bar Chart',
         icon: 'bar-chart',
         description: 'Bar Chart',
@@ -91,6 +92,7 @@ export const layoutData: GridLayOutInstance = {
       rows: 2,
       hasContent: true,
       widgetOption: {
+        isMfeWidget: true,
         displayName: 'Bar Chart',
         icon: 'bar-chart',
         description: 'Bar Chart',

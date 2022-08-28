@@ -18,11 +18,11 @@ export class NgxDashboardDesigner implements OnInit, OnDestroy {
   @Input() widgetOptions: IDashboardWidgetOption;
   @Input() editLayoutJSON: GridLayOutInstance;
   @Input() isEditMode: boolean;
-  @Input() isSettings: boolean;
+  @Input() isSettings: boolean = true;
   public readonly layoutDirection = DashResizeElementDirection;
   public layout: any = {
     left: { show: true, slideOut: false },
-    right: { show: true, slideOut: false, isShowSettings: true },
+    right: { show: false, slideOut: false, isShowSettings: true },
     top: { show: true, slideOut: false },
     bottom: { show: true, slideOut: false },
     center: { show: true, slideOut: false },

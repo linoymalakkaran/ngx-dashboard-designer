@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { DashboardIconService } from '../../services/dashboard-icon.service';
 
 @Component({
   selector: 'app-top-block',
@@ -9,9 +10,13 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 export class TopBlockComponent implements OnInit {
   @Input() layout: any;
   modalRef?: BsModalRef;
-  title = 'Dashboard Designer';
 
-  constructor(private modalService: BsModalService) {}
+  constructor(
+    private modalService: BsModalService,
+    private _iconsService: DashboardIconService
+  ) {
+    this._iconsService.registerIcons(this.icons);
+  }
 
   ngOnInit(): void {}
 
@@ -20,5 +25,9 @@ export class TopBlockComponent implements OnInit {
       template,
       Object.assign({}, { class: 'DashboardDesignerModals' })
     );
+  }
+
+  private get icons(): Array<string> {
+    return ['settings-icon'];
   }
 }

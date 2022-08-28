@@ -319,6 +319,13 @@
   dependencies:
     "tslib" "^2.3.0"
 
+"@angular/forms@^13.3.9":
+  "integrity" "sha512-eNOsqMVrMsBceoAJ9pS+2qQDWsgwt62q7abqfYdzSdkjWbnLrtaIPP6iYMGQke1pIcdUSyoun29VsdQTSXXksg=="
+  "resolved" "https://registry.npmjs.org/@angular/forms/-/forms-13.3.9.tgz"
+  "version" "13.3.9"
+  dependencies:
+    "tslib" "^2.3.0"
+
 "@angular/platform-browser-dynamic@13.3.9":
   "integrity" "sha512-flyfoJG9vBSj3rmH/jUNaOPGfGlGHSj4v34OL16Qjk3M5bxbQKxBYNrDAUwk0Ve4S4qUfXF7ZDE0v1vUvn+3MA=="
   "resolved" "https://registry.npmjs.org/@angular/platform-browser-dynamic/-/platform-browser-dynamic-13.3.9.tgz"

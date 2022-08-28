@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IGridLayOutInstance } from 'projects/dashboard-designer/src/lib/models/dashboard.models';
-import { layoutData } from '../data-provider/dashboard-layout-data';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-dash-viewer',
@@ -10,10 +10,10 @@ import { layoutData } from '../data-provider/dashboard-layout-data';
 export class DashViewerComponent implements OnInit {
   dashboardLayout: IGridLayOutInstance;
 
-  constructor() {}
+  constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
-    this.dashboardLayout = layoutData;
+    this.dashboardLayout = this.dashboardService.layoutData;
   }
 
   changedOptions(): void {

@@ -12,7 +12,7 @@
       </ul>
 
       <div class="layout-title">
-        {{ title | translate }}
+        {{ 'DASHBOARD_DESIGNER' | translate }}
       </div>
     </div>
 
@@ -32,7 +32,11 @@
           (click)="layout.right.show = !layout.right.show"
           *ngIf="layout.right.isShowSettings"
         >
-          <a class="svgBgIcon inheritSize layout_settings_icon"> </a>
+          <dash-icon
+            class=""
+            svgIcon="settings-icon"
+            aria-hidden="false"
+          ></dash-icon>
         </li>
       </ul>
     </div>

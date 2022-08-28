@@ -6,13 +6,15 @@ import {
   DashboardModuleConfigModel,
   NgxDashboardDesignerModule
 } from 'projects/dashboard-designer/src/public-api';
-import { DashViewerComponent } from './components/dash-viewer/components/dash-viewer.component';
+import { DashViewerComponent } from './components/dash-viewer/dash-viewer.component';
 
 const dashboardConfig: DashboardModuleConfigModel = {
   baseAssetsPath: 'assets/dashboard-designer/',
   fontBaseUrl: 'assets/dashboard-designer/',
-  isDynamicFontLoading: false
+  isDynamicFontLoading: false,
+  isRemoteUrlLangEnabled: false
 };
+
 @NgModule({
   declarations: [DashDesignerComponent, DashViewerComponent],
   imports: [

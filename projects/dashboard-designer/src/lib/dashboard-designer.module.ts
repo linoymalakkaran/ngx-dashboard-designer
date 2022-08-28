@@ -23,6 +23,7 @@ import { DashboardModuleConfigModel } from './models/dashboard-module-config.mod
 import { DASHBOARD_CONFIG } from './injectors/dashboard-injectors';
 import { DashboardIconService } from './services/dashboard-icon.service';
 import { DashboardWidgetViewComponent } from './components/ngx-dashboard-viewer/components/dashboard-widget-view/dashboard-widget-view.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { DashboardWidgetViewComponent } from './components/ngx-dashboard-viewer/
   ],
   imports: [
     CommonModule,
+    FormsModule,
     GridsterModule,
     DashResizeElementModule,
     DragDropModule,

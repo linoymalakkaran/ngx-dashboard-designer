@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GridLayOutInstance } from '../../models';
+import { DashboardDesignerService } from '../../services/dashboard-designer.service';
 import { DashboardIconService } from '../../services/dashboard-icon.service';
 
 @Component({
@@ -6,9 +8,33 @@ import { DashboardIconService } from '../../services/dashboard-icon.service';
   templateUrl: './right-block.component.html',
   styleUrls: ['./right-block.component.scss']
 })
-export class RightBlockComponent {
-  constructor(private _iconsService: DashboardIconService) {
+export class RightBlockComponent implements OnInit {
+  dashboardLayout: GridLayOutInstance;
+
+  constructor(
+    private dashboardDesignerService: DashboardDesignerService,
+    private _iconsService: DashboardIconService
+  ) {
     this._iconsService.registerIcons(this.icons);
+  }
+
+  ngOnInit(): void {
+    this.dashboardDesignerService.selectedLayoutEvent$.subscribe(
+      (griditem: GridLayOutInstance) => {
+        if (griditem) {
+          this.dashboardLayout = griditem;
+        }
+      }
+    );
+  }
+
+  changedOptions(): void {
+    if (
+      this.dashboardLayout.options.api &&
+      this.dashboardLayout.options.api.optionsChanged
+    ) {
+      this.dashboardLayout.options.api.optionsChanged();
+    }
   }
 
   private get icons(): Array<string> {
