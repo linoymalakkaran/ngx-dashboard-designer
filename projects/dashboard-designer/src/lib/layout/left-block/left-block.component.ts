@@ -1,8 +1,4 @@
-import {
-  CdkDragDrop,
-  copyArrayItem,
-  transferArrayItem
-} from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import {
   ChangeDetectorRef,
   Component,
@@ -15,7 +11,6 @@ import {
   IDashboardWidgetOption,
   MfeWidgetType
 } from '../../models/dashboard-widget-options.model';
-import { GridLayOutInstance } from '../../models/dashboard.models';
 import { DashboardDesignerService } from '../../services/dashboard-designer.service';
 import { DashboardIconService } from '../../services/dashboard-icon.service';
 

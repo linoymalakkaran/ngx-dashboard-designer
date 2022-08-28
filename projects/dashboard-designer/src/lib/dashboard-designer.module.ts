@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { GridsterModule } from 'angular-gridster2';
-import { DashboardViewerComponent } from './components/ngx-dashboard-viewer/ngx-dashboard-viewer.component';
 import { DashboardWidgetDesignerComponent } from './components/dashboard-widget-designer/dashboard-widget-designer.component';
 import { DashboardWidgetComponent } from './components/dashboard-widget-designer/dashboard-widget/dashboard-widget.component';
 import {
@@ -22,21 +21,19 @@ import { DashIconModule } from './components/icons-loader/dash-icon-module';
 import { DashboardModuleConfigModel } from './models/dashboard-module-config.model';
 import { DASHBOARD_CONFIG } from './injectors/dashboard-injectors';
 import { DashboardIconService } from './services/dashboard-icon.service';
-import { DashboardWidgetViewComponent } from './components/ngx-dashboard-viewer/components/dashboard-widget-view/dashboard-widget-view.component';
 import { FormsModule } from '@angular/forms';
+import { NgxDashboardViewerModule } from './components/ngx-dashboard-viewer/ngx-dashboard-viewer.module';
 
 @NgModule({
   declarations: [
     DashboardWidgetDesignerComponent,
     DashboardWidgetComponent,
-    DashboardViewerComponent,
     NgxDashboardDesigner,
     LeftBlockComponent,
     RightBlockComponent,
     CenterBlockComponent,
     TopBlockComponent,
-    TranslatePipe,
-    DashboardWidgetViewComponent
+    TranslatePipe
   ],
   imports: [
     CommonModule,
@@ -47,19 +44,20 @@ import { FormsModule } from '@angular/forms';
     TabsModule.forRoot(),
     AccordionModule,
     ModalModule.forRoot(),
-    DashIconModule
+    DashIconModule,
+    NgxDashboardViewerModule
   ],
   exports: [
     DashboardWidgetDesignerComponent,
     DashboardWidgetComponent,
-    DashboardViewerComponent,
     NgxDashboardDesigner,
     LeftBlockComponent,
     RightBlockComponent,
     CenterBlockComponent,
     TopBlockComponent,
     DashResizeElementModule,
-    DragDropModule
+    DragDropModule,
+    NgxDashboardViewerModule
   ],
   providers: [TranslationService, DashboardIconService]
 })

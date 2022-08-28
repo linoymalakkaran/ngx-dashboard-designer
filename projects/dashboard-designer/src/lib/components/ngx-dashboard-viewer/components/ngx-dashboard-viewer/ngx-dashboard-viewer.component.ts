@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { GridLayOutInstance } from '../../models/dashboard.models';
-import { TranslationService } from '../../services/translation.service';
+import { GridLayOutInstance } from '../../../../models/dashboard.models';
+import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
   selector: 'ngx-dashboard-viewer',

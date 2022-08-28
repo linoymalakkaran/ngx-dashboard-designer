@@ -17,8 +17,15 @@ Should work out of the box with webpack, respectively angular-cli.
 ```javascript
 import { NgxDashboardDesignerModule } from 'ngx-dashboard-designer';
 
+const dashboardConfig: DashboardModuleConfigModel = {
+  baseAssetsPath: 'assets/dashboard-designer/',
+  fontBaseUrl: 'assets/dashboard-designer/',
+  isDynamicFontLoading: false,
+  isRemoteUrlLangEnabled: false
+};
+
 @NgModule({
-  imports: [ NgxDashboardDesignerModule ],
+  imports: [ NgxDashboardDesignerModule.forRoot(dashboardConfig) ],
   ...
 })
 ```
@@ -33,32 +40,40 @@ What Angular supports [here](https://github.com/angular/angular)
 
 ```html
 <button (click)="saveLayout()">Save Layout</button>
-<ngx-dasboard-designer [widgetOptions]="widgetOptions"> </ngx-dasboard-designer>
+<ngx-dasboard-designer [widgetOptions]="widgetOptions" [lang]="'en'">
+</ngx-dasboard-designer>
 ```
 
 Initialize a simple dashboard:
 
 ```typescript
-   @ViewChild(NgxDashboardDesigner) ngxDashboardDesigner: NgxDashboardDesigner;
+  @ViewChild(NgxDashboardDesigner) ngxDashboardDesigner: NgxDashboardDesigner;
   widgetOptions: IDashboardWidgetOption = {
-    ismfeWidgets: true,
     mfeWidgetTypes: [
       {
+        isMfeWidget: true,
         displayName: 'Bar Chart',
-        icon: 'Barchart',
+        icon: 'bar-chart',
         description: 'Bar Chart',
-        hostUrl: 'http://localhost:5203/remoteEntry.js', // this will be generated using the module federation. Sample Git link is provided,
-        componentName: 'SampleBarChartComponent',
+        //'http://127.0.0.1:5555/dashboard-widgets/remoteEntry.js',
+        // hostUrl: 'http://localhost:5203/remoteEntry.js',
+        hostUrl:
+          'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+        componentName: 'BarchartWidgetComponent',
         type: 'module',
-        exposedModule: './Component'
+        exposedModule: './BarChartWidget'
       }
     ]
   };
 
-  constructor() {}
+  constructor(private dashboardService: DashboardService) {}
 
   saveLayout() {
     const layout = this.ngxDashboardDesigner.getDashboardData;
+    this.dashboardService.layoutData = layout;
+    alert(
+      'Saved successfully, please click on viewer link to see the preview.'
+    );
     console.log(layout);
   }
 ```
@@ -68,6 +83,7 @@ Initialize a simple dashboard:
 ```html
 <ngx-dashboard-viewer
   [dashboardLayout]="dashboardLayout"
+  [lang]="'en'"
 ></ngx-dashboard-viewer>
 ```
 
@@ -156,13 +172,15 @@ Initialize a simple dashboard:
       rows: 1,
       hasContent: true,
       widgetOption: {
+        isMfeWidget: true,
         displayName: 'Bar Chart',
-        icon: 'Barchart',
+        icon: 'bar-chart',
         description: 'Bar Chart',
-        hostUrl: 'http://localhost:5203/remoteEntry.js',
-        componentName: 'SampleBarChartComponent',
+        hostUrl:
+          'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+        componentName: 'BarchartWidgetComponent',
         type: 'module',
-        exposedModule: './Component'
+        exposedModule: './BarChartWidget'
       }
     },
     {
@@ -172,13 +190,15 @@ Initialize a simple dashboard:
       rows: 2,
       hasContent: true,
       widgetOption: {
+        isMfeWidget: true,
         displayName: 'Bar Chart',
-        icon: 'Barchart',
+        icon: 'bar-chart',
         description: 'Bar Chart',
-        hostUrl: 'http://localhost:5203/remoteEntry.js',
-        componentName: 'SampleBarChartComponent',
+        hostUrl:
+          'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+        componentName: 'BarchartWidgetComponent',
         type: 'module',
-        exposedModule: './Component'
+        exposedModule: './BarChartWidget'
       }
     },
     {
