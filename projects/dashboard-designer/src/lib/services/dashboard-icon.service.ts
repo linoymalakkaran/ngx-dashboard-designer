@@ -1,6 +1,6 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { DashIconRegistry } from '../components/icons-loader/utils/dash-registry';
+import { DashIconRegistry } from '../@shared/icons-loader/utils/dash-registry';
 import {
   externalFonts,
   fontsToLoad

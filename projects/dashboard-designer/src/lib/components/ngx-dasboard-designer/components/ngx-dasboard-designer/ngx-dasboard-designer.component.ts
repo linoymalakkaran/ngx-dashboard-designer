@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { DashResizeElementEvent } from '../../../dashboard-resizer/resize-element-event.interface';
-import { DashResizeElementDirection } from '../../../dashboard-resizer/resize-element.enum';
+import { DashResizeElementEvent } from '../../../../@shared/dashboard-resizer/resize-element-event.interface';
+import { DashResizeElementDirection } from '../../../../@shared/dashboard-resizer/resize-element.enum';
 import { IDashboardWidgetOption } from '../../../../models/dashboard-widget-options.model';
 import { GridLayOutInstance } from '../../../../models/dashboard.models';
 import { DashboardDesignerService } from '../../../../services/dashboard-designer.service';

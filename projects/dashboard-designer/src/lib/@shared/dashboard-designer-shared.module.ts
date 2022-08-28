@@ -1,23 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '../pipes/translate.pipe';
-import {
-  LeftBlockComponent,
-  RightBlockComponent,
-  CenterBlockComponent,
-  TopBlockComponent
-} from '../layout';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { GridsterModule } from 'angular-gridster2';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import {
-  DashboardWidgetDesignerComponent,
-  DashResizeElementModule,
-  NgxDashboardDesignerComponent
-} from '../components';
-import { DashIconModule } from '../components/icons-loader/dash-icon-module';
+import { DashResizeElementModule } from '../components';
 import { FormsModule } from '@angular/forms';
+import { DashIconModule } from './icons-loader/dash-icon-module';
+import { DashboardIconService } from '../services/dashboard-icon.service';
+import { TranslationService } from '../services/translation.service';
+import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [TranslatePipe],
@@ -28,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     DashIconModule,
     DashResizeElementModule,
     DragDropModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   exports: [
     GridsterModule,
@@ -38,7 +31,9 @@ import { FormsModule } from '@angular/forms';
     DashResizeElementModule,
     DragDropModule,
     FormsModule,
-    TranslatePipe
-  ]
+    TranslatePipe,
+    ModalModule
+  ],
+  providers: [TranslationService, DashboardIconService, BsModalService]
 })
 export class DashboardDesignerSharedModule {}
