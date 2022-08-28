@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { GridsterModule } from 'angular-gridster2';
-import { DashboardViewerComponent } from './components/ngx-dashboard-viewer/ngx-dashboard-viewer.component';
+import { NgxDashboardViewerComponent } from './components/ngx-dashboard-viewer/ngx-dashboard-viewer.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import { DashIconModule } from '../icons-loader/dash-icon-module';
 import { DashboardWidgetViewComponent } from './components/dashboard-widget-view/dashboard-widget-view.component';
 
 @NgModule({
-  declarations: [DashboardViewerComponent, DashboardWidgetViewComponent],
+  declarations: [NgxDashboardViewerComponent, DashboardWidgetViewComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -20,7 +20,7 @@ import { DashboardWidgetViewComponent } from './components/dashboard-widget-view
     AccordionModule,
     DashIconModule
   ],
-  exports: [DashboardViewerComponent, DashboardWidgetViewComponent],
+  exports: [NgxDashboardViewerComponent, DashboardWidgetViewComponent],
   providers: []
 })
 export class NgxDashboardViewerModule {}

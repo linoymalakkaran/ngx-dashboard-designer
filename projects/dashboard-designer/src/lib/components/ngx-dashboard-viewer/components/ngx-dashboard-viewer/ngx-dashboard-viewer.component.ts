@@ -8,7 +8,7 @@ import { TranslationService } from '../../../../services/translation.service';
   templateUrl: './ngx-dashboard-viewer.component.html',
   styleUrls: ['./ngx-dashboard-viewer.component.scss']
 })
-export class DashboardViewerComponent implements OnInit {
+export class NgxDashboardViewerComponent implements OnInit {
   public layout: any = {
     left: { show: true, slideOut: false },
     right: { show: true, slideOut: false },

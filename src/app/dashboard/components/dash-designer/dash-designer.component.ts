@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IDashboardWidgetOption } from 'projects/dashboard-designer/src/lib/models/dashboard-widget-options.model';
-import { NgxDashboardDesigner } from 'projects/dashboard-designer/src/public-api';
+import { NgxDashboardDesignerComponent } from 'projects/dashboard-designer/src/public-api';
 import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
@@ -9,7 +9,8 @@ import { DashboardService } from '../../services/dashboard.service';
   styleUrls: ['./dash-designer.component.scss']
 })
 export class DashDesignerComponent {
-  @ViewChild(NgxDashboardDesigner) ngxDashboardDesigner: NgxDashboardDesigner;
+  @ViewChild(NgxDashboardDesignerComponent)
+  ngxDashboardDesigner: NgxDashboardDesignerComponent;
   widgetOptions: IDashboardWidgetOption = {
     mfeWidgetTypes: [
       {

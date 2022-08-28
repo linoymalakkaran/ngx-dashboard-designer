@@ -1,19 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { GridsterModule } from 'angular-gridster2';
-import { DashboardWidgetDesignerComponent } from './components/dashboard-widget-designer/dashboard-widget-designer.component';
-import { DashboardWidgetComponent } from './components/dashboard-widget-designer/dashboard-widget/dashboard-widget.component';
-import {
-  CenterBlockComponent,
-  LeftBlockComponent,
-  RightBlockComponent,
-  TopBlockComponent
-} from './layout';
+// import {
+//   CenterBlockComponent,
+//   LeftBlockComponent,
+//   RightBlockComponent,
+//   TopBlockComponent
+// } from './layout';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { NgxDashboardDesigner } from './components/ngx-dasboard-designer/ngx-dasboard-designer.component';
 import { DashResizeElementModule } from './components/dashboard-resizer/resize-element.module';
 import { TranslationService } from './services/translation.service';
 import { TranslatePipe } from './pipes/translate.pipe';
@@ -23,21 +20,12 @@ import { DASHBOARD_CONFIG } from './injectors/dashboard-injectors';
 import { DashboardIconService } from './services/dashboard-icon.service';
 import { FormsModule } from '@angular/forms';
 import { NgxDashboardViewerModule } from './components/ngx-dashboard-viewer/ngx-dashboard-viewer.module';
+import { DashboardWidgetDesignerModule } from './components/ngx-dasboard-designer/dashboard-widget-designer.module';
 
 @NgModule({
-  declarations: [
-    DashboardWidgetDesignerComponent,
-    DashboardWidgetComponent,
-    NgxDashboardDesigner,
-    LeftBlockComponent,
-    RightBlockComponent,
-    CenterBlockComponent,
-    TopBlockComponent,
-    TranslatePipe
-  ],
+  declarations: [],
   imports: [
     CommonModule,
-    FormsModule,
     GridsterModule,
     DashResizeElementModule,
     DragDropModule,
@@ -45,19 +33,14 @@ import { NgxDashboardViewerModule } from './components/ngx-dashboard-viewer/ngx-
     AccordionModule,
     ModalModule.forRoot(),
     DashIconModule,
-    NgxDashboardViewerModule
+    NgxDashboardViewerModule,
+    DashboardWidgetDesignerModule
   ],
   exports: [
-    DashboardWidgetDesignerComponent,
-    DashboardWidgetComponent,
-    NgxDashboardDesigner,
-    LeftBlockComponent,
-    RightBlockComponent,
-    CenterBlockComponent,
-    TopBlockComponent,
     DashResizeElementModule,
     DragDropModule,
-    NgxDashboardViewerModule
+    NgxDashboardViewerModule,
+    DashboardWidgetDesignerModule
   ],
   providers: [TranslationService, DashboardIconService]
 })

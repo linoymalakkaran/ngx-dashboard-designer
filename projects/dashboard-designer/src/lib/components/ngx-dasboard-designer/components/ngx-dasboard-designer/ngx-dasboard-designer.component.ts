@@ -1,20 +1,20 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IDashboardWidgetOption } from '../../models/dashboard-widget-options.model';
-import { GridLayOutInstance } from '../../models/dashboard.models';
-import { DashboardDesignerService } from '../../services/dashboard-designer.service';
-import { DashboardIconService } from '../../services/dashboard-icon.service';
-import { DashboardLayoutService } from '../../services/dashboard-layout.service';
-import { TranslationService } from '../../services/translation.service';
-import { DashResizeElementEvent } from '../dashboard-resizer/resize-element-event.interface';
-import { DashResizeElementDirection } from '../dashboard-resizer/resize-element.enum';
+import { DashResizeElementEvent } from '../../../dashboard-resizer/resize-element-event.interface';
+import { DashResizeElementDirection } from '../../../dashboard-resizer/resize-element.enum';
+import { IDashboardWidgetOption } from '../../../../models/dashboard-widget-options.model';
+import { GridLayOutInstance } from '../../../../models/dashboard.models';
+import { DashboardDesignerService } from '../../../../services/dashboard-designer.service';
+import { DashboardIconService } from '../../../../services/dashboard-icon.service';
+import { DashboardLayoutService } from '../../../../services/dashboard-layout.service';
+import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
   selector: 'ngx-dasboard-designer',
   templateUrl: './ngx-dasboard-designer.component.html',
   styleUrls: ['./ngx-dasboard-designer.component.scss']
 })
-export class NgxDashboardDesigner implements OnInit, OnDestroy {
+export class NgxDashboardDesignerComponent implements OnInit, OnDestroy {
   @Input() widgetOptions: IDashboardWidgetOption;
   @Input() editLayoutJSON: GridLayOutInstance;
   @Input() isEditMode: boolean;

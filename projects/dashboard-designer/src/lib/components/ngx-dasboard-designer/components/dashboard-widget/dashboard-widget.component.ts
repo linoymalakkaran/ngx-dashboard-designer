@@ -11,13 +11,10 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import {
   IDashboardWidgetOption,
   MfeWidgetType
-} from '../../../models/dashboard-widget-options.model';
-import {
-  GridLayOutInstance,
-  SingleGridBoxItem
-} from '../../../models/dashboard.models';
-import { DashboardDesignerService } from '../../../services/dashboard-designer.service';
-import { DashboardIconService } from '../../../services/dashboard-icon.service';
+} from '../../../../models/dashboard-widget-options.model';
+import { SingleGridBoxItem } from '../../../../models/dashboard.models';
+import { DashboardDesignerService } from '../../../../services/dashboard-designer.service';
+import { DashboardIconService } from '../../../../services/dashboard-icon.service';
 
 @Component({
   selector: 'dashboard-widget',

@@ -1,28 +1,7 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  Input,
-  OnInit,
-  ViewChild
-} from '@angular/core';
-import {
-  Draggable,
-  GridsterConfig,
-  PushDirections,
-  Resizable
-} from 'angular-gridster2';
-import { IDashboardWidgetOption } from '../../models/dashboard-widget-options.model';
-import {
-  GridLayOutInstance,
-  SingleGridBoxItem
-} from '../../models/dashboard.models';
-import { DashboardDesignerService } from '../../services/dashboard-designer.service';
-
-interface Safe extends GridsterConfig {
-  draggable: Draggable;
-  resizable: Resizable;
-  pushDirections: PushDirections;
-}
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { IDashboardWidgetOption } from '../../../../models/dashboard-widget-options.model';
+import { GridLayOutInstance } from '../../../../models/dashboard.models';
+import { DashboardDesignerService } from '../../../../services/dashboard-designer.service';
 
 @Component({
   selector: 'dashboard-widget-designer',
@@ -32,9 +11,6 @@ interface Safe extends GridsterConfig {
 export class DashboardWidgetDesignerComponent implements OnInit {
   @Input() widgetOptions?: IDashboardWidgetOption;
   dashboardLayout: GridLayOutInstance;
-  // options: Safe;
-  // gridBoxItemList: SingleGridBoxItem[] = [];
-  // activeLayout: any = null;
 
   constructor(
     private dashboardDesignerService: DashboardDesignerService,
