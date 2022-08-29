@@ -7,7 +7,7 @@ import { DashboardDesignerSharedModule } from '../../@shared/dashboard-designer-
 @NgModule({
   declarations: [NgxDashboardViewerComponent, DashboardWidgetViewComponent],
   imports: [CommonModule, DashboardDesignerSharedModule],
-  exports: [],
+  exports: [NgxDashboardViewerComponent],
   providers: []
 })
 export class NgxDashboardViewerModule {}

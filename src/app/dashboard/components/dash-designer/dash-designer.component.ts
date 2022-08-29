@@ -4,6 +4,7 @@ import { NgxDashboardDesignerComponent } from 'projects/dashboard-designer/src/p
 import { DashboardService } from '../../services/dashboard.service';
 import { IGridLayOutInstance } from 'projects/dashboard-designer/src/lib/models/dashboard.models';
 import { editLayoutJSON } from '../../data-provider/dashboard-edit.data';
+
 @Component({
   selector: 'app-dash-designer',
   templateUrl: './dash-designer.component.html',
