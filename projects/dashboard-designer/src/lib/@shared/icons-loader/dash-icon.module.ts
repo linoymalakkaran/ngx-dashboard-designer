@@ -3,7 +3,7 @@ import { DashIcon } from './components/dash-icon';
 
 @NgModule({
   imports: [],
-  exports: [DashIcon],
-  declarations: [DashIcon]
+  declarations: [DashIcon],
+  exports: [DashIcon]
 })
 export class DashIconModule {}

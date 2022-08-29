@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
-import { TranslatePipe } from '../pipes/translate.pipe';
+import { DashboardTranslatePipe } from './pipes/translate.pipe';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { GridsterModule } from 'angular-gridster2';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { DashResizeElementModule } from '../components';
 import { FormsModule } from '@angular/forms';
-import { DashIconModule } from './icons-loader/dash-icon-module';
+import { DashIconModule } from './icons-loader/dash-icon.module';
 import { DashboardIconService } from '../services/dashboard-icon.service';
 import { TranslationService } from '../services/translation.service';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
+import { DashResizeElementModule } from './dashboard-resizer/resize-element.module';
 
 @NgModule({
-  declarations: [TranslatePipe],
+  declarations: [DashboardTranslatePipe],
   imports: [
     GridsterModule,
     TabsModule.forRoot(),
@@ -31,7 +31,7 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
     DashResizeElementModule,
     DragDropModule,
     FormsModule,
-    TranslatePipe,
+    DashboardTranslatePipe,
     ModalModule
   ],
   providers: [TranslationService, DashboardIconService, BsModalService]

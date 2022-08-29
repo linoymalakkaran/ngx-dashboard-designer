@@ -22,16 +22,7 @@ import {
     TopBlockComponent
   ],
   imports: [CommonModule, DashboardDesignerSharedModule],
-  exports: [
-    DashboardDesignerSharedModule,
-    DashboardWidgetDesignerComponent,
-    NgxDashboardDesignerComponent,
-    DashboardWidgetComponent,
-    LeftBlockComponent,
-    RightBlockComponent,
-    CenterBlockComponent,
-    TopBlockComponent
-  ],
+  exports: [],
   providers: []
 })
 export class DashboardWidgetDesignerModule {}

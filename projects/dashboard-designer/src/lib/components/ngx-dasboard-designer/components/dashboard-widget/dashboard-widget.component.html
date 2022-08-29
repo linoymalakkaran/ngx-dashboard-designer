@@ -10,7 +10,7 @@
       <ng-container *ngIf="isWidgetDropped">
         <a
           (click)="deleteWidget()"
-          title="{{ 'DELETE_WIDGET' | translate }}"
+          title="{{ 'DELETE_WIDGET' | dashTranslate }}"
           class="cursor-pointer"
         >
           <dash-icon svgIcon="delete-icon" aria-hidden="false"></dash-icon>
@@ -18,14 +18,14 @@
       </ng-container>
     </div>
   </div>
-  <div class="card-body-warpper" *ngIf="!isWidgetDragModeEnabled">
+  <div class="card-body-warpper" *ngIf="!isWidgetDragModeDisabled">
     <div class="card-body card-container">
       <div class="drag-container">
         <a href="javascript:void(0)" title="Drag">
           <dash-icon svgIcon="drag-icon" aria-hidden="false"></dash-icon>
         </a>
         <!-- <span *ngIf="!isWidgetDropped">{{
-          'DRAG_WIDGET_HERE' | translate
+          'DRAG_WIDGET_HERE' | dashTranslate
         }}</span> -->
         <ng-container #vc></ng-container>
       </div>
@@ -42,11 +42,11 @@
     </div>
   </div>
 
-  <div class="card-body" *ngIf="isWidgetDragModeEnabled">
+  <div class="card-body" *ngIf="isWidgetDragModeDisabled">
     <ng-container>
       <div>
         <span *ngIf="!isWidgetDropped">{{
-          'DRAG_WIDGET_HERE' | translate
+          'DRAG_WIDGET_HERE' | dashTranslate
         }}</span>
         <ng-container #vc></ng-container>
       </div>

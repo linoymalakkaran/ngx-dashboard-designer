@@ -30,7 +30,7 @@ export class DashboardWidgetComponent implements OnInit {
   selectedWidgetOption: MfeWidgetType = null;
   @Input() singleGridBoxItem: SingleGridBoxItem;
   isNewLayoutSelected: boolean;
-  isWidgetDragModeEnabled: boolean;
+  isWidgetDragModeDisabled: boolean;
 
   constructor(
     private ref: ChangeDetectorRef,
@@ -48,16 +48,18 @@ export class DashboardWidgetComponent implements OnInit {
     );
     this.dashboardDesignerService.isWidgetDragModeEnabled$.subscribe(
       (isWidgetDragModeEnabled: boolean) => {
-        this.isWidgetDragModeEnabled = isWidgetDragModeEnabled;
-        if (!this.isWidgetDragModeEnabled) {
+        this.isWidgetDragModeDisabled = isWidgetDragModeEnabled;
+        if (!this.isWidgetDragModeDisabled) {
           this.deleteWidget();
         }
       }
     );
+    this.applyWideget();
   }
 
   applyWideget() {
     if (this.singleGridBoxItem.widgetOption) {
+      this.isWidgetDragModeDisabled = true;
       this.loadMfeWidget(this.singleGridBoxItem.widgetOption);
     }
   }

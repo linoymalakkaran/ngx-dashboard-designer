@@ -6,13 +6,13 @@
           accordion-heading
           class="d-flex align-items-center justify-content-between"
         >
-          <span>{{ 'PROPERTIES' | translate }}</span>
+          <span>{{ 'PROPERTIES' | dashTranslate }}</span>
           <!-- <span class="fa fas fa-chevron-down"> </span> -->
           <dash-icon svgIcon="down-chevron" aria-hidden="false"></dash-icon>
         </div>
         <div class="accordion-body p-0">
           <div class="form-row">
-            <small class="">{{ 'GRID_TYPE' | translate }}</small>
+            <small class="">{{ 'GRID_TYPE' | dashTranslate }}</small>
             <select
               aria-label="Grid type"
               [(ngModel)]="dashboardLayout.options.gridType"
@@ -28,7 +28,7 @@
             </select>
           </div>
           <div class="form-row">
-            <small> {{ 'DISPLAY_GRID_LINES' | translate }} </small>
+            <small> {{ 'DISPLAY_GRID_LINES' | dashTranslate }} </small>
             <select
               aria-label="Display grid lines"
               [(ngModel)]="dashboardLayout.options.displayGrid"
@@ -41,7 +41,7 @@
             </select>
           </div>
           <div class="form-row">
-            <small> {{ 'DRAG_ITEMS' | translate }} </small>
+            <small> {{ 'DRAG_ITEMS' | dashTranslate }} </small>
             <input
               type="checkbox"
               [(ngModel)]="dashboardLayout.options.draggable.enabled"
@@ -50,7 +50,7 @@
             />
           </div>
           <div class="form-row">
-            <small> {{ 'RESIZE_ITEMS' | translate }} </small>
+            <small> {{ 'RESIZE_ITEMS' | dashTranslate }} </small>
             <input
               type="checkbox"
               [(ngModel)]="dashboardLayout.options.resizable.enabled"
@@ -59,7 +59,7 @@
             />
           </div>
           <div class="form-row">
-            <small> {{ 'MARGIN' | translate }} </small>
+            <small> {{ 'MARGIN' | dashTranslate }} </small>
             <input
               matInput
               [(ngModel)]="dashboardLayout.options.margin"
@@ -72,7 +72,7 @@
             />
           </div>
           <div class="form-row">
-            <small> {{ 'OUTER_MARGIN' | translate }} </small>
+            <small> {{ 'OUTER_MARGIN' | dashTranslate }} </small>
             <input
               type="checkbox"
               [(ngModel)]="dashboardLayout.options.outerMargin"
