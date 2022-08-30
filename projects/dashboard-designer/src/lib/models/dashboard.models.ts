@@ -31,36 +31,38 @@ export interface IGridLayOutInstance {
   layoutDescription: string;
   layoutId: string;
   properties?: { autoHeight?: boolean };
+  width?: any;
+  height?: any;
   dashboardItems: SingleGridBoxItem[];
 }
 
 export class GridLayOutInstance implements IGridLayOutInstance {
   options: Safe = {
-    gridType: GridType.Fit,
+    gridType: GridType.Fixed,
     compactType: CompactType.None,
-    margin: 4,
+    margin: 0,
     outerMargin: true,
     outerMarginTop: null,
     outerMarginRight: null,
     outerMarginBottom: null,
     outerMarginLeft: null,
     useTransformPositioning: true,
-    mobileBreakpoint: 640,
-    useBodyForBreakpoint: false,
+    mobileBreakpoint: 900,
+    useBodyForBreakpoint: true,
     minCols: 1,
     maxCols: 100,
     minRows: 1,
     maxRows: 100,
     maxItemCols: 100,
     minItemCols: 1,
-    maxItemRows: 100,
+    maxItemRows: 100000,
     minItemRows: 1,
     maxItemArea: 2500,
     minItemArea: 1,
     defaultItemCols: 1,
     defaultItemRows: 1,
-    fixedColWidth: 105,
-    fixedRowHeight: 105,
+    fixedColWidth: 25,
+    fixedRowHeight: 25,
     keepFixedHeightInMobile: false,
     keepFixedWidthInMobile: false,
     scrollSensitivity: 10,
@@ -81,8 +83,8 @@ export class GridLayOutInstance implements IGridLayOutInstance {
     },
     swap: false,
     pushItems: true,
-    disablePushOnDrag: false,
-    disablePushOnResize: false,
+    disablePushOnDrag: true,
+    disablePushOnResize: true,
     pushDirections: { north: true, east: true, south: true, west: true },
     pushResizeItems: false,
     displayGrid: DisplayGrid.Always,

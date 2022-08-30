@@ -27,3 +27,86 @@
   align-items: center;
   height: 80%;
 }
+
+.sizeIndicator {
+  display: flex;
+  flex-direction: row;
+  font-size: 9px;
+  color: darkred;
+  position: absolute;
+  left: 2px;
+  top: 0px;
+  column-gap: 10px;
+  opacity: 0;
+  background: #ff000014;
+  padding: 0 5px;
+}
+
+.dashboard-widget {
+  &:hover {
+    .sizeIndicator {
+      opacity: 1;
+    }
+    .widgetMenu {
+      opacity: 1;
+    }
+  }
+}
+
+::ng-deep {
+  .gridster-item-resizing {
+    .sizeIndicator {
+      opacity: 1;
+    }
+  }
+}
+
+.widgetMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+
+  nav {
+    position: relative;
+    dash-icon {
+      svg {
+        fill: #46518d;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    ul {
+      position: absolute;
+      top: 26px;
+      right: 5px;
+      background-color: #d8d9f1;
+      overflow: auto;
+      min-width: 150px;
+      margin: 0;
+      padding: 5px !important;
+      li {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .widgetMenu {
+    nav {
+      dash-icon {
+        svg {
+          fill: #46518d;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}

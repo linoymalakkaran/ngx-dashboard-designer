@@ -1,6 +1,13 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import {
+  GridsterItem,
+  GridsterItemComponentInterface
+} from 'angular-gridster2';
 import { IDashboardWidgetOption } from '../../../../models/dashboard-widget-options.model';
-import { GridLayOutInstance } from '../../../../models/dashboard.models';
+import {
+  GridLayOutInstance,
+  IGridLayOutInstance
+} from '../../../../models/dashboard.models';
 import { DashboardDesignerService } from '../../../../services/dashboard-designer.service';
 
 @Component({
@@ -10,7 +17,7 @@ import { DashboardDesignerService } from '../../../../services/dashboard-designe
 })
 export class DashboardWidgetDesignerComponent implements OnInit {
   @Input() widgetOptions?: IDashboardWidgetOption;
-  dashboardLayout: GridLayOutInstance;
+  dashboardLayout: IGridLayOutInstance;
 
   constructor(
     private dashboardDesignerService: DashboardDesignerService,
@@ -22,11 +29,28 @@ export class DashboardWidgetDesignerComponent implements OnInit {
       (griditem: GridLayOutInstance) => {
         if (griditem) {
           this.dashboardLayout = griditem;
-          // this.activeLayout = griditem;
-          this.ref.detectChanges();
+          (this.dashboardLayout.options.itemResizeCallback =
+            this.itemResize.bind(this)),
+            // this.activeLayout = griditem;
+            this.ref.detectChanges();
         }
       }
     );
+  }
+
+  public itemResize(
+    item: GridsterItem,
+    itemComponent: GridsterItemComponentInterface
+  ): void {
+    itemComponent.gridster.curRowHeight +=
+      (item.cols * 100 - item.rows) / 10000;
+    item.width = Math.round(itemComponent.width);
+    item.height = Math.round(itemComponent.height);
+
+    console.log('item resize');
+    // if (itemComponent.gridster.curRowHeight > 1) {
+    //     this.unitHeight = itemComponent.gridster.curRowHeight;
+    // }
   }
 
   changedOptions(): void {

@@ -15,7 +15,7 @@ export class DashboardLayoutService {
     const gridItem = new GridLayOutInstance();
     switch (layoutid) {
       case 'new': {
-        layoutJSON = [{ x: 0, y: 0, cols: 1, rows: 1, hasContent: true }];
+        layoutJSON = [{ x: 0, y: 0, cols: 20, rows: 20, hasContent: true }];
         break;
       }
       case 'Layout1': {

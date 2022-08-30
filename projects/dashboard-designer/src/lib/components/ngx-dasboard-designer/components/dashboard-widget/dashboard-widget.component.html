@@ -1,9 +1,35 @@
 <div
-  class="card page-wrap"
+  class="card page-wrap dashboard-widget"
   cdkDropList
   [cdkDropListData]="widgetOptionDragged"
   (cdkDropListDropped)="drop($event)"
 >
+  <div class="sizeIndicator">
+    <small>Width: {{ singleGridBoxItem?.width }}</small>
+    <small>Height: {{ singleGridBoxItem?.height }}</small>
+  </div>
+  <div class="widgetMenu" (click)="$event.stopPropagation()">
+    <nav>
+      <dash-icon
+        (click)="showMenu = !showMenu"
+        svgIcon="settings-icon"
+        aria-hidden="false"
+      ></dash-icon>
+
+      <ul class="menublock" [hidden]="!showMenu">
+        <li>
+          <span>{{ 'AUTO_HEIGHT' | dashTranslate }} </span>
+          <span
+            ><input
+              type="checkbox"
+              [(ngModel)]="singleGridBoxItem.autoHeight"
+            />
+          </span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
   <div class="card-header d-flex p-2">
     <div class="card-title col-11">{{ selectedWidgetOption?.displayName }}</div>
     <div class="card-actions col-1 row justify-content-end">
@@ -45,10 +71,10 @@
         <span *ngIf="!isWidgetDropped">{{
           'DRAG_WIDGET_HERE' | dashTranslate
         }}</span>
-        <div class="form-row">
+        <!-- <div class="form-row">
           <small> {{ 'AUTO_HEIGHT' | dashTranslate }} </small>
           <input type="checkbox" [(ngModel)]="singleGridBoxItem.autoHeight" />
-        </div>
+        </div> -->
         <ng-container #vc></ng-container>
       </div>
     </ng-container>
