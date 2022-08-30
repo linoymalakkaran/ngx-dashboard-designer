@@ -1,18 +1,20 @@
 {
   "name": "ngx-dashboard-designer",
-  "version": "2.0.12",
+  "version": "2.0.16",
   "peerDependencies": {
     "ngx-bootstrap": "^6.2.0",
     "angular-gridster2": "^12.1.1",
     "rxjs": "6.6.7",
-    "@angular/forms": "^13.3.9"
+    "@angular/forms": "^13.3.9",
+    "@angular/cdk": "13.3.7"
   },
   "dependencies": {
     "tslib": "^2.3.0",
     "ngx-bootstrap": "^6.2.0",
     "angular-gridster2": "^12.1.1",
     "rxjs": "6.6.7",
-    "@angular/forms": "^13.3.9"
+    "@angular/forms": "^13.3.9",
+    "@angular/cdk": "13.3.7"
   },
   "devDependencies": {
     "copyfiles": "file:../node_modules/copyfiles",
@@ -24,7 +26,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:sass": "sass styles/dashboard-designer-theme.scss assets/dashboard-designer-theme.css",
     "build:schematics": "tsc -p tsconfig.schematics.json",
-    "postbuild:schematics": "copyfiles schematics/collection.json ../../../dist/dashboard-designer/"
+    "postbuild:schematics": "copyfiles schematics/collection.json schematics/*/schema.json schematics/*/files/** ../../../dist/dashboard-designer/"
   },
   "publishConfig": {
     "registry": "http://localhost:4873"

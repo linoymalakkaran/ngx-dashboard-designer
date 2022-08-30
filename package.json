@@ -14,7 +14,7 @@
     "watch": "ng build --watch --configuration development",
     "deploy": "ng deploy --base-href=/dashboard-designer/  --no-silent",
     "postinstall": "husky install",
-    "build:schematics": "tsc -p projects/dashboard-designer/tsconfig.schematics.json && copyfiles -f projects/dashboard-designer/schematics/collection.json ./dist/dashboard-designer/schematics/",
+    "build:schematics": "tsc -p projects/dashboard-designer/tsconfig.schematics.json && copyfiles -u 3 projects/dashboard-designer/schematics/collection.json projects/dashboard-designer/schematics/*/schema.json projects/dashboard-designer/schematics/*/files/** ./dist/dashboard-designer/schematics/",
     "build:sass": "sass projects/dashboard-designer/styles/dashboard-designer-theme.scss projects/dashboard-designer/assets/dashboard-designer/dashboard-designer-theme.css",
     "build_lib_dashboard_designer": "npm run build:sass && ng build dashboard-designer --configuration production && npm run build:schematics",
     "npm_pack_dashboard_designer": "cd dist/dashboard-designer && npm pack",

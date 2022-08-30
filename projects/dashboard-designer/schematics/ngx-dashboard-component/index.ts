@@ -2,7 +2,6 @@ import {
   apply,
   applyTemplates,
   chain,
-  externalSchematic,
   MergeStrategy,
   mergeWith,
   move,
@@ -12,7 +11,7 @@ import {
 import { strings, normalize } from '@angular-devkit/core';
 import { NgxDashboardUIComponentSchema } from './ngx-dashboard-component';
 
-export function ngxDashboardComponentGenerator(
+export function ngxDashboardUIComponentGenerator(
   options: NgxDashboardUIComponentSchema
 ): Rule {
   return () => {
@@ -25,7 +24,7 @@ export function ngxDashboardComponentGenerator(
       move(normalize(`/${options.path}/${strings.dasherize(options.name)}`))
     ]);
     return chain([
-      externalSchematic('@schematics/angular', 'component', options),
+      //externalSchematic('@schematics/angular', 'component', options),
       mergeWith(templateSource, MergeStrategy.Overwrite)
     ]);
   };

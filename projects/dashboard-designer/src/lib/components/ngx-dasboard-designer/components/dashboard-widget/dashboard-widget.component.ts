@@ -75,6 +75,7 @@ export class DashboardWidgetComponent implements OnInit {
       m[widgetOption.componentName]
     );
     const compInstance: any = ref.instance;
+    this.singleGridBoxItem['compInstance'] = compInstance;
     setInterval(() => {
       this.singleGridBoxItem.widgetOption = widgetOption;
       this.ref.markForCheck();
@@ -82,14 +83,8 @@ export class DashboardWidgetComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<MfeWidgetType[]>) {
-    // transferArrayItem(
-    //   event.previousContainer.data,
-    //   event.container.data,
-    //   event.previousIndex,
-    //   event.currentIndex
-    // );
     if (this.selectedWidgetOption) {
-      alert('Please remove widget before add new.');
+      alert('Please remove widget, before adding new...!');
       return;
     }
     this.selectedWidgetOption =
@@ -100,9 +95,9 @@ export class DashboardWidgetComponent implements OnInit {
   deleteWidget() {
     if (this.singleGridBoxItem.widgetOption != null && this.viewContainer) {
       this.selectedWidgetOption = null;
+      this.singleGridBoxItem['compInstance'] = null;
       this.viewContainer.remove();
       this.isWidgetDropped = false;
-      // this.singleGridBoxItem.widgetOption = null;
       setInterval(() => {
         this.singleGridBoxItem.widgetOption = null;
         this.ref.markForCheck();

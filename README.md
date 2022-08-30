@@ -12,6 +12,12 @@
 
 `npm install ngx-dashboard-designer --save`
 
+To add library using schematics
+`ng add ngx-dashboard-designer` -- specify version if required (eg: ng add ngx-dashboard-designer@2.0.14)
+
+To add example module in your project using schematics
+`ng g ngx-dashboard-designer:ngx-dashboard-component --name dashboard` -- 'dashboard' is the name of the new module
+
 Should work out of the box with webpack, respectively angular-cli.
 
 ```javascript
