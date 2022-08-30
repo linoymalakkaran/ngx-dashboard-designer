@@ -30,7 +30,7 @@ export interface IGridLayOutInstance {
   layoutName: string;
   layoutDescription: string;
   layoutId: string;
-  properties: any;
+  properties?: { autoHeight?: boolean };
   dashboardItems: SingleGridBoxItem[];
 }
 
@@ -94,7 +94,9 @@ export class GridLayOutInstance implements IGridLayOutInstance {
   layoutName = '';
   layoutDescription = '';
   layoutId = null;
-  properties = {};
+  properties = {
+    autoHeight: false
+  };
   dashboardItems: SingleGridBoxItem[] = [];
 
   setValue?(editMode = true, name, id, items, options) {

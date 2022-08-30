@@ -45,6 +45,10 @@
         <span *ngIf="!isWidgetDropped">{{
           'DRAG_WIDGET_HERE' | dashTranslate
         }}</span>
+        <div class="form-row">
+          <small> {{ 'AUTO_HEIGHT' | dashTranslate }} </small>
+          <input type="checkbox" [(ngModel)]="singleGridBoxItem.autoHeight" />
+        </div>
         <ng-container #vc></ng-container>
       </div>
     </ng-container>

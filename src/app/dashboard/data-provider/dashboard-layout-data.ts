@@ -1,6 +1,7 @@
 import { CompactType, DisplayGrid, GridType } from 'angular-gridster2';
 import {
   GridLayOutInstance,
+  IGridLayOutInstance,
   Safe
 } from 'projects/dashboard-designer/src/lib/models/dashboard.models';
 
@@ -60,12 +61,12 @@ const options: Safe = {
   scrollToNewItems: false
 };
 
-export const layoutDefaultData: GridLayOutInstance = {
+export const layoutDefaultData: IGridLayOutInstance = {
   options: options,
   layoutName: 'Layout8',
   layoutDescription: '',
   layoutId: 'Layout8',
-  properties: {},
+  properties: { autoHeight: false },
   dashboardItems: [
     {
       x: 0,

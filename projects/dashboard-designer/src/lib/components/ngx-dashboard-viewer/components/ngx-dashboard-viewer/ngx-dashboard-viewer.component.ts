@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { GridLayOutInstance } from '../../../../models/dashboard.models';
+import { IGridLayOutInstance } from '../../../../models/dashboard.models';
 import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class NgxDashboardViewerComponent implements OnInit {
     center: { show: true, slideOut: false },
     resizeFn$: new Subject()
   };
-  @Input() dashboardLayout: GridLayOutInstance;
+  @Input() dashboardLayout: IGridLayOutInstance;
   @Input() lang: 'en' | 'ar' = 'en';
 
   constructor(private translationService: TranslationService) {}

@@ -22,7 +22,8 @@ export const translations = {
       OUTER_MARGIN: 'الهامش الخارجي',
       DISABLE_VERTICAL_SCROLL: 'تعطيل التمرير الرأسي',
       DISABLE_HORIZONTAL_SCROLL: 'تعطيل التمرير الأفقي',
-      RTL: 'رتل'
+      RTL: 'رتل',
+      AUTO_HEIGHT: 'Auto Height'
     }
   },
   en: {
@@ -48,7 +49,8 @@ export const translations = {
       OUTER_MARGIN: 'Outer Margin',
       DISABLE_VERTICAL_SCROLL: 'Disable Vertical Scroll',
       DISABLE_HORIZONTAL_SCROLL: 'Disable Horizontal Scroll',
-      RTL: 'Rtl'
+      RTL: 'Rtl',
+      AUTO_HEIGHT: 'Auto Height'
     }
   }
 };

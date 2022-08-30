@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { GridLayOutInstance } from '../models/dashboard.models';
+import {
+  GridLayOutInstance,
+  IGridLayOutInstance
+} from '../models/dashboard.models';
 import { ObservableEventsModel } from '../models/observable-events.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardDesignerService {
-  selectedLayoutEvent$: BehaviorSubject<GridLayOutInstance> =
-    new BehaviorSubject<GridLayOutInstance>(null);
-  dashboardData: GridLayOutInstance = null;
-  dynamicDashboardData: GridLayOutInstance = null;
+  selectedLayoutEvent$: BehaviorSubject<IGridLayOutInstance> =
+    new BehaviorSubject<IGridLayOutInstance>(null);
+  dashboardData: IGridLayOutInstance = null;
+  dynamicDashboardData: IGridLayOutInstance = null;
   isNewLayoutSelected$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
@@ -22,7 +25,7 @@ export class DashboardDesignerService {
 
   constructor() {}
 
-  emitSelectedLayoutEvent(data: GridLayOutInstance) {
+  emitSelectedLayoutEvent(data: IGridLayOutInstance) {
     this.dashboardData = data;
     this.selectedLayoutEvent$.next(data);
   }

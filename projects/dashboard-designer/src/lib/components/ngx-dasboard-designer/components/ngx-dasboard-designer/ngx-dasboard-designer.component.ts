@@ -3,7 +3,10 @@ import { Subject } from 'rxjs';
 import { DashResizeElementEvent } from '../../../../@shared/dashboard-resizer/resize-element-event.interface';
 import { DashResizeElementDirection } from '../../../../@shared/dashboard-resizer/resize-element.enum';
 import { IDashboardWidgetOption } from '../../../../models/dashboard-widget-options.model';
-import { GridLayOutInstance } from '../../../../models/dashboard.models';
+import {
+  GridLayOutInstance,
+  IGridLayOutInstance
+} from '../../../../models/dashboard.models';
 import { DashboardDesignerService } from '../../../../services/dashboard-designer.service';
 import { DashboardIconService } from '../../../../services/dashboard-icon.service';
 import { DashboardLayoutService } from '../../../../services/dashboard-layout.service';
@@ -16,7 +19,7 @@ import { TranslationService } from '../../../../services/translation.service';
 })
 export class NgxDashboardDesignerComponent implements OnInit, OnDestroy {
   @Input() widgetOptions: IDashboardWidgetOption;
-  @Input() editLayoutJSON: GridLayOutInstance;
+  @Input() editLayoutJSON: IGridLayOutInstance;
   @Input() isEditMode: boolean;
   @Input() isSettings: boolean = true;
   public readonly layoutDirection = DashResizeElementDirection;
@@ -75,7 +78,7 @@ export class NgxDashboardDesignerComponent implements OnInit, OnDestroy {
     this._iconsService.registerIcons(icons);
   }
 
-  get getDashboardData(): GridLayOutInstance {
+  get getDashboardData(): IGridLayOutInstance {
     return this.dashboardDesignerService.dashboardData;
   }
 
