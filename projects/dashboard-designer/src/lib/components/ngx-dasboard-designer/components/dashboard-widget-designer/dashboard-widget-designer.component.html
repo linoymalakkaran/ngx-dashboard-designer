@@ -21,7 +21,7 @@
   *ngIf="dashboardLayout.dashboardItems?.length > 0"
   style="width: 2000px"
 >
-  <gridster [options]="dashboardLayout.options">
+  <gridster class="gridster-wrap" [options]="dashboardLayout.options">
     <gridster-item
       class="mgDashGridsterItem"
       [item]="item"
