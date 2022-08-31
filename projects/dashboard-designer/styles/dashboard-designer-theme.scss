@@ -37,6 +37,17 @@
   @import 'app';
 }
 
+#DashboardViewer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: 12px;
+  font-family: 'ADPortsGroup-Regular', 'Droid-Arabic-Kufi', sans-serif;
+
+  @import 'utilities';
+  @import 'fontawesome';
+}
+
 // @font-face {
 //   font-family: 'ADPortsGroup-Regular';
 //   src: url('/assets/dashboard-designer/fonts/ADPortsGroup-Regular.woff2')
