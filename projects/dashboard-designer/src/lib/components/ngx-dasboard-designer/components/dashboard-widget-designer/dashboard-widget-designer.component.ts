@@ -25,14 +25,13 @@ export class DashboardWidgetDesignerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    //   this.itemResize.bind(this))
     this.dashboardDesignerService.selectedLayoutEvent$.subscribe(
       (griditem: GridLayOutInstance) => {
         if (griditem) {
           this.dashboardLayout = griditem;
-          (this.dashboardLayout.options.itemResizeCallback =
-            this.itemResize.bind(this)),
-            // this.activeLayout = griditem;
-            this.ref.detectChanges();
+          this.dashboardLayout.options.itemResizeCallback =
+            this.itemResize.bind(this);
         }
       }
     );
@@ -42,15 +41,8 @@ export class DashboardWidgetDesignerComponent implements OnInit {
     item: GridsterItem,
     itemComponent: GridsterItemComponentInterface
   ): void {
-    itemComponent.gridster.curRowHeight +=
-      (item.cols * 100 - item.rows) / 10000;
     item.width = Math.round(itemComponent.width);
     item.height = Math.round(itemComponent.height);
-
-    console.log('item resize');
-    // if (itemComponent.gridster.curRowHeight > 1) {
-    //     this.unitHeight = itemComponent.gridster.curRowHeight;
-    // }
   }
 
   changedOptions(): void {

@@ -27,7 +27,7 @@
               <option value="horizontalFixed">Horizontal Fixed</option>
             </select>
           </div>
-          <div class="form-row">
+          <!-- <div class="form-row">
             <small> {{ 'DISPLAY_GRID_LINES' | dashTranslate }} </small>
             <select
               aria-label="Display grid lines"
@@ -39,8 +39,8 @@
               <option value="onDrag&Resize">On Drag & Resize</option>
               <option value="none">None</option>
             </select>
-          </div>
-          <div class="form-row">
+          </div> -->
+          <!-- <div class="form-row">
             <small> {{ 'DRAG_ITEMS' | dashTranslate }} </small>
             <input
               type="checkbox"
@@ -57,7 +57,7 @@
               *ngIf="dashboardLayout.options.resizable"
               (ngModelChange)="changedOptions()"
             />
-          </div>
+          </div> -->
           <div class="form-row">
             <small> {{ 'MARGIN' | dashTranslate }} </small>
             <input
@@ -71,14 +71,14 @@
               (ngModelChange)="changedOptions()"
             />
           </div>
-          <div class="form-row">
+          <!-- <div class="form-row">
             <small> {{ 'OUTER_MARGIN' | dashTranslate }} </small>
             <input
               type="checkbox"
               [(ngModel)]="dashboardLayout.options"
               (ngModelChange)="changedOptions()"
             />
-          </div>
+          </div> -->
         </div>
       </accordion-group>
     </accordion>
