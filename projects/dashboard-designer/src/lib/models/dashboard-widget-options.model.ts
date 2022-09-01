@@ -6,6 +6,7 @@ export interface MfeWidgetType {
   componentName: string;
   type: string;
   exposedModule: string;
+  id?:string;
 }
 
 export interface IDashboardWidgetOption {
