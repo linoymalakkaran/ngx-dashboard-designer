@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DirTypes } from 'angular-gridster2';
 import { Subject } from 'rxjs';
 import { IGridLayOutInstance } from '../../../../models/dashboard.models';
 import { TranslationService } from '../../../../services/translation.service';

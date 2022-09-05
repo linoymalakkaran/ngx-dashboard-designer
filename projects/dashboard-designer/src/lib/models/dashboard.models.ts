@@ -1,5 +1,6 @@
 import {
   CompactType,
+  DirTypes,
   DisplayGrid,
   Draggable,
   GridsterConfig,
@@ -61,8 +62,8 @@ export class GridLayOutInstance implements IGridLayOutInstance {
     minItemArea: 1,
     defaultItemCols: 1,
     defaultItemRows: 1,
-    fixedColWidth: 25,
-    fixedRowHeight: 25,
+    fixedColWidth: 20,
+    fixedRowHeight: 20,
     keepFixedHeightInMobile: false,
     keepFixedWidthInMobile: false,
     scrollSensitivity: 10,
@@ -90,7 +91,8 @@ export class GridLayOutInstance implements IGridLayOutInstance {
     displayGrid: DisplayGrid.Always,
     disableWindowResize: false,
     disableWarnings: false,
-    scrollToNewItems: false
+    scrollToNewItems: false,
+    dirType: DirTypes.LTR
   };
 
   layoutName = '';

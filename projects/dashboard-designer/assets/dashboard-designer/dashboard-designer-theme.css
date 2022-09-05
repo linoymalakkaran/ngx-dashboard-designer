@@ -22236,14 +22236,6 @@ a > #DashboardDesigner code {
   /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
   readers do not read off random characters that represent icons */
 }
-#DashboardViewer :root {
-  --bs-primary-rgb: 45, 57, 85;
-  --bs-secondary-rgb: 19, 197, 189;
-  --bs-success-rgb: 88, 239, 38;
-  --bs-info-rgb: 217, 217, 217;
-  --bs-warning-rgb: 253, 207, 39;
-  --bs-danger-rgb: 237, 35, 35;
-}
 #DashboardViewer .makeitFit {
   width: 100% !important;
   height: 100% !important;

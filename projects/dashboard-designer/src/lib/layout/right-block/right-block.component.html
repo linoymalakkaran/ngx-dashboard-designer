@@ -71,14 +71,43 @@
               (ngModelChange)="changedOptions()"
             />
           </div>
+          <div class="form-row">
+            <small> {{ 'GRIDSIZE' | dashTranslate }} </small>
+            <div class="d-flex m-0">
+              <input
+                class="col-10"
+                matInput
+                [(ngModel)]="dashboardLayout.options.fixedColWidth"
+                min="20"
+                max="100"
+                step="1"
+                type="range"
+                placeholder="{{ 'GRIDSIZE' | dashTranslate }}"
+                (change)="changeGridSize(dashboardLayout.options.fixedColWidth)"
+              />
+              <small>({{ dashboardLayout.options.fixedColWidth }})</small>
+            </div>
+          </div>
           <!-- <div class="form-row">
             <small> {{ 'OUTER_MARGIN' | dashTranslate }} </small>
             <input
               type="checkbox"
               [(ngModel)]="dashboardLayout.options"
               (ngModelChange)="changedOptions()"
-            />
+            />   
           </div> -->
+
+          <div class="form-row">
+            <label>Layout Direction</label>
+            <select
+              [(ngModel)]="dashboardLayout.options.dirType"
+              (change)="changeDir(dashboardLayout.options.dirType)"
+              placeholder="Direction"
+            >
+              <option value="ltr">LTR</option>
+              <option value="rtl">RTL</option>
+            </select>
+          </div>
         </div>
       </accordion-group>
     </accordion>

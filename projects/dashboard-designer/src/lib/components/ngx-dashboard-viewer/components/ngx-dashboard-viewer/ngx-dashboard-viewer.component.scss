@@ -34,9 +34,11 @@ body {
   }
 }
 
-.mgDashGridsterItem,
-.display-grid {
-  background: none !important;
+::ng-deep {
+  .mgDashGridsterItem,
+  .display-grid {
+    background: none !important;
+  }
 }
 
 .mgDashGridsterItem.applyAutoHeight {
