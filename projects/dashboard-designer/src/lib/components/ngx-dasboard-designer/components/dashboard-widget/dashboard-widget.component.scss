@@ -40,6 +40,13 @@
   opacity: 0;
   background: #ff000014;
   padding: 0 5px;
+
+  &.btm {
+    right: 16px;
+    left: auto;
+    top: auto;
+    bottom: 2px;
+  }
 }
 
 .dashboard-widget {
