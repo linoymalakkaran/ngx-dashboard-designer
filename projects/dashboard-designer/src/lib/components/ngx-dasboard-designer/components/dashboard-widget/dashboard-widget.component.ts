@@ -31,6 +31,7 @@ export class DashboardWidgetComponent implements OnInit {
   @Input() singleGridBoxItem: SingleGridBoxItem;
   isNewLayoutSelected: boolean;
   isWidgetDragModeDisabled: boolean;
+  showMenu = false;
 
   constructor(
     private ref: ChangeDetectorRef,
@@ -112,6 +113,6 @@ export class DashboardWidgetComponent implements OnInit {
   }
 
   private get icons(): Array<string> {
-    return ['delete-icon', 'drag-icon'];
+    return ['delete-icon', 'drag-icon', 'settings-icon'];
   }
 }

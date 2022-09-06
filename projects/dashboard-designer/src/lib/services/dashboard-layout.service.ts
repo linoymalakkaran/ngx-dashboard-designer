@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { GridType } from 'angular-gridster2';
 import {
   GridLayOutInstance,
   SingleGridBoxItem
@@ -15,7 +16,7 @@ export class DashboardLayoutService {
     const gridItem = new GridLayOutInstance();
     switch (layoutid) {
       case 'new': {
-        layoutJSON = [{ x: 0, y: 0, cols: 1, rows: 1, hasContent: true }];
+        layoutJSON = [{ x: 0, y: 0, cols: 20, rows: 20, hasContent: true }];
         break;
       }
       case 'Layout1': {
@@ -201,6 +202,10 @@ export class DashboardLayoutService {
         //statements;
         layoutJSON = [{ x: 0, y: 0, cols: 1, rows: 1, hasContent: true }];
       }
+    }
+
+    if (layoutid != 'new') {
+      gridItem.options.gridType = GridType.ScrollVertical;
     }
     gridItem.setValue(true, layoutid, layoutid, layoutJSON, null);
     return gridItem;

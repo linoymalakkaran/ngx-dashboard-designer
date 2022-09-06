@@ -16,8 +16,12 @@
   </div> -->
 </div>
 
-<div class="inheritSize" *ngIf="dashboardLayout.dashboardItems?.length > 0">
-  <gridster [options]="dashboardLayout.options">
+<div
+  class="inheritSize"
+  *ngIf="dashboardLayout.dashboardItems?.length > 0"
+  style="width: 2000px"
+>
+  <gridster class="gridster-wrap" [options]="dashboardLayout.options">
     <gridster-item
       class="mgDashGridsterItem"
       [item]="item"

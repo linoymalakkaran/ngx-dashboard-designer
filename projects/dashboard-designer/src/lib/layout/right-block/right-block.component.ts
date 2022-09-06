@@ -28,6 +28,21 @@ export class RightBlockComponent implements OnInit {
     );
   }
 
+  changeDir(e) {
+    if (e == 'rtl') {
+      document.body.setAttribute('dir', 'rtl');
+    } else {
+      document.body.removeAttribute('dir');
+    }
+    this.changedOptions();
+  }
+
+  changeGridSize(val): void {
+    this.dashboardLayout.options.fixedRowHeight = val;
+    this.dashboardLayout.options.fixedColWidth = val;
+    this.changedOptions();
+  }
+
   changedOptions(): void {
     if (
       this.dashboardLayout.options.api &&
