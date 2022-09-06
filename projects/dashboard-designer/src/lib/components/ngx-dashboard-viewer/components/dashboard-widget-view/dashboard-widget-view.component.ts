@@ -50,7 +50,18 @@ export class DashboardWidgetViewComponent implements OnInit {
               this.singleGridBoxItem.y == mfeConfig.data?.location.y
             ) {
               this.loadMfeWidget(mfeConfig?.data);
+            } else {
+              console.error(
+                'x,y location is not matching...! for loading widget.'
+              );
+              console.error(
+                'current x,y location is, ',
+                mfeConfig.data?.location.x,
+                mfeConfig.data?.location.y
+              );
             }
+          } else {
+            console.error('Location missing...! for loading widget.');
           }
         }
       }
