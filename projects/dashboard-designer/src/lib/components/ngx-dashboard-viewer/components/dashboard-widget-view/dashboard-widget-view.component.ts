@@ -51,14 +51,13 @@ export class DashboardWidgetViewComponent implements OnInit {
             ) {
               this.loadMfeWidget(mfeConfig?.data);
             } else {
-              console.error(
+              console.info(
                 'x,y location is not matching...! for loading widget.'
               );
-              console.error(
-                'current x,y location is, ',
-                mfeConfig.data?.location.x,
-                mfeConfig.data?.location.y
-              );
+              console.info('current x,y location is, ', {
+                x: mfeConfig.data?.location.x,
+                y: mfeConfig.data?.location.y
+              });
             }
           } else {
             console.error('Location missing...! for loading widget.');
