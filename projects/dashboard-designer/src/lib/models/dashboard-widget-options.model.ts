@@ -7,6 +7,7 @@ export interface MfeWidgetType {
   type: string;
   exposedModule: string;
   isMfeWidget: boolean;
+  id?: string;
 }
 
 export interface IDashboardWidgetOption {
