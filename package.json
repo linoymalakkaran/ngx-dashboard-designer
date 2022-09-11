@@ -78,12 +78,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/linoymalakkaran/ngx-dashboard-designer"
+    "url": "https://github.com/linoymalakkaran/ngx-dashboard-designer/tree/angular-v13"
   },
   "keywords": [
     "angular v13",
     "gridster2",
-    "dashboard"
+    "dashboard",
+    "@angular-architects/module-federation"
   ],
   "author": "Linoy Pappachan Malakkaran",
   "commitlint": {
