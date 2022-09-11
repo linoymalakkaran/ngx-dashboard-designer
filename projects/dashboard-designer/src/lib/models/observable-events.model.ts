@@ -10,7 +10,7 @@ export enum MfeEventsTypes {
 }
 
 export interface IMfeOutputModel {
-  loadWidgets?: (data: ObservableEventsModel) => boolean;
+  loadWidgets?: (data: ObservableEventsModel) => void;
 }
 
 export interface IMfeInputModel {

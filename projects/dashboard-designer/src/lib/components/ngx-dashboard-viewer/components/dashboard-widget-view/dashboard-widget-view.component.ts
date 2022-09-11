@@ -43,8 +43,11 @@ export class DashboardWidgetViewComponent<C = any>
     gridData: {},
     getGridInstance: () => {}
   };
+  // outputs: IMfeOutputModel = {
+  //   loadWidget: (data: ObservableEventsModel) => this.eventsHandler(data)
+  // };
   outputs = {
-    loadWidget: (data: ObservableEventsModel): void => this.eventsHandler(data)
+    loadWidget: (data: ObservableEventsModel) => this.eventsHandler(data)
   };
 
   constructor(
@@ -146,7 +149,7 @@ export class DashboardWidgetViewComponent<C = any>
     };
   }
 
-  eventsHandler(eventData: ObservableEventsModel) {
+  eventsHandler(eventData: ObservableEventsModel): void {
     if (eventData.data) {
       switch (eventData.eventsType) {
         case MfeEventsTypes.LOAD_WIDGET: {
