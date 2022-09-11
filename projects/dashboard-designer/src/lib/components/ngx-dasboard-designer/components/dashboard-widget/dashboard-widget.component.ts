@@ -4,7 +4,8 @@ import {
   ViewContainerRef,
   Input,
   ChangeDetectorRef,
-  OnInit
+  OnInit,
+  OnDestroy
 } from '@angular/core';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
@@ -15,13 +16,16 @@ import {
 import { SingleGridBoxItem } from '../../../../models/dashboard.models';
 import { DashboardDesignerService } from '../../../../services/dashboard-designer.service';
 import { DashboardIconService } from '../../../../services/dashboard-icon.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'dashboard-widget',
   templateUrl: './dashboard-widget.component.html',
   styleUrls: ['./dashboard-widget.component.scss']
 })
-export class DashboardWidgetComponent implements OnInit {
+export class DashboardWidgetComponent implements OnInit, OnDestroy {
+  private _unsubscribeAll$ = new Subject<any>();
   @Input() widgetOptions: IDashboardWidgetOption;
   @ViewChild('vc', { read: ViewContainerRef, static: false })
   viewContainer: ViewContainerRef | undefined;
@@ -42,19 +46,19 @@ export class DashboardWidgetComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dashboardDesignerService.isNewLayoutSelected$.subscribe(
-      (isNewLayoutSelected: boolean) => {
+    this.dashboardDesignerService.isNewLayoutSelected$
+      .pipe(takeUntil(this._unsubscribeAll$))
+      .subscribe((isNewLayoutSelected: boolean) => {
         this.isNewLayoutSelected = isNewLayoutSelected;
-      }
-    );
-    this.dashboardDesignerService.isWidgetDragModeEnabled$.subscribe(
-      (isWidgetDragModeEnabled: boolean) => {
+      });
+    this.dashboardDesignerService.isWidgetDragModeEnabled$
+      .pipe(takeUntil(this._unsubscribeAll$))
+      .subscribe((isWidgetDragModeEnabled: boolean) => {
         this.isWidgetDragModeDisabled = isWidgetDragModeEnabled;
         if (!this.isWidgetDragModeDisabled) {
           this.deleteWidget();
         }
-      }
-    );
+      });
     this.applyWideget();
   }
 
@@ -75,9 +79,9 @@ export class DashboardWidgetComponent implements OnInit {
     const ref = this.viewContainer.createComponent(
       m[widgetOption.componentName]
     );
-    const compInstance: any = ref.instance;
-    this.singleGridBoxItem['compInstance'] = compInstance;
-    setInterval(() => {
+    //const compInstance: any = ref.instance;
+    //this.singleGridBoxItem['compInstance'] = compInstance;
+    setTimeout(() => {
       this.singleGridBoxItem.widgetOption = widgetOption;
       this.ref.markForCheck();
     }, 1000);
@@ -96,7 +100,7 @@ export class DashboardWidgetComponent implements OnInit {
   deleteWidget() {
     if (this.singleGridBoxItem.widgetOption != null && this.viewContainer) {
       this.selectedWidgetOption = null;
-      this.singleGridBoxItem['compInstance'] = null;
+      //this.singleGridBoxItem['compInstance'] = null;
       this.viewContainer.remove();
       this.isWidgetDropped = false;
       setInterval(() => {
@@ -114,5 +118,10 @@ export class DashboardWidgetComponent implements OnInit {
 
   private get icons(): Array<string> {
     return ['delete-icon', 'drag-icon', 'settings-icon'];
+  }
+
+  ngOnDestroy() {
+    this._unsubscribeAll$.next();
+    this._unsubscribeAll$.complete();
   }
 }

@@ -71,6 +71,7 @@ export const layoutDefaultData: IGridLayOutInstance = {
     {
       x: 0,
       y: 0,
+      id: 0,
       cols: 3,
       rows: 1,
       hasContent: true,
@@ -79,8 +80,9 @@ export const layoutDefaultData: IGridLayOutInstance = {
         displayName: 'Bar Chart',
         icon: 'bar-chart',
         description: 'Bar Chart',
-        hostUrl:
-          'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+        // hostUrl:
+        //   'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+        hostUrl: 'http://localhost:5203/remoteEntry.js',
         componentName: 'BarchartWidgetComponent',
         type: 'module',
         exposedModule: './BarChartWidget'
@@ -89,6 +91,7 @@ export const layoutDefaultData: IGridLayOutInstance = {
     {
       x: 0,
       y: 1,
+      id: 1,
       cols: 1,
       rows: 2,
       hasContent: true,
@@ -97,8 +100,9 @@ export const layoutDefaultData: IGridLayOutInstance = {
         displayName: 'Bar Chart',
         icon: 'bar-chart',
         description: 'Bar Chart',
-        hostUrl:
-          'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+        // hostUrl:
+        //   'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+        hostUrl: 'http://localhost:5203/remoteEntry.js',
         componentName: 'BarchartWidgetComponent',
         type: 'module',
         exposedModule: './BarChartWidget'
@@ -107,6 +111,7 @@ export const layoutDefaultData: IGridLayOutInstance = {
     {
       x: 1,
       y: 1,
+      id: 2,
       cols: 1,
       rows: 2,
       hasContent: true
@@ -114,6 +119,7 @@ export const layoutDefaultData: IGridLayOutInstance = {
     {
       x: 2,
       y: 1,
+      id: 3,
       cols: 1,
       rows: 2,
       hasContent: true

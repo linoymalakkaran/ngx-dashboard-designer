@@ -23,6 +23,7 @@ export interface SingleGridBoxItem {
   rows: number;
   hasContent: boolean;
   widgetOption?: MfeWidgetType;
+  id: number;
   [key: string]: any;
 }
 

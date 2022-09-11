@@ -106,7 +106,10 @@ export class NgxDashboardDesignerComponent implements OnInit, OnDestroy {
   onCreateNewLayoutClick(layoutid) {
     this.dashboardDesignerService.isWidgetDragModeEnabled$.next(false);
     let layoutJSON: GridLayOutInstance =
-      this.dashboardLayoutService.getLayoutconfigByLayoutId(layoutid);
+      this.dashboardLayoutService.getLayoutconfigByLayoutId(
+        layoutid,
+        this.dashboardDesignerService.getNewDashboardId()
+      );
     if (layoutid == 'new') {
       this.dashboardDesignerService.isNewLayoutSelected$.next(true);
       if (this.dashboardDesignerService.dynamicDashboardData == null) {

@@ -36,7 +36,7 @@ export class DashDesignerComponent {
 
   saveLayout() {
     const layout = this.ngxDashboardDesigner.getDashboardData;
-    this.dashboardService.layoutData = layout;
+    this.dashboardService.layoutInfo = JSON.parse(JSON.stringify(layout));
     alert(
       'Saved successfully, please click on viewer link to see the preview.'
     );

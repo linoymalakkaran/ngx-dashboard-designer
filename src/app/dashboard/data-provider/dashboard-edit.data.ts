@@ -71,6 +71,7 @@ export const editLayoutJSON: IGridLayOutInstance = {
     {
       x: 0,
       y: 0,
+      id: 0,
       cols: 3,
       rows: 1,
       hasContent: true,
@@ -89,6 +90,7 @@ export const editLayoutJSON: IGridLayOutInstance = {
     {
       x: 0,
       y: 1,
+      id: 1,
       cols: 1,
       rows: 2,
       hasContent: true,
@@ -107,6 +109,7 @@ export const editLayoutJSON: IGridLayOutInstance = {
     {
       x: 1,
       y: 1,
+      id: 2,
       cols: 1,
       rows: 2,
       hasContent: true
@@ -114,6 +117,7 @@ export const editLayoutJSON: IGridLayOutInstance = {
     {
       x: 2,
       y: 1,
+      id: 3,
       cols: 1,
       rows: 2,
       hasContent: true

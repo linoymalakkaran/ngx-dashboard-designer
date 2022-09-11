@@ -8,3 +8,12 @@ export enum MfeEventsTypes {
   GENERIC = 'GENERIC',
   INITIAL_LOAD_WIDGET = 'INITIAL_LOAD_WIDGET'
 }
+
+export interface IMfeOutputModel {
+  loadWidgets?: (data: ObservableEventsModel) => boolean;
+}
+
+export interface IMfeInputModel {
+  gridData?: {};
+  getGridInstance: Function;
+}

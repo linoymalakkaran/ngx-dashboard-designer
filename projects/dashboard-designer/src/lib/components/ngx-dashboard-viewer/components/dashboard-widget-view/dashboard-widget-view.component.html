@@ -1,3 +1,9 @@
-<ng-container>
+<!-- <ng-container>
   <ng-container #vc></ng-container>
-</ng-container>
+</ng-container> -->
+<dash-dynamic
+  [dashDynamicComponent]="componentInstance"
+  [dashDynamicInputs]="inputs"
+  [dashDynamicOutputs]="outputs"
+  (dashDynamicCreated)="onComponentLoaed($event)"
+></dash-dynamic>

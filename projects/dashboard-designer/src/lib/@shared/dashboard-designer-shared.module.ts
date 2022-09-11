@@ -10,6 +10,7 @@ import { DashboardIconService } from '../services/dashboard-icon.service';
 import { TranslationService } from '../services/translation.service';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { DashResizeElementModule } from './dashboard-resizer/resize-element.module';
+import { DynamicModule } from './dash-dynamic-loader';
 
 @NgModule({
   declarations: [DashboardTranslatePipe],
@@ -21,7 +22,8 @@ import { DashResizeElementModule } from './dashboard-resizer/resize-element.modu
     DashResizeElementModule,
     DragDropModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    DynamicModule
   ],
   exports: [
     GridsterModule,
@@ -32,7 +34,8 @@ import { DashResizeElementModule } from './dashboard-resizer/resize-element.modu
     DragDropModule,
     FormsModule,
     DashboardTranslatePipe,
-    ModalModule
+    ModalModule,
+    DynamicModule
   ],
   providers: [TranslationService, DashboardIconService, BsModalService]
 })

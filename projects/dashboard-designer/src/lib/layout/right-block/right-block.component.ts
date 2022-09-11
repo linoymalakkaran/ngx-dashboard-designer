@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { GridLayOutInstance } from '../../models';
 import { DashboardDesignerService } from '../../services/dashboard-designer.service';
 import { DashboardIconService } from '../../services/dashboard-icon.service';
@@ -8,7 +10,8 @@ import { DashboardIconService } from '../../services/dashboard-icon.service';
   templateUrl: './right-block.component.html',
   styleUrls: ['./right-block.component.scss']
 })
-export class RightBlockComponent implements OnInit {
+export class RightBlockComponent implements OnInit, OnDestroy {
+  private _unsubscribeAll$ = new Subject<any>();
   dashboardLayout: GridLayOutInstance;
 
   constructor(
@@ -19,13 +22,13 @@ export class RightBlockComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dashboardDesignerService.selectedLayoutEvent$.subscribe(
-      (griditem: GridLayOutInstance) => {
+    this.dashboardDesignerService.selectedLayoutEvent$
+      .pipe(takeUntil(this._unsubscribeAll$))
+      .subscribe((griditem: GridLayOutInstance) => {
         if (griditem) {
           this.dashboardLayout = griditem;
         }
-      }
-    );
+      });
   }
 
   changeDir(e) {
@@ -54,5 +57,10 @@ export class RightBlockComponent implements OnInit {
 
   private get icons(): Array<string> {
     return ['down-chevron'];
+  }
+
+  ngOnDestroy() {
+    this._unsubscribeAll$.next();
+    this._unsubscribeAll$.complete();
   }
 }

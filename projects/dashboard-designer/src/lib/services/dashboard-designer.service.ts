@@ -12,7 +12,9 @@ import { ObservableEventsModel } from '../models/observable-events.model';
 export class DashboardDesignerService {
   selectedLayoutEvent$: BehaviorSubject<IGridLayOutInstance> =
     new BehaviorSubject<IGridLayOutInstance>(null);
+  //this will be updated with latest dashboard config
   dashboardData: IGridLayOutInstance = null;
+  //this is for custom dashboard layout option('+' button)
   dynamicDashboardData: IGridLayOutInstance = null;
   isNewLayoutSelected$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
@@ -28,6 +30,16 @@ export class DashboardDesignerService {
   emitSelectedLayoutEvent(data: IGridLayOutInstance) {
     this.dashboardData = data;
     this.selectedLayoutEvent$.next(data);
+  }
+
+  getNewDashboardId(): number {
+    let id = -1;
+    this.dynamicDashboardData?.dashboardItems?.forEach(item => {
+      if (id < item.id) {
+        id = item.id;
+      }
+    });
+    return ++id;
   }
 
   removeDashboardItem(item) {
