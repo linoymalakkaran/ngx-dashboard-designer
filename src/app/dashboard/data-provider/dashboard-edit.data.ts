@@ -75,17 +75,19 @@ export const editLayoutJSON: IGridLayOutInstance = {
       cols: 3,
       rows: 1,
       hasContent: true,
-      widgetOption: {
-        isMfeWidget: true,
-        displayName: 'Bar Chart',
-        icon: 'bar-chart',
-        description: 'Bar Chart',
-        hostUrl:
-          'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
-        componentName: 'BarchartWidgetComponent',
-        type: 'module',
-        exposedModule: './BarChartWidget'
-      }
+      widgetOptions: [
+        {
+          isMfeWidget: true,
+          displayName: 'Bar Chart',
+          icon: 'bar-chart',
+          description: 'Bar Chart',
+          hostUrl:
+            'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+          componentName: 'BarchartWidgetComponent',
+          type: 'module',
+          exposedModule: './BarChartWidget'
+        }
+      ]
     },
     {
       x: 0,
@@ -94,17 +96,19 @@ export const editLayoutJSON: IGridLayOutInstance = {
       cols: 1,
       rows: 2,
       hasContent: true,
-      widgetOption: {
-        isMfeWidget: true,
-        displayName: 'Bar Chart',
-        icon: 'bar-chart',
-        description: 'Bar Chart',
-        hostUrl:
-          'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
-        componentName: 'BarchartWidgetComponent',
-        type: 'module',
-        exposedModule: './BarChartWidget'
-      }
+      widgetOptions: [
+        {
+          isMfeWidget: true,
+          displayName: 'Bar Chart',
+          icon: 'bar-chart',
+          description: 'Bar Chart',
+          hostUrl:
+            'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+          componentName: 'BarchartWidgetComponent',
+          type: 'module',
+          exposedModule: './BarChartWidget'
+        }
+      ]
     },
     {
       x: 1,

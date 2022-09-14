@@ -24,7 +24,7 @@ export function ngxDashboardUIComponentGenerator(
       move(normalize(`/${options.path}/${strings.dasherize(options.name)}`))
     ]);
     return chain([
-      //externalSchematic('@schematics/angular', 'component', options),
+      // externalSchematic('@schematics/angular', 'component', options),
       mergeWith(templateSource, MergeStrategy.Overwrite)
     ]);
   };

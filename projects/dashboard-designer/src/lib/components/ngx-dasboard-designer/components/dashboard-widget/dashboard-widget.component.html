@@ -5,14 +5,18 @@
   (cdkDropListDropped)="drop($event)"
 >
   <div class="sizeIndicator">
-    <small>Width: {{ singleGridBoxItem?.width }}</small>
-    <small>Height: {{ singleGridBoxItem?.height }}</small>
+    <small>{{ 'WIDTH' | dashTranslate }}: {{ singleGridBoxItem?.width }}</small>
+    <small
+      >{{ 'HEIGHT' | dashTranslate }}: {{ singleGridBoxItem?.height }}</small
+    >
   </div>
-  <div>ID: {{ singleGridBoxItem.id }}</div>
+  <div>{{ 'ID' | dashTranslate }}: {{ singleGridBoxItem.id }}</div>
 
   <div class="sizeIndicator btm">
-    <small>Width: {{ singleGridBoxItem?.width }}</small>
-    <small>Height: {{ singleGridBoxItem?.height }}</small>
+    <small>{{ 'WIDTH' | dashTranslate }}: {{ singleGridBoxItem?.width }}</small>
+    <small
+      >{{ 'HEIGHT' | dashTranslate }}: {{ singleGridBoxItem?.height }}</small
+    >
   </div>
   <div class="widgetMenu" (click)="$event.stopPropagation()">
     <nav>
@@ -32,12 +36,20 @@
             />
           </span>
         </li>
+        <li>
+          <span>{{ 'MULTI_DRAG_WIDGET' | dashTranslate }} </span>
+          <span
+            ><input type="checkbox" [(ngModel)]="isMultipleWidgetDragEnabled" />
+          </span>
+        </li>
       </ul>
     </nav>
   </div>
 
   <div class="card-header d-flex p-2">
-    <div class="card-title col-11">{{ selectedWidgetOption?.displayName }}</div>
+    <div class="card-title col-11">
+      {{ selectedWidgetOptions[0]?.displayName }}
+    </div>
     <div class="card-actions col-1 row justify-content-end">
       <ng-container *ngIf="isWidgetDropped">
         <a
@@ -77,9 +89,10 @@
         <span *ngIf="!isWidgetDropped">{{
           'DRAG_WIDGET_HERE' | dashTranslate
         }}</span>
-        <!-- <div class="form-row">
-          <small> {{ 'AUTO_HEIGHT' | dashTranslate }} </small>
-          <input type="checkbox" [(ngModel)]="singleGridBoxItem.autoHeight" />
+        <!-- <div
+          *ngFor="let item of numSequence(numberOfDragableItems); let i = index"
+        >
+          <ng-container #vc></ng-container>
         </div> -->
         <ng-container #vc></ng-container>
       </div>

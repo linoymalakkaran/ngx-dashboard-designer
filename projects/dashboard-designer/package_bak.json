@@ -1,6 +1,6 @@
 {
   "name": "ngx-dashboard-designer",
-  "version": "2.0.21",
+  "version": "2.0.20",
   "peerDependencies": {
     "ngx-bootstrap": "^6.2.0",
     "angular-gridster2": "^12.1.1",
@@ -30,6 +30,11 @@
     "build:sass": "sass styles/dashboard-designer-theme.scss assets/dashboard-designer-theme.css",
     "build:schematics": "tsc -p tsconfig.schematics.json",
     "postbuild:schematics": "copyfiles schematics/collection.json schematics/*/schema.json schematics/*/files/** ../../../dist/dashboard-designer/"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+     "registry-verdaccio": "http://localhost:4873",
+     "registry-npm": "https://registry.npmjs.org/"
   },
   "schematics": "./schematics/collection.json",
   "exports": {

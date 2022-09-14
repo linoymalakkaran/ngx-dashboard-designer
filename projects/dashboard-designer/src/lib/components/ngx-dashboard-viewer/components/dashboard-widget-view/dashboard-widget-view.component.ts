@@ -38,7 +38,7 @@ export class DashboardWidgetViewComponent<C = any>
   private _unsubscribeAll$ = new Subject<any>();
   @Input() singleGridBoxItem: SingleGridBoxItem;
   @Input() lang: 'en' | 'ar' = 'en';
-  componentInstance: Type<C> | null;
+  componentInstances: Type<C>[] | null = [];
   inputs: IMfeInputModel = {
     gridData: {},
     getGridInstance: () => {}
@@ -100,8 +100,10 @@ export class DashboardWidgetViewComponent<C = any>
   }
 
   applyWideget() {
-    if (this.singleGridBoxItem.widgetOption) {
-      this.loadMfeWidget(this.singleGridBoxItem.widgetOption);
+    if (this.singleGridBoxItem.widgetOptions) {
+      this.singleGridBoxItem.widgetOptions.forEach(widgetOption => {
+        this.loadMfeWidget(widgetOption);
+      });
     }
   }
 
@@ -116,7 +118,7 @@ export class DashboardWidgetViewComponent<C = any>
       exposedModule: widgetOption.exposedModule
     });
 
-    this.componentInstance = moduleRef[widgetOption.componentName];
+    this.componentInstances.push(moduleRef[widgetOption.componentName]);
 
     //don't remove'
     // @deprecated
@@ -130,7 +132,7 @@ export class DashboardWidgetViewComponent<C = any>
     //   });
     // });
     setInterval(() => {
-      this.singleGridBoxItem.widgetOption = widgetOption;
+      // this.singleGridBoxItem.widgetOptions.push(widgetOption);
       this.ref.markForCheck();
     }, 1000);
   }

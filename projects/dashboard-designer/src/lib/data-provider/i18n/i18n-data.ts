@@ -24,7 +24,11 @@ export const translations = {
       DISABLE_VERTICAL_SCROLL: 'تعطيل التمرير الرأسي',
       DISABLE_HORIZONTAL_SCROLL: 'تعطيل التمرير الأفقي',
       RTL: 'رتل',
-      AUTO_HEIGHT: 'Auto Height'
+      AUTO_HEIGHT: 'ارتفاع تلقائي',
+      MULTI_DRAG_WIDGET: 'تم تمكين السحب المتعدد',
+      WIDTH: 'عرض',
+      HEIGHT: 'ارتفاع',
+      ID: 'هوية شخصية'
     }
   },
   en: {
@@ -52,7 +56,11 @@ export const translations = {
       DISABLE_VERTICAL_SCROLL: 'Disable Vertical Scroll',
       DISABLE_HORIZONTAL_SCROLL: 'Disable Horizontal Scroll',
       RTL: 'Rtl',
-      AUTO_HEIGHT: 'Auto Height'
+      AUTO_HEIGHT: 'Auto Height',
+      MULTI_DRAG_WIDGET: 'Multi Drag Enabled',
+      WIDTH: 'Width',
+      HEIGHT: 'Height',
+      ID: 'ID'
     }
   }
 };
