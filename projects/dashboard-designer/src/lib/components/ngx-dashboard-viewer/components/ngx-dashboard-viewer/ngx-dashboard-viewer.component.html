@@ -1,13 +1,14 @@
 <div id="DashboardViewer" class="inheritSize">
   <div class="inheritSize" *ngIf="dashboardLayout.dashboardItems?.length > 0">
-    <gridster
-      [ngClass]="{ applyAutoHeight: dashboardLayout?.properties?.autoHeight }"
-      [options]="dashboardLayout.options"
-    >
+    <gridster [options]="dashboardLayout.options">
       <gridster-item
         class="mgDashGridsterItem"
         [item]="item"
         *ngFor="let item of dashboardLayout.dashboardItems"
+        [ngClass]="{
+          applyAutoHeight: item?.autoHeight,
+          enableMultiitem: item.isMultipleWidgetDragEnabled
+        }"
       >
         <dashboard-widget-view
           [singleGridBoxItem]="item"

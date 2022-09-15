@@ -39,8 +39,20 @@ body {
   .display-grid {
     background: none !important;
   }
+
+  .mgDashGridsterItem.enableMultiitem {
+    .widget-wrapper {
+      height: auto !important;
+    }
+
+    overflow: auto !important;
+  }
 }
 
 .mgDashGridsterItem.applyAutoHeight {
   height: auto !important;
+}
+
+.mgDashGridsterItem.enableMultiitem {
+  overflow: auto !important;
 }

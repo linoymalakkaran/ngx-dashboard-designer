@@ -39,7 +39,11 @@
         <li>
           <span>{{ 'MULTI_DRAG_WIDGET' | dashTranslate }} </span>
           <span
-            ><input type="checkbox" [(ngModel)]="isMultipleWidgetDragEnabled" />
+            ><input
+              type="checkbox"
+              (change)="enableMultiwidgtDrop($event)"
+              [(ngModel)]="isMultipleWidgetDragEnabled"
+            />
           </span>
         </li>
       </ul>
