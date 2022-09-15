@@ -1,10 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  Input,
-  OnDestroy,
-  OnInit
-} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import {
   GridsterItem,
   GridsterItemComponentInterface
@@ -28,13 +22,9 @@ export class DashboardWidgetDesignerComponent implements OnInit, OnDestroy {
   @Input() widgetOptions?: IDashboardWidgetOption;
   dashboardLayout: IGridLayOutInstance;
 
-  constructor(
-    private dashboardDesignerService: DashboardDesignerService,
-    private ref: ChangeDetectorRef
-  ) {}
+  constructor(private dashboardDesignerService: DashboardDesignerService) {}
 
   ngOnInit(): void {
-    //   this.itemResize.bind(this))
     this.dashboardDesignerService.selectedLayoutEvent$
       .pipe(takeUntil(this._unsubscribeAll$))
       .subscribe((griditem: GridLayOutInstance) => {
@@ -44,10 +34,6 @@ export class DashboardWidgetDesignerComponent implements OnInit, OnDestroy {
             this.itemResize.bind(this);
         }
       });
-  }
-
-  trackBy(index: number, item: GridsterItem): number {
-    return item.id;
   }
 
   public itemResize(
@@ -66,23 +52,6 @@ export class DashboardWidgetDesignerComponent implements OnInit, OnDestroy {
       this.dashboardLayout.options.api.optionsChanged();
     }
   }
-
-  // removeItem($event: MouseEvent | TouchEvent, item): void {
-  //   $event.preventDefault();
-  //   $event.stopPropagation();
-  //   this.dashboardLayout.dashboardItems.splice(this.gridBoxItemList.indexOf(item), 1);
-  // }
-
-  // addItem(): void {
-  //   this.dashboardLayout.dashboardItems.push({
-  //     x: 0,
-  //     y: 0,
-  //     cols: 1,
-  //     rows: 1,
-  //     id: this.dashboardLayout.dashboardItems.length,
-  //     hasContent: false
-  //   });
-  // }
 
   ngOnDestroy() {
     this._unsubscribeAll$.next();

@@ -105,7 +105,7 @@ export class NgxDashboardDesignerComponent implements OnInit, OnDestroy {
 
   onCreateNewLayoutClick(layoutid) {
     this.dashboardDesignerService.isWidgetDragModeEnabled$.next(false);
-    let layoutJSON: GridLayOutInstance =
+    let layoutJSON: IGridLayOutInstance =
       this.dashboardLayoutService.getLayoutconfigByLayoutId(
         layoutid,
         this.dashboardDesignerService.getNewDashboardId()
@@ -114,15 +114,20 @@ export class NgxDashboardDesignerComponent implements OnInit, OnDestroy {
       this.dashboardDesignerService.isNewLayoutSelected$.next(true);
       if (this.dashboardDesignerService.dynamicDashboardData == null) {
         this.dashboardDesignerService.dynamicDashboardData = layoutJSON;
+        this.dashboardDesignerService.emitSelectedLayoutEvent(layoutJSON);
       } else {
-        this.dashboardDesignerService.dynamicDashboardData.dashboardItems =
+        layoutJSON.dashboardItems =
           this.dashboardDesignerService.dynamicDashboardData.dashboardItems.concat(
             layoutJSON.dashboardItems
           );
+        this.dashboardDesignerService.dynamicDashboardData = JSON.parse(
+          JSON.stringify(layoutJSON)
+        );
       }
-      this.dashboardDesignerService.emitSelectedLayoutEvent(
-        this.dashboardDesignerService.dynamicDashboardData
-      );
+      this.dashboardDesignerService.emitSelectedLayoutEvent(layoutJSON);
+      // this.dashboardDesignerService.emitSelectedLayoutEvent(
+      //   this.dashboardDesignerService.dynamicDashboardData
+      // );
     } else {
       this.dashboardDesignerService.isNewLayoutSelected$.next(false);
       this.dashboardDesignerService.dynamicDashboardData = null;
@@ -135,6 +140,8 @@ export class NgxDashboardDesignerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.dashboardDesignerService.emitSelectedLayoutEvent(null);
+    this.dashboardDesignerService.dynamicDashboardData = null;
     this.layout.resizeFn$.complete();
   }
 }

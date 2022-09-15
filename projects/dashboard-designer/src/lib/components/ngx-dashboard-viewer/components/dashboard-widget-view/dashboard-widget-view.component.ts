@@ -59,7 +59,7 @@ export class DashboardWidgetViewComponent<C = any>
 
   ngOnInit(): void {
     this.dashboardDesignerService.dynamicWidgetLoadEvent$
-      .pipe(takeUntil(this._unsubscribeAll$))
+      // .pipe(takeUntil(this._unsubscribeAll$))
       .subscribe((mfeConfig: ObservableEventsModel) => {
         if (
           mfeConfig?.data &&

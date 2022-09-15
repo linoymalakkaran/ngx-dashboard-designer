@@ -29,7 +29,7 @@ export class DashboardDesignerService {
 
   emitSelectedLayoutEvent(data: IGridLayOutInstance) {
     this.dashboardData = data;
-    this.selectedLayoutEvent$.next(data);
+    this.selectedLayoutEvent$.next(this.dashboardData);
   }
 
   getNewDashboardId(): number {

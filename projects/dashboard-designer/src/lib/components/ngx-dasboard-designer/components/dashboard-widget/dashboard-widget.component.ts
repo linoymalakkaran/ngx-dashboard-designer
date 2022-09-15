@@ -28,24 +28,20 @@ import { Subject } from 'rxjs';
   templateUrl: './dashboard-widget.component.html',
   styleUrls: ['./dashboard-widget.component.scss']
 })
-// AfterViewInit
 export class DashboardWidgetComponent implements OnInit, OnDestroy {
   private _unsubscribeAll$ = new Subject<any>();
   @Input() widgetOptions: IDashboardWidgetOption;
   @ViewChild('vc', { read: ViewContainerRef, static: false })
   viewContainer: ViewContainerRef | undefined;
-  // @ViewChildren('vc', { read: ViewContainerRef })
-  // viewContainerRefs: QueryList<ViewContainerRef>;
   widgetOptionDragged: MfeWidgetType[];
   isWidgetDropped: boolean = false;
   selectedWidgetOptions: MfeWidgetType[] = [];
   @Input() singleGridBoxItem: SingleGridBoxItem;
   isNewLayoutSelected: boolean;
-  isWidgetDragModeDisabled: boolean;
+  isWidgetDragModeDisabled: boolean = false;
   showMenu = false;
   @Input() numberOfDragableItems: number = 5;
   isMultipleWidgetDragEnabled: boolean = false;
-  // viewContainerRefItems: ViewContainerRef[];
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
@@ -56,7 +52,10 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if (!this.singleGridBoxItem.widgetOptions) {
+    if (
+      this.singleGridBoxItem.widgetOptions == null ||
+      this.singleGridBoxItem.widgetOptions == undefined
+    ) {
       this.singleGridBoxItem.widgetOptions = [];
     }
     this._dashboardDesignerService.isNewLayoutSelected$
@@ -75,16 +74,8 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
     this.applyWideget();
   }
 
-  // ngAfterViewInit(): void {
-  //   this.viewContainerRefItems = this.viewContainerRefs.toArray();
-  // }
-
-  // numSequence(n: number): Array<number> {
-  //   return Array(n);
-  // }
-
   applyWideget() {
-    if (this.singleGridBoxItem.widgetOptions) {
+    if (this.singleGridBoxItem.widgetOptions?.length > 0) {
       this.selectedWidgetOptions = JSON.parse(
         JSON.stringify(this.singleGridBoxItem.widgetOptions)
       );
@@ -95,29 +86,6 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
     }
   }
 
-  // getContainerRef(): ViewContainerRef {
-  //   let container: ViewContainerRef = null;
-  //   this.viewContainerRefItems.some((viewContainer: ViewContainerRef) => {
-  //     return this.isViewContainerHasWidget(viewContainer, container);
-  //   });
-  //   if (!container) {
-  //     container = this.viewContainerRefItems[0];
-  //   }
-  //   return container;
-  // }
-
-  // isViewContainerHasWidget(
-  //   viewContainer: ViewContainerRef,
-  //   container: ViewContainerRef
-  // ): boolean {
-  //   if (viewContainer.length == 1) {
-  //     return false;
-  //   } else {
-  //     container = viewContainer;
-  //     return true;
-  //   }
-  // }
-
   async loadMfeWidget(
     widgetOption: MfeWidgetType,
     isWidgetOptionNeedsToPush = true
@@ -127,19 +95,14 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
       remoteEntry: widgetOption.hostUrl,
       exposedModule: widgetOption.exposedModule
     });
-    // const containerToLoadWidget: ViewContainerRef = this.getContainerRef();
-    // const ref = containerToLoadWidget.createComponent(
-    //   m[widgetOption.componentName]
-    // );
-    const ref = this.viewContainer.createComponent(
-      m[widgetOption.componentName]
-    );
-    //const compInstance: any = ref.instance;
-    //this.singleGridBoxItem['compInstance'] = compInstance;
+    this.viewContainer.createComponent(m[widgetOption.componentName]);
     setTimeout(() => {
       this.isWidgetDropped = true;
       if (isWidgetOptionNeedsToPush) {
-        if (!this.singleGridBoxItem.widgetOptions) {
+        if (
+          this.singleGridBoxItem.widgetOptions == null ||
+          this.singleGridBoxItem.widgetOptions == undefined
+        ) {
           this.singleGridBoxItem.widgetOptions = [];
         }
         this.singleGridBoxItem.widgetOptions.push(widgetOption);
@@ -149,10 +112,6 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
   }
 
   drop(event: CdkDragDrop<MfeWidgetType[]>) {
-    // if (this.isAllViewContainersAreDropped()) {
-    //   alert('Please remove widget, before adding new...!');
-    //   return;
-    // }
     if (!this.isMultipleWidgetDragEnabled) {
       if (this.selectedWidgetOptions.length > 0) {
         alert('Please remove widget, before adding new...!');
@@ -165,7 +124,8 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
         this.widgetOptions.mfeWidgetTypes[event.previousIndex]
       );
       this.loadMfeWidget(
-        this.widgetOptions.mfeWidgetTypes[event.previousIndex]
+        this.widgetOptions.mfeWidgetTypes[event.previousIndex],
+        true
       );
     }
   }
@@ -175,13 +135,6 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
       this.selectedWidgetOptions = [];
       this.singleGridBoxItem.widgetOptions = [];
       this.viewContainer.clear();
-
-      //this.singleGridBoxItem['compInstance'] = null;
-      // this.viewContainerRefItems.forEach((viewContainer: ViewContainerRef) => {
-      //   if (viewContainer.length == 1) {
-      //     viewContainer.remove();
-      //   }
-      // });
       this.isWidgetDropped = false;
       setInterval(() => {
         this.singleGridBoxItem.widgetOptions = [];
@@ -189,16 +142,6 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
       }, 1000);
     }
   }
-
-  // isAllViewContainersAreDropped(): boolean {
-  //   let loadedWidgetCount = 0;
-  //   this.viewContainerRefItems.forEach((viewContainer: ViewContainerRef) => {
-  //     if (viewContainer.length == 1) {
-  //       loadedWidgetCount++;
-  //     }
-  //   });
-  //   return loadedWidgetCount == this.viewContainerRefItems.length;
-  // }
 
   removeItem($event: MouseEvent | TouchEvent): void {
     $event.preventDefault();
