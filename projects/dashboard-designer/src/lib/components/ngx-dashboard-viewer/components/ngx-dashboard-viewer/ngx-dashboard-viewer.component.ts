@@ -25,6 +25,8 @@ export class NgxDashboardViewerComponent implements OnInit {
 
   ngOnInit(): void {
     this.translationService.language = this.lang;
+    this.dashboardLayout.options.dirType =
+      this.lang == 'ar' ? DirTypes.RTL : DirTypes.LTR;
   }
 
   ngOnDestroy(): void {
