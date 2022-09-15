@@ -4,6 +4,15 @@
   "title": "ngx-dashboard UI library Component Schema",
   "type": "object",
   "properties": {
+    "project": {
+      "type": "string",
+      "description": "The project to add module ngx-dashboard-designer",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Project name (press enter for default project)"
+    },
     "name": {
       "description": "The name of the component",
       "type": "string"
