@@ -8,6 +8,7 @@ import {
   move,
   Rule,
   SchematicContext,
+  SchematicsException,
   Tree,
   url
 } from '@angular-devkit/schematics';
@@ -19,6 +20,10 @@ import {
   addPackageJsonDependency,
   NodeDependencyType
 } from '@schematics/angular/utility/dependencies';
+import * as path from 'path';
+import * as ts from 'typescript';
+import { addRouteDeclarationToModule } from '@schematics/angular/utility/ast-utils';
+import { applyToUpdateRecorder } from '@schematics/angular/utility/change';
 
 export function ngxDashboardUIComponentGenerator(
   options: NgxDashboardUIComponentSchema
@@ -33,18 +38,93 @@ export function ngxDashboardUIComponentGenerator(
       move(normalize(`/${options.path}/${strings.dasherize(options.name)}`))
     ]);
     return chain([
-      //externalSchematic('@schematics/angular', 'component', options),
+      mergeWith(templateSource, MergeStrategy.Overwrite),
+      makeAppRouteAsync(options),
       externalSchematic('@angular-architects/module-federation', 'ng-add', {
         project: options.project
       }),
-      config(options),
-      mergeWith(templateSource, MergeStrategy.Overwrite)
+      config(options)
     ]);
+  };
+}
+
+function makeAppRouteAsync(options: NgxDashboardUIComponentSchema): Rule {
+  return async function (tree, context) {
+    context.logger.info('Adding routing Module to the app...!');
+    const workspaceFileName = getWorkspaceFileName(tree);
+    const workspace = JSON.parse(
+      tree.read(workspaceFileName)!.toString('utf8')
+    )!;
+    const projectName = options.project;
+    const projectConfig = workspace.projects[projectName];
+    const main = projectConfig.architect.build.options.main;
+    const mainPath = path.dirname(main);
+    const appModulePath = path.join(mainPath, 'app/app.module.ts');
+
+    if (!tree.exists(appModulePath)) {
+      console.info(`${appModulePath} not exists in below project path.`);
+      console.info('path => ', appModulePath);
+      return;
+    }
+
+    const recorder = tree.beginUpdate(appModulePath);
+
+    const text = tree.read(appModulePath);
+
+    if (text === null) {
+      throw new SchematicsException(
+        `The file ${appModulePath} doesn't exists...`
+      );
+    }
+
+    //const mainContent = tree.read(main)!;
+    //tree.create(appModulePath, mainContent);
+
+    const source = ts.createSourceFile(
+      appModulePath,
+      text.toString(),
+      ts.ScriptTarget.Latest,
+      true
+    );
+
+    applyToUpdateRecorder(recorder, [
+      addRouteDeclarationToModule(
+        source,
+        appModulePath,
+        `{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },`
+      ),
+      addRouteDeclarationToModule(
+        source,
+        appModulePath,
+        `{
+          path: '',
+          component: MainLayoutComponent,
+          children: [
+            {
+              path: 'dashboard',
+              loadChildren: () =>
+                import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+            },
+          ],
+        }`
+      )
+    ]);
+
+    tree.commitUpdate(recorder);
+    context.logger.info('Routing Module added succesfully');
+    // tree.commitUpdate(recorder);
+    // const changes = addRouteDeclarationToModule(
+    //   source,
+    //   './src/app',
+    //   `{ path: 'foo', component: FooComponent }`
+    // );
+    // const output = applyChanges(appModulePath, moduleContent, [changes]);
   };
 }
 
 export default function config(options: NgxDashboardUIComponentSchema): Rule {
   return async function (tree: Tree, context: SchematicContext) {
+    context.logger.info('Updating the angular json file with configurations');
     const workspaceFileName = getWorkspaceFileName(tree);
     tree = tree!;
     const workspace = JSON.parse(
@@ -98,6 +178,9 @@ export default function config(options: NgxDashboardUIComponentSchema): Rule {
     );
 
     tree.overwrite(workspaceFileName, JSON.stringify(workspace, null, '\t'));
+    context.logger.info(
+      'Successfully updated the angular json file with configurations'
+    );
 
     updatePackageJson(tree, context);
   };
@@ -122,6 +205,7 @@ interface PackageJson {
 }
 
 function updatePackageJson(tree: Tree, context: SchematicContext): void {
+  context.logger.info('Updating the package json file with dependencies');
   let packageJson: PackageJson = JSON.parse(
     tree.read('package.json')!.toString('utf-8')
   )!;
@@ -196,6 +280,11 @@ function updatePackageJson(tree: Tree, context: SchematicContext): void {
     });
   }
 
+  context.logger.info(
+    'Successfully updated the package json file with dependencies'
+  );
+
+  context.logger.info('Installing npm additional dependencies...');
   context.addTask(new NodePackageInstallTask());
 }
 
