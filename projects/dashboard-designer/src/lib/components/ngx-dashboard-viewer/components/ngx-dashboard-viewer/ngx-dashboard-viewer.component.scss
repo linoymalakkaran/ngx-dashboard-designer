@@ -56,3 +56,16 @@ body {
 .mgDashGridsterItem.enableMultiitem {
   overflow: auto !important;
 }
+
+::ng-deep {
+  gridster {
+    background-color: none !important;
+    background: none !important;
+  }
+  #DashboardViewer {
+    gridster {
+      background-color: none !important;
+      background: none !important;
+    }
+  }
+}
