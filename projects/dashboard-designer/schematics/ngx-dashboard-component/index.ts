@@ -28,7 +28,10 @@ import { applyToUpdateRecorder } from '@schematics/angular/utility/change';
 export function ngxDashboardUIComponentGenerator(
   options: NgxDashboardUIComponentSchema
 ): Rule {
-  return () => {
+  return (_tree: Tree, context: SchematicContext) => {
+    context.logger.info(
+      'Adding example tempalte and configuring Module Federation to the app in progress.'
+    );
     const templateSource = apply(url('./files'), [
       applyTemplates({
         classify: strings.classify,
@@ -38,11 +41,11 @@ export function ngxDashboardUIComponentGenerator(
       move(normalize(`/${options.path}/${strings.dasherize(options.name)}`))
     ]);
     return chain([
-      mergeWith(templateSource, MergeStrategy.Overwrite),
-      makeAppRouteAsync(options),
       externalSchematic('@angular-architects/module-federation', 'ng-add', {
         project: options.project
       }),
+      mergeWith(templateSource, MergeStrategy.Overwrite),
+      makeAppRouteAsync(options),
       config(options)
     ]);
   };
@@ -59,21 +62,35 @@ function makeAppRouteAsync(options: NgxDashboardUIComponentSchema): Rule {
     const projectConfig = workspace.projects[projectName];
     const main = projectConfig.architect.build.options.main;
     const mainPath = path.dirname(main);
-    const appModulePath = path.join(mainPath, 'app/app.module.ts');
 
-    if (!tree.exists(appModulePath)) {
-      console.info(`${appModulePath} not exists in below project path.`);
-      console.info('path => ', appModulePath);
-      return;
+    let appRoutingModulePath = path.join(mainPath, 'app/app-routing.module.ts');
+
+    if (!tree.exists(appRoutingModulePath)) {
+      const appModulePath = path.join(mainPath, 'app/app.module.ts');
+      if (!tree.exists(appModulePath)) {
+        console.info(
+          `${appRoutingModulePath} not exists in below project path.`
+        );
+        console.info(
+          'Please enable routing in your application and try again.'
+        );
+        console.info('paths tried => ', [appRoutingModulePath, appModulePath]);
+        return;
+      } else {
+        appRoutingModulePath = appModulePath;
+      }
+      // console.info(`${appRoutingModulePath} not exists in below project path.`);
+      // console.info('path => ', appRoutingModulePath);
+      // return;
     }
 
-    const recorder = tree.beginUpdate(appModulePath);
+    const recorder = tree.beginUpdate(appRoutingModulePath);
 
-    const text = tree.read(appModulePath);
+    const text = tree.read(appRoutingModulePath);
 
     if (text === null) {
       throw new SchematicsException(
-        `The file ${appModulePath} doesn't exists...`
+        `The file ${appRoutingModulePath} doesn't exists...`
       );
     }
 
@@ -81,7 +98,7 @@ function makeAppRouteAsync(options: NgxDashboardUIComponentSchema): Rule {
     //tree.create(appModulePath, mainContent);
 
     const source = ts.createSourceFile(
-      appModulePath,
+      appRoutingModulePath,
       text.toString(),
       ts.ScriptTarget.Latest,
       true
@@ -90,12 +107,12 @@ function makeAppRouteAsync(options: NgxDashboardUIComponentSchema): Rule {
     applyToUpdateRecorder(recorder, [
       addRouteDeclarationToModule(
         source,
-        appModulePath,
+        appRoutingModulePath,
         `{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },`
       ),
       addRouteDeclarationToModule(
         source,
-        appModulePath,
+        appRoutingModulePath,
         `{
           path: '',
           component: MainLayoutComponent,
