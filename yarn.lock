@@ -269,7 +269,7 @@
     "symbol-observable" "4.0.0"
     "uuid" "8.3.2"
 
-"@angular/common@^13.0.0", "@angular/common@^13.0.0 || ^14.0.0-0", "@angular/common@>=7.0.0", "@angular/common@13.3.9":
+"@angular/common@^13.0.0 || ^14.0.0-0", "@angular/common@>=7.0.0", "@angular/common@13.3.9":
   "integrity" "sha512-+bTleNL1XGlzuxLbVbsol82/33IW2pJasQN8ViraxKIElT2F8ooBJevIBMCSIcdvxvMBGAjn4ayQJr6tkPqPaw=="
   "resolved" "https://registry.npmjs.org/@angular/common/-/common-13.3.9.tgz"
   "version" "13.3.9"
@@ -306,7 +306,7 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/core@^13.0.0", "@angular/core@^13.0.0 || ^14.0.0-0", "@angular/core@>=7.0.0", "@angular/core@13.3.9":
+"@angular/core@^13.0.0 || ^14.0.0-0", "@angular/core@>=7.0.0", "@angular/core@13.3.9":
   "integrity" "sha512-LaY3yBDgN/efG11x/cwVeuC4gUG3YUMmk/sgAP3L1VGawYOiKoJ76decFpy6y4UgYPShQQRzpZQEVXF405jrLg=="
   "resolved" "https://registry.npmjs.org/@angular/core/-/core-13.3.9.tgz"
   "version" "13.3.9"
@@ -2419,13 +2419,6 @@
     "commander" "^3.0.0-0"
     "fs-extra" "^9.0.1"
     "gh-pages" "^3.1.0"
-
-"angular-gridster2@^13.3.0":
-  "integrity" "sha512-t7yN2MFiGsD0vC/Qg/5DcJ1Q+KCAFMgEqYUZjrydH3hM4HG0lcTFGvlTfkBC9HSXZOimW8LLQPRzXEen518udw=="
-  "resolved" "https://registry.npmjs.org/angular-gridster2/-/angular-gridster2-13.3.0.tgz"
-  "version" "13.3.0"
-  dependencies:
-    "tslib" "^2.3.0"
 
 "ansi-colors@^4.1.1", "ansi-colors@4.1.1":
   "integrity" "sha512-JoX0apGbHaUJBNl6yF+p6JAFYZ666/hhCGKN5t9QFjbJQKUU/g8MNbFDbvfrgKXvI1QpZplPOnwIo99lX/AAmA=="

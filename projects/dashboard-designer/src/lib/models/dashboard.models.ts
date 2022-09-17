@@ -1,13 +1,13 @@
 import {
-  CompactType,
-  DirTypes,
-  DisplayGrid,
-  Draggable,
   GridsterConfig,
-  GridType,
+  Draggable,
+  Resizable,
   PushDirections,
-  Resizable
-} from 'angular-gridster2';
+  GridType,
+  CompactType,
+  DisplayGrid,
+  DirTypes
+} from '../@shared';
 import { MfeWidgetType } from './dashboard-widget-options.model';
 
 export interface Safe extends GridsterConfig {

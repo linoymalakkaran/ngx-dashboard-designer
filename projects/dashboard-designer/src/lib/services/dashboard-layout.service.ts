@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { GridType } from 'angular-gridster2';
+import { GridType } from '../@shared';
 import {
   GridLayOutInstance,
   SingleGridBoxItem

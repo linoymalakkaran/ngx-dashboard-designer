@@ -1,9 +1,13 @@
-import { CompactType, DisplayGrid, GridType } from 'angular-gridster2';
 import {
   GridLayOutInstance,
   IGridLayOutInstance,
   Safe
 } from 'projects/dashboard-designer/src/lib/models/dashboard.models';
+import {
+  GridType,
+  CompactType,
+  DisplayGrid
+} from 'projects/dashboard-designer/src/public-api';
 
 const options: Safe = {
   gridType: GridType.Fit,

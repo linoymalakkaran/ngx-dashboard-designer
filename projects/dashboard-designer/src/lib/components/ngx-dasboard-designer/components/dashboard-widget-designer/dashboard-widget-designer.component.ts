@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import {
   GridsterItem,
   GridsterItemComponentInterface
-} from 'angular-gridster2';
+} from '../../../../@shared';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { IDashboardWidgetOption } from '../../../../models/dashboard-widget-options.model';

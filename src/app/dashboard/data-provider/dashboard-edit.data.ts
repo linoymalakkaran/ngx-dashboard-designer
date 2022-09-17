@@ -1,6 +1,9 @@
-import { CompactType, DisplayGrid, GridType } from 'angular-gridster2';
 import {
-  GridLayOutInstance,
+  CompactType,
+  DisplayGrid,
+  GridType
+} from 'projects/dashboard-designer/src/lib/@shared';
+import {
   IGridLayOutInstance,
   Safe
 } from 'projects/dashboard-designer/src/lib/models/dashboard.models';

@@ -58,7 +58,21 @@ function makeAppRouteAsync(options: NgxDashboardUIComponentSchema): Rule {
     const workspace = JSON.parse(
       tree.read(workspaceFileName)!.toString('utf8')
     )!;
+
+    if (!options.project) {
+      context.logger.info(
+        `default project selected is: => ${workspace.defaultProject}`
+      );
+      options.project = workspace.defaultProject;
+    }
+
+    if (!options.project) {
+      throw new Error(
+        `No default project found. Please specifiy a project name!`
+      );
+    }
     const projectName = options.project;
+
     const projectConfig = workspace.projects[projectName];
     const main = projectConfig.architect.build.options.main;
     const mainPath = path.dirname(main);
@@ -150,6 +164,9 @@ export default function config(options: NgxDashboardUIComponentSchema): Rule {
 
     options = options!;
     if (!options.project) {
+      context.logger.info(
+        `default project selected is: => ${workspace.defaultProject}`
+      );
       options.project = workspace.defaultProject;
     }
 
@@ -247,15 +264,15 @@ function updatePackageJson(tree: Tree, context: SchematicContext): void {
     });
   }
 
-  if (!packageJson.dependencies!['angular-gridster2']) {
-    packageJson.dependencies!['angular-gridster2'] = '^13.3.0';
-    addPackageJsonDependency(tree, {
-      name: 'angular-gridster2',
-      type: NodeDependencyType.Default,
-      version: '^13.3.0',
-      overwrite: true
-    });
-  }
+  // if (!packageJson.dependencies!['angular-gridster2']) {
+  //   packageJson.dependencies!['angular-gridster2'] = '^13.3.0';
+  //   addPackageJsonDependency(tree, {
+  //     name: 'angular-gridster2',
+  //     type: NodeDependencyType.Default,
+  //     version: '^13.3.0',
+  //     overwrite: true
+  //   });
+  // }
 
   if (!packageJson.dependencies!['ngx-bootstrap']) {
     packageJson.dependencies!['ngx-bootstrap'] = '^6.2.0';
