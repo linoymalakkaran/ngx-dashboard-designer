@@ -22,7 +22,12 @@ import {
 } from '@schematics/angular/utility/dependencies';
 import * as path from 'path';
 import * as ts from 'typescript';
-import { addRouteDeclarationToModule } from '@schematics/angular/utility/ast-utils';
+import {
+  addRouteDeclarationToModule,
+  insertImport,
+  isImported,
+  addImportToModule
+} from '@schematics/angular/utility/ast-utils';
 import { applyToUpdateRecorder } from '@schematics/angular/utility/change';
 
 export function ngxDashboardUIComponentGenerator(
@@ -138,18 +143,72 @@ function makeAppRouteAsync(options: NgxDashboardUIComponentSchema): Rule {
             },
           ],
         }`
+      ),
+      insertImport(
+        source,
+        appRoutingModulePath,
+        'MainLayoutComponent',
+        './dashboard/components/layout/main-layout.component'
       )
     ]);
 
+    const appModulePathForImport = path.join(mainPath, 'app/app.module.ts');
+    const recorderForImport = tree.beginUpdate(appModulePathForImport);
+    const textForImport = tree.read(appModulePathForImport)!;
+    const sourceForImport = ts.createSourceFile(
+      appModulePathForImport,
+      textForImport.toString(),
+      ts.ScriptTarget.Latest,
+      true
+    );
+
+    const isBrowserAnimationsModuleImporExsist: boolean = isImported(
+      sourceForImport,
+      'BrowserAnimationsModule',
+      appModulePathForImport
+    );
+    if (!isBrowserAnimationsModuleImporExsist) {
+      context.logger.info(
+        `BrowserAnimationsModule Import not exists in path=> ${appModulePathForImport}`
+      );
+      context.logger.info(
+        'So adding BrowserAnimationsModule Module to the app...'
+      );
+      applyToUpdateRecorder(
+        recorderForImport,
+        addImportToModule(
+          sourceForImport,
+          appModulePathForImport,
+          'BrowserAnimationsModule',
+          '@angular/platform-browser/animations'
+        )
+      );
+    }
+
+    const isHttpClientModuleImporExsist: boolean = isImported(
+      sourceForImport,
+      'HttpClientModule',
+      appModulePathForImport
+    );
+    if (!isHttpClientModuleImporExsist) {
+      context.logger.info(
+        `HttpClientModule import not exists in path=> ${appModulePathForImport}`
+      );
+      context.logger.info('So adding HttpClientModule Module to the app...');
+      applyToUpdateRecorder(
+        recorderForImport,
+        addImportToModule(
+          sourceForImport,
+          appModulePathForImport,
+          'HttpClientModule',
+          '@angular/common/http'
+        )
+      );
+    }
+
     tree.commitUpdate(recorder);
+    tree.commitUpdate(recorderForImport);
     context.logger.info('Routing Module added succesfully');
-    // tree.commitUpdate(recorder);
-    // const changes = addRouteDeclarationToModule(
-    //   source,
-    //   './src/app',
-    //   `{ path: 'foo', component: FooComponent }`
-    // );
-    // const output = applyChanges(appModulePath, moduleContent, [changes]);
   };
 }
 

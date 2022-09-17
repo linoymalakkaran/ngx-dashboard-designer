@@ -10,10 +10,11 @@ import { <%=classify(name)%>Service } from '../../services/<%=name%>.service';
 export class <%=classify(name)%>ViewerComponent implements OnInit {
   dashboardLayout!: IGridLayOutInstance;
 
-  constructor(private <%=name%>Service: <%=classify(name)%>Service) {}
+  constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
-    this.dashboardLayout = this.<%=name%>Service.layoutData;
+    this.dashboardLayout = this.dashboardService.layoutInfo;
+    console.log('view loader => ', this.dashboardLayout);
   }
 
   changedOptions(): void {

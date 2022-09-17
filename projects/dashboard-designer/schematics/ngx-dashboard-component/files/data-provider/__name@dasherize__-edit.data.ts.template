@@ -1,15 +1,10 @@
-import {
-  Safe,
-  GridType,
-  CompactType,
-  DisplayGrid,
-  IGridLayOutInstance,
-} from 'ngx-dashboard-designer';
+import { Safe, GridType, CompactType, DisplayGrid, IGridLayOutInstance } from "ngx-dashboard-designer";
+
 
 const options: Safe = {
   gridType: GridType.Fit,
   compactType: CompactType.None,
-  margin: 0,
+  margin: 2,
   outerMargin: true,
   outerMarginTop: null,
   outerMarginRight: null,
@@ -45,10 +40,10 @@ const options: Safe = {
   emptyCellDragMaxRows: 50,
   ignoreMarginInRow: false,
   draggable: {
-    enabled: true,
+    enabled: true
   },
   resizable: {
-    enabled: false,
+    enabled: false
   },
   swap: false,
   pushItems: true,
@@ -59,10 +54,10 @@ const options: Safe = {
   displayGrid: DisplayGrid.OnDragAndResize,
   disableWindowResize: false,
   disableWarnings: false,
-  scrollToNewItems: false,
+  scrollToNewItems: false
 };
 
-export const layoutDefaultData: IGridLayOutInstance = {
+export const editLayoutJSON: IGridLayOutInstance = {
   options: options,
   layoutName: 'Layout8',
   layoutDescription: '',
@@ -86,9 +81,9 @@ export const layoutDefaultData: IGridLayOutInstance = {
             'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
           componentName: 'BarchartWidgetComponent',
           type: 'module',
-          exposedModule: './BarChartWidget',
-        },
-      ],
+          exposedModule: './BarChartWidget'
+        }
+      ]
     },
     {
       x: 0,
@@ -107,9 +102,9 @@ export const layoutDefaultData: IGridLayOutInstance = {
             'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
           componentName: 'BarchartWidgetComponent',
           type: 'module',
-          exposedModule: './BarChartWidget',
-        },
-      ],
+          exposedModule: './BarChartWidget'
+        }
+      ]
     },
     {
       x: 1,
@@ -117,7 +112,7 @@ export const layoutDefaultData: IGridLayOutInstance = {
       id: 2,
       cols: 1,
       rows: 2,
-      hasContent: true,
+      hasContent: true
     },
     {
       x: 2,
@@ -125,7 +120,7 @@ export const layoutDefaultData: IGridLayOutInstance = {
       id: 3,
       cols: 1,
       rows: 2,
-      hasContent: true,
-    },
-  ],
+      hasContent: true
+    }
+  ]
 };
