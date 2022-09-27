@@ -3,9 +3,7 @@
   height: 100%;
   display: flex;
   flex-direction: row;
-  background-color: #e6e8f3;
-  min-width: 1024px;
-  width: 1024px;
+  width: 100%;
 
   .layoutEle {
     transition: all ease-in-out 0.02s;
@@ -20,11 +18,9 @@
   .centerBlock {
     flex: 1 0 0%;
     > .layoutContent {
-      width: 80%;
+      width: 100%;
       margin: 0 auto !important;
       background-color: #fff;
-      overflow-x: hidden;
-
       box-shadow: 0px 0px 10px #aaa;
     }
   }
@@ -69,7 +65,7 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    overflow: auto;
+    overflow: visible;
   }
 
   .slideOut {
@@ -204,10 +200,11 @@
         flex-direction: column;
         gap: 6px;
         border-radius: 0;
-        background: rgba(255, 255, 255, 0.2);
+        // background: rgba(255, 255, 255, 0.2);
         color: #fff !important;
         &.active {
-          background: #fff !important;
+          background: #a29dc1 !important;
+          // background: #fff !important;
           color: $secondary-color !important;
         }
       }

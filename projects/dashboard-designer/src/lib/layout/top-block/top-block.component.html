@@ -7,12 +7,12 @@
           [ngClass]="{ active: layout.left.show }"
           (click)="layout.left.show = !layout.left.show"
         >
-          <a class="svgBgIcon inheritSize menu_main_icon"> </a>
+          <dash-icon svgIcon="menu-ico" aria-hidden="false"></dash-icon>
         </li>
       </ul>
 
       <div class="layout-title">
-        {{ title | translate }}
+        {{ 'DASHBOARD_DESIGNER' | dashTranslate }}
       </div>
     </div>
 
@@ -30,18 +30,23 @@
           class="rightblock-trigger fit-height"
           [ngClass]="{ active: layout.right.show }"
           (click)="layout.right.show = !layout.right.show"
+          *ngIf="layout.right.isShowSettings"
         >
-          <a class="svgBgIcon inheritSize layout_settings_icon"> </a>
+          <dash-icon
+            class=""
+            svgIcon="settings-icon"
+            aria-hidden="false"
+          ></dash-icon>
         </li>
       </ul>
     </div>
   </div>
 </div>
 
-<ng-template #saveModalTemplate>
+<!-- <ng-template #saveModalTemplate>
   <div class="saveModal dashDesignerModal">
     <div class="modal-header">
-      <h4 class="modal-title pull-left">{{ 'SAVE_LAYOUT' | translate }}</h4>
+      <h4 class="modal-title pull-left">{{ 'SAVE_LAYOUT' | dashTranslate }}</h4>
       <button
         type="button"
         class="btn-close close pull-right"
@@ -56,20 +61,20 @@
       <form [formGroup]="form">
         <div class="row">
           <div class="col-md-6">
-            <small>{{ 'LAYOUT_NAME' | translate }}</small>
+            <small>{{ 'LAYOUT_NAME' | dashTranslate }}</small>
             <input
               autocomplete="off"
-              placeholder="{{ 'LAYOUT_NAME' | translate }}"
+              placeholder="{{ 'LAYOUT_NAME' | dashTranslate }}"
               formControlName="layoutname"
               class="form-control p-2 f-small"
             />
           </div>
 
           <div class="col-md-6">
-            <small> {{ 'LAYOUT_ID' | translate }} </small>
+            <small> {{ 'LAYOUT_ID' | dashTranslate }} </small>
             <input
               autocomplete="off"
-              placeholder="{{ 'LAYOUT_ID' | translate }}"
+              placeholder="{{ 'LAYOUT_ID' | dashTranslate }}"
               formControlName="layoutid"
               class="form-control p-2 f-small"
             />
@@ -80,14 +85,14 @@
 
     <div class="modal-footer p-3">
       <div class="row col-lg-12 gap-2 justify-content-end align-items-center">
-        <!-- <button class="btn btn-primary col-auto p-2" (click)="saveLayout()">
+        <button class="btn btn-primary col-auto p-2" (click)="saveLayout()">
           Save Layout
-        </button> -->
+        </button>
 
         <button class="btn btn-dark col-auto p-2" (click)="modalRef?.hide()">
-          {{ 'CANCEL' | translate }}
+          {{ 'CANCEL' | dashTranslate }}
         </button>
       </div>
     </div>
   </div>
-</ng-template>
+</ng-template> -->

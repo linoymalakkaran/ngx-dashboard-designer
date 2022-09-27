@@ -1,2 +1,9 @@
-<button (click)="saveLayout()">Save Layout</button> <br /><br /><br />
-<ngx-dasboard-designer [widgetOptions]="widgetOptions"></ngx-dasboard-designer>
+<div class="wrapper-container">
+  <button class="btn-save" (click)="saveLayout()">Save Layout</button>
+</div>
+<ngx-dasboard-designer
+  [widgetOptions]="widgetOptions"
+  [editLayoutJSON]="editLayoutJSON"
+  [layoutConfig]="layoutConfig"
+  [lang]="'en'"
+></ngx-dasboard-designer>

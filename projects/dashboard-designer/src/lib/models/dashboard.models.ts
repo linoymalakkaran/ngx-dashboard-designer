@@ -1,16 +1,16 @@
 import {
+  GridsterConfig,
+  Draggable,
+  Resizable,
+  PushDirections,
+  GridType,
   CompactType,
   DisplayGrid,
-  Draggable,
-  GridsterConfig,
-  GridsterItem,
-  GridType,
-  PushDirections,
-  Resizable
-} from 'angular-gridster2';
+  DirTypes
+} from '../@shared';
 import { MfeWidgetType } from './dashboard-widget-options.model';
 
-interface Safe extends GridsterConfig {
+export interface Safe extends GridsterConfig {
   draggable: Draggable;
   resizable: Resizable;
   pushDirections: PushDirections;
@@ -22,7 +22,8 @@ export interface SingleGridBoxItem {
   cols: number;
   rows: number;
   hasContent: boolean;
-  widgetOption?: MfeWidgetType;
+  widgetOptions?: MfeWidgetType[];
+  id: number;
   [key: string]: any;
 }
 
@@ -31,22 +32,24 @@ export interface IGridLayOutInstance {
   layoutName: string;
   layoutDescription: string;
   layoutId: string;
-  properties: any;
+  properties?: { autoHeight?: boolean };
+  width?: any;
+  height?: any;
   dashboardItems: SingleGridBoxItem[];
 }
 
 export class GridLayOutInstance implements IGridLayOutInstance {
   options: Safe = {
-    gridType: GridType.Fit,
+    gridType: GridType.Fixed,
     compactType: CompactType.None,
-    margin: 10,
-    outerMargin: true,
+    margin: 0,
+    outerMargin: false,
     outerMarginTop: null,
     outerMarginRight: null,
     outerMarginBottom: null,
     outerMarginLeft: null,
     useTransformPositioning: true,
-    mobileBreakpoint: 640,
+    mobileBreakpoint: 650,
     useBodyForBreakpoint: false,
     minCols: 1,
     maxCols: 100,
@@ -60,8 +63,8 @@ export class GridLayOutInstance implements IGridLayOutInstance {
     minItemArea: 1,
     defaultItemCols: 1,
     defaultItemRows: 1,
-    fixedColWidth: 105,
-    fixedRowHeight: 105,
+    fixedColWidth: 20,
+    fixedRowHeight: 20,
     keepFixedHeightInMobile: false,
     keepFixedWidthInMobile: false,
     scrollSensitivity: 10,
@@ -82,20 +85,23 @@ export class GridLayOutInstance implements IGridLayOutInstance {
     },
     swap: false,
     pushItems: true,
-    disablePushOnDrag: false,
+    disablePushOnDrag: true,
     disablePushOnResize: false,
     pushDirections: { north: true, east: true, south: true, west: true },
     pushResizeItems: false,
     displayGrid: DisplayGrid.Always,
     disableWindowResize: false,
     disableWarnings: false,
-    scrollToNewItems: false
+    scrollToNewItems: false,
+    dirType: DirTypes.LTR
   };
 
   layoutName = '';
   layoutDescription = '';
   layoutId = null;
-  properties = {};
+  properties = {
+    autoHeight: false
+  };
   dashboardItems: SingleGridBoxItem[] = [];
 
   setValue?(editMode = true, name, id, items, options) {

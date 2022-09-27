@@ -1,6 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-@import 'assets/scss/theme.scss';
-@import '../dist/dashboard-designer/assets/dashboard-designer-theme.css';
+@import '../projects/dashboard-designer/styles/dashboard-designer-theme.scss';
 body,
 html {
   position: relative;

@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "ngx-dashboard-component",
+  "title": "ngx-dashboard UI library Component Schema",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The project to add module ngx-dashboard-designer",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Project name (press enter for default project)"
+    },
+    "name": {
+      "description": "The name of the component",
+      "type": "string"
+    },
+    "path": {
+      "description": "Where should be created the file",
+      "type": "string",
+      "format": "path",
+      "x-prompt": "Where should be created the file?",
+      "default": "src/app"
+    }
+  },
+  "required": []
+}

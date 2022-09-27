@@ -1,12 +1,63 @@
-import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
-import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+// import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
+// import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 
 // Just return the tree
+// export function ngAdd(): Rule {
+//   return (tree: Tree, context: SchematicContext) => {
+//     context.logger.log('info', `✅️ Running Schematics`);
+//     context.addTask(new NodePackageInstallTask());
+//     tree.create('hello.txt', 'world');
+//     return tree;
+//   };
+// }
+
+import {
+  Rule,
+  Tree,
+  SchematicContext,
+  SchematicsException
+} from '@angular-devkit/schematics';
+import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+import { applyToUpdateRecorder } from '@schematics/angular/utility/change';
+import { addImportToModule } from '@schematics/angular/utility/ast-utils';
+import * as ts from 'typescript';
+
 export function ngAdd(): Rule {
   return (tree: Tree, context: SchematicContext) => {
-    context.logger.log('info', `✅️ Running Schematics`);
+    context.logger.info('Adding library Module to the app...');
+    const modulePath = '/src/app/app.module.ts';
+    if (!tree.exists(modulePath)) {
+      throw new SchematicsException(`The file ${modulePath} doesn't exists...`);
+    }
+    const recorder = tree.beginUpdate(modulePath);
+
+    const text = tree.read(modulePath);
+
+    if (text === null) {
+      throw new SchematicsException(`The file ${modulePath} doesn't exists...`);
+    }
+
+    const source = ts.createSourceFile(
+      modulePath,
+      text.toString(),
+      ts.ScriptTarget.Latest,
+      true
+    );
+
+    applyToUpdateRecorder(
+      recorder,
+      addImportToModule(
+        source,
+        modulePath,
+        'NgxDashboardDesignerModule',
+        'ngx-dashboard-designer'
+      )
+    );
+
+    tree.commitUpdate(recorder);
+
+    context.logger.info('Installing dependencies...');
     context.addTask(new NodePackageInstallTask());
-    tree.create('hello.txt', 'world');
     return tree;
   };
 }

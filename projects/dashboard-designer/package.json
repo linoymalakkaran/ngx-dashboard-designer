@@ -1,26 +1,21 @@
 {
   "name": "ngx-dashboard-designer",
-  "version": "2.0.2",
+  "version": "14.0.0-beta.0",
   "peerDependencies": {
-    "@angular/cdk": "^14.0.0",
-    "angular-resize-element": "^1.2.0",
-    "ngx-bootstrap": "^8.0.0",
-    "angular-gridster2": "^14.1.0",
-    "@angular-architects/module-federation": "^14.3.9",
-    "@ngx-translate/core": "^14.0.0",
-    "@ngx-translate/http-loader": "^7.0.0"
+    "ngx-bootstrap": "^9.0.0",
+    "@angular/forms": "14.0.0",
+    "@angular/cdk": "14.0.0",
+    "@angular-architects/module-federation": "^14.3.10"
   },
   "dependencies": {
-    "tslib": "^2.3.0",
-    "@angular/cdk": "^14.0.0",
-    "angular-resize-element": "^1.2.0",
-    "ngx-bootstrap": "^8.0.0",
-    "angular-gridster2": "^14.1.0",
-    "@angular-architects/module-federation": "^14.3.9",
-    "@ngx-translate/core": "^14.0.0",
-    "@ngx-translate/http-loader": "^7.0.0"
+    "tslib": "2.4.0",
+    "ngx-bootstrap": "^6.2.0",
+    "@angular/forms": "14.0.0",
+    "@angular/cdk": "14.0.0",
+    "@angular-architects/module-federation": "^14.3.10"
   },
   "devDependencies": {
+    "ngx-build-plus": "^14.0.0",
     "copyfiles": "file:../node_modules/copyfiles",
     "typescript": "file:../node_modules/typescript"
   },
@@ -30,8 +25,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:sass": "sass styles/dashboard-designer-theme.scss assets/dashboard-designer-theme.css",
     "build:schematics": "tsc -p tsconfig.schematics.json",
-    "postbuild:schematics": "copyfiles schematics/collection.json ../../../dist/dashboard-designer/"
+    "postbuild:schematics": "copyfiles schematics/collection.json schematics/*/schema.json schematics/*/files/** ../../../dist/dashboard-designer/"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "schematics": "./schematics/collection.json",
   "exports": {
     "./styles": {
       "default": "./styles/styles.scss"
@@ -45,9 +44,10 @@
     "url": "https://github.com/linoymalakkaran/ngx-dashboard-designer"
   },
   "keywords": [
-    "angular v13",
+    "angular v14",
     "gridster2",
-    "dashboard"
+    "dashboard",
+    "@angular-architects/module-federation"
   ],
   "author": "Linoy Pappachan Malakkaran",
   "license": "ISC"

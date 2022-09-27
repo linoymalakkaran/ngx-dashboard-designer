@@ -1,0 +1,31 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { <%=classify(name)%>RoutingModule } from './<%=name%>-routing.module';
+import { <%=classify(name)%>DesignerComponent } from './components/<%=name%>-designer/<%=name%>-designer.component';
+import {
+  NgxDashboardDesignerModule,
+  DashboardModuleConfigModel,
+} from 'ngx-dashboard-designer';
+import { <%=classify(name)%>ViewerComponent } from './components/<%=name%>-viewer/<%=name%>-viewer.component';
+import { MainLayoutComponent } from './components/layout/main-layout.component';
+
+const dashboardConfig: DashboardModuleConfigModel = {
+  baseAssetsPath: 'assets/dashboard-designer/',
+  fontBaseUrl: 'assets/dashboard-designer/',
+  isDynamicFontLoading: true,
+  isRemoteUrlLangEnabled: false,
+};
+
+@NgModule({
+  declarations: [
+    <%=classify(name)%>DesignerComponent,
+    <%=classify(name)%>ViewerComponent,
+    MainLayoutComponent,
+  ],
+  imports: [
+    CommonModule,
+    <%=classify(name)%>RoutingModule,
+    NgxDashboardDesignerModule.forRoot(dashboardConfig),
+  ],
+})
+export class <%=classify(name)%>Module {}

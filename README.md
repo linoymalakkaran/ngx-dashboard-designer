@@ -1,18 +1,22 @@
 # ngx-dashboard designer
 
-[![npm version](https://github.com/linoymalakkaran/ngx-dashboard-designer/blob/angular-v13/src/assets/github-assets/npm.png)](https://www.npmjs.com/package/ngx-dashboard-designer)
+[![npm version](https://github.com/linoymalakkaran/ngx-dashboard-designer/blob/angular-v14/src/assets/github-assets/npm.png)](https://www.npmjs.com/package/ngx-dashboard-designer)
 
-### Angular implementation of ngx-dashboard designer [git repo](https://github.com/linoymalakkaran/ngx-dashboard-designer-demo/tree/main)
+### Angular implementation of ngx-dashboard designer [Demo git repo](https://github.com/linoymalakkaran/ngx-dashboard-designer-demo/tree/main)
 
-### Demo application url: [click here](https://linoymalakkaran.github.io/ngx-dashboard-designer-demo)
-
-### Requires Angular 13.x
+### Requires Angular 14.x
 
 ### For other Angular versions check the other branches.
 
 ## Install
 
 `npm install ngx-dashboard-designer --save`
+
+To add library using schematics
+`ng add ngx-dashboard-designer` -- specify version if required (eg: ng add ngx-dashboard-designer@2.0.14)
+
+To add example module in your project using schematics
+`ng g ngx-dashboard-designer:ngx-dashboard-component --name dashboard` -- 'dashboard' is the name of the new module
 
 Should work out of the box with webpack, respectively angular-cli.
 

@@ -1,18 +1,6 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  TemplateRef
-} from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { DashboardIconService } from '../../services/dashboard-icon.service';
 
 @Component({
   selector: 'app-top-block',
@@ -22,22 +10,24 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 export class TopBlockComponent implements OnInit {
   @Input() layout: any;
   modalRef?: BsModalRef;
-  title = 'Dashboard Designer';
-  form: FormGroup;
 
-  constructor(private modalService: BsModalService, private fb: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      layoutname: new FormControl('', [Validators.required]),
-      layoutid: new FormControl('', [Validators.required])
-    });
+  constructor(
+    private modalService: BsModalService,
+    private _iconsService: DashboardIconService
+  ) {
+    this._iconsService.registerIcons(this.icons);
   }
+
+  ngOnInit(): void {}
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
       template,
       Object.assign({}, { class: 'DashboardDesignerModals' })
     );
+  }
+
+  private get icons(): Array<string> {
+    return ['settings-icon'];
   }
 }

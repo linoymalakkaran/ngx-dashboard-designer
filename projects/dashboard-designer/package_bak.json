@@ -1,0 +1,61 @@
+{
+  "name": "ngx-dashboard-designer",
+  "version": "2.0.20",
+  "peerDependencies": {
+    "ngx-bootstrap": "^6.2.0",
+    "angular-gridster2": "^12.1.1",
+    "rxjs": "6.6.7",
+    "@angular/forms": "^13.3.9",
+    "@angular/cdk": "13.3.7",
+    "@angular/forms": "13.3.9 || 13.3.11 || 13.3.10 || 13.3.8 || 13.3.7 || 13.3.6 || 13.3.5 || 13.3.4 || 13.3.3 || 13.3.2 || 13.3.1",
+    "@angular/cdk": "13.3.9 || 13.3.11 || 13.3.10 13.3.8 || 13.3.7 || 13.3.6 || 13.3.5 || 13.3.4 || 13.3.3 || 13.3.2 || 13.3.1",
+    "@angular-architects/module-federation": "^14.3.10"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "ngx-bootstrap": "^6.2.0",
+    "angular-gridster2": "^12.1.1",
+    "rxjs": "6.6.7",
+    "@angular/forms": "^13.3.9",
+    "@angular/cdk": "13.3.7",
+    "@angular-architects/module-federation": "^14.3.10"
+  },
+  "devDependencies": {
+    "ngx-build-plus": "^13.0.0",
+    "copyfiles": "file:../node_modules/copyfiles",
+    "typescript": "file:../node_modules/typescript"
+  },
+  "description": "Creating Drag and Drop Dashboard in Angular applications.",
+  "main": "public-api.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:sass": "sass styles/dashboard-designer-theme.scss assets/dashboard-designer-theme.css",
+    "build:schematics": "tsc -p tsconfig.schematics.json",
+    "postbuild:schematics": "copyfiles schematics/collection.json schematics/*/schema.json schematics/*/files/** ../../../dist/dashboard-designer/"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+     "registry-verdaccio": "http://localhost:4873",
+     "registry-npm": "https://registry.npmjs.org/"
+  },
+  "schematics": "./schematics/collection.json",
+  "exports": {
+    "./styles": {
+      "default": "./styles/styles.scss"
+    }
+  },
+  "ng-add": {
+    "save": "dependencies"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linoymalakkaran/ngx-dashboard-designer"
+  },
+  "keywords": [
+    "angular v13",
+    "gridster2",
+    "dashboard"
+  ],
+  "author": "Linoy Pappachan Malakkaran",
+  "license": "ISC"
+}

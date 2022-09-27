@@ -6,11 +6,12 @@ export interface MfeWidgetType {
   componentName: string;
   type: string;
   exposedModule: string;
+  isMfeWidget: boolean;
+  id?: string;
 }
 
 export interface IDashboardWidgetOption {
   filter?: boolean;
-  ismfeWidgets: boolean;
   widgetTypes?: string[];
   mfeWidgetTypes: MfeWidgetType[];
 }

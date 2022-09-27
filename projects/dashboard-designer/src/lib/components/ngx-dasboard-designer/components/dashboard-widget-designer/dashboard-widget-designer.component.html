@@ -1,0 +1,36 @@
+<div class="card page-wrap">
+  <!-- <div class="card-header p-1" *ngIf="activeLayout">
+    <div class="row">
+      <div class="col-6">
+        <strong
+          class="d-flex"
+          style="color: #fff; font-size: large; margin: 5px 20px"
+          >{{ activeLayout?.layoutName }}</strong
+        >
+      </div>
+
+      <div class="col-6 d-flex justify-content-end">
+        <button class="btn btn-secondary pull-right">Edit</button>
+      </div>
+    </div>
+  </div> -->
+</div>
+
+<div
+  class="inheritSize"
+  *ngIf="dashboardLayout.dashboardItems?.length > 0"
+  style="width: 2000px"
+>
+  <gridster class="gridster-wrap" [options]="dashboardLayout.options">
+    <gridster-item
+      class="mgDashGridsterItem"
+      [item]="item"
+      *ngFor="let item of dashboardLayout.dashboardItems"
+    >
+      <dashboard-widget
+        [widgetOptions]="widgetOptions"
+        [singleGridBoxItem]="item"
+      ></dashboard-widget>
+    </gridster-item>
+  </gridster>
+</div>

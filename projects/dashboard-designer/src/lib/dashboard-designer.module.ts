@@ -1,87 +1,34 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GridsterModule } from 'angular-gridster2';
-import { AngularResizeElementModule } from 'angular-resize-element';
-import { DashboardViewerComponent } from './components/ngx-dashboard-viewer/ngx-dashboard-viewer.component';
-import { DashboardWidgetDesignerComponent } from './components/dashboard-widget-designer/dashboard-widget-designer.component';
-import { DashboardWidgetComponent } from './components/dashboard-widget-designer/dashboard-widget/dashboard-widget.component';
-import {
-  CenterBlockComponent,
-  LeftBlockComponent,
-  RightBlockComponent,
-  TopBlockComponent
-} from './layout';
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-import { AccordionModule } from 'ngx-bootstrap/accordion';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { HttpClient } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { NgxDashboardDesigner } from './components/ngx-dasboard-designer/ngx-dasboard-designer.component';
-
-// AoT requires an exported function for factories
-// export function HttpLoaderFactory(httpClient: HttpClient) {
-//   return new TranslateHttpLoader(httpClient);
-// }
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(
-    http,
-    './assets/dashboard-designer/i18n/',
-    '.json'
-  );
-}
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { TranslationService } from './services/translation.service';
+import { DashboardModuleConfigModel } from './models/dashboard-module-config.model';
+import { DASHBOARD_CONFIG } from './injectors/dashboard-injectors';
+import { DashboardIconService } from './services/dashboard-icon.service';
+import { NgxDashboardViewerModule } from './components/ngx-dashboard-viewer/ngx-dashboard-viewer.module';
+import { DashboardWidgetDesignerModule } from './components/ngx-dasboard-designer/dashboard-widget-designer.module';
+import { DashboardDesignerSharedModule } from './@shared/dashboard-designer-shared.module';
 
 @NgModule({
-  declarations: [
-    DashboardWidgetDesignerComponent,
-    DashboardWidgetComponent,
-    DashboardViewerComponent,
-    NgxDashboardDesigner,
-    LeftBlockComponent,
-    RightBlockComponent,
-    CenterBlockComponent,
-    TopBlockComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    GridsterModule,
-    AngularResizeElementModule,
-    DragDropModule,
-    TabsModule.forRoot(),
-    AccordionModule,
-    ModalModule.forRoot(),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient]
-      }
-    })
-    // TranslateModule.forRoot({
-    //   loader: {
-    //     provide: TranslateLoader,
-    //     useFactory: HttpLoaderFactory,
-    //     deps: [HttpClient]
-    //   }
-    // })
+    NgxDashboardViewerModule,
+    DashboardWidgetDesignerModule,
+    DashboardDesignerSharedModule
   ],
   exports: [
-    DashboardWidgetDesignerComponent,
-    DashboardWidgetComponent,
-    DashboardViewerComponent,
-    NgxDashboardDesigner,
-    LeftBlockComponent,
-    RightBlockComponent,
-    CenterBlockComponent,
-    TopBlockComponent,
-    AngularResizeElementModule,
-    DragDropModule
-  ],
-  providers: []
+    NgxDashboardViewerModule,
+    DashboardWidgetDesignerModule,
+    DashboardDesignerSharedModule
+  ]
 })
-export class NgxDashboardDesignerModule {}
+export class NgxDashboardDesignerModule {
+  static forRoot(
+    config?: DashboardModuleConfigModel
+  ): ModuleWithProviders<NgxDashboardDesignerModule> {
+    return {
+      ngModule: NgxDashboardDesignerModule,
+      providers: [{ provide: DASHBOARD_CONFIG, useValue: config }]
+    };
+  }
+}

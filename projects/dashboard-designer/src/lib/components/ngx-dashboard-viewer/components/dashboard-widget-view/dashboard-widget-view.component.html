@@ -1,0 +1,11 @@
+<!-- <ng-container>
+  <ng-container #vc></ng-container>
+</ng-container> -->
+<ng-container *ngFor="let item of componentInstances">
+  <dash-dynamic
+    [dashDynamicComponent]="item"
+    [dashDynamicInputs]="inputs"
+    [dashDynamicOutputs]="outputs"
+    (dashDynamicCreated)="onComponentLoaed($event)"
+  ></dash-dynamic>
+</ng-container>

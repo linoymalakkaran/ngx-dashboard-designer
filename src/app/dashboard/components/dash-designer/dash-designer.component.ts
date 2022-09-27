@@ -1,36 +1,54 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IDashboardWidgetOption } from 'projects/dashboard-designer/src/lib/models/dashboard-widget-options.model';
-import { NgxDashboardDesigner } from 'projects/dashboard-designer/src/public-api';
-import { WidgetsBarChartComponent } from 'src/app/widgets/bar-chart/bar-chart.component';
-import { NotificationComponent } from 'src/app/widgets/notification/notification.component';
-import { WidgetsPieChartComponent } from 'src/app/widgets/pie-chart/pie-chart.component';
+import {
+  defaultLayoutConfig,
+  LayoutConfigModel,
+  NgxDashboardDesignerComponent
+} from 'projects/dashboard-designer/src/public-api';
+import { DashboardService } from '../../services/dashboard.service';
+import { IGridLayOutInstance } from 'projects/dashboard-designer/src/lib/models/dashboard.models';
+import { editLayoutJSON } from '../../data-provider/dashboard-edit.data';
 
 @Component({
   selector: 'app-dash-designer',
   templateUrl: './dash-designer.component.html',
   styleUrls: ['./dash-designer.component.scss']
 })
-export class DashDesignerComponent {
-  @ViewChild(NgxDashboardDesigner) ngxDashboardDesigner: NgxDashboardDesigner;
+export class DashDesignerComponent implements OnInit {
+  editLayoutJSON: IGridLayOutInstance = editLayoutJSON;
+  layoutConfig: LayoutConfigModel = defaultLayoutConfig;
+  @ViewChild(NgxDashboardDesignerComponent)
+  ngxDashboardDesigner: NgxDashboardDesignerComponent;
   widgetOptions: IDashboardWidgetOption = {
-    ismfeWidgets: true,
     mfeWidgetTypes: [
       {
+        isMfeWidget: true,
         displayName: 'Bar Chart',
-        icon: 'Barchart',
+        icon: 'bar-chart',
         description: 'Bar Chart',
-        hostUrl: 'http://localhost:5203/remoteEntry.js', //'http://127.0.0.1:5555/dashboard-widgets/remoteEntry.js',
-        componentName: 'SampleBarChartComponent',
+        //'http://127.0.0.1:5555/dashboard-widgets/remoteEntry.js',
+        // hostUrl: 'http://localhost:5203/remoteEntry.js',
+        hostUrl:
+          'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv14/remoteEntry.js',
+        componentName: 'BarchartWidgetComponent',
         type: 'module',
-        exposedModule: './Component'
+        exposedModule: './BarChartWidget'
       }
     ]
   };
 
-  constructor() {}
+  constructor(private dashboardService: DashboardService) {}
+
+  ngOnInit(): void {
+    this.layoutConfig.left = { show: true, slideOut: false };
+  }
 
   saveLayout() {
     const layout = this.ngxDashboardDesigner.getDashboardData;
+    this.dashboardService.layoutInfo = JSON.parse(JSON.stringify(layout));
+    alert(
+      'Saved successfully, please click on viewer link to see the preview.'
+    );
     console.log(layout);
   }
 }
