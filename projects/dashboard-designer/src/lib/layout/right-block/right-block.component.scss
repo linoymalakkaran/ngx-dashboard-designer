@@ -1,0 +1,14 @@
+dash-icon[svgicon='down-chevron'] {
+  height: 15px !important;
+  width: 15px !important;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 7px;
+
+  ::placeholder {
+    font-size: 10px;
+  }
+}

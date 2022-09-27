@@ -1,0 +1,28 @@
+import { Component, OnInit } from '@angular/core';
+import { IGridLayOutInstance } from 'ngx-dashboard-designer';
+import { <%=classify(name)%>Service } from '../../services/<%=name%>.service';
+
+@Component({
+  selector: 'app-<%=name%>-viewer',
+  templateUrl: './<%=name%>-viewer.component.html',
+  styleUrls: ['./<%=name%>-viewer.component.scss'],
+})
+export class <%=classify(name)%>ViewerComponent implements OnInit {
+  dashboardLayout!: IGridLayOutInstance;
+
+  constructor(private dashboardService: DashboardService) {}
+
+  ngOnInit(): void {
+    this.dashboardLayout = this.dashboardService.layoutInfo;
+    console.log('view loader => ', this.dashboardLayout);
+  }
+
+  changedOptions(): void {
+    if (
+      this.dashboardLayout.options.api &&
+      this.dashboardLayout.options.api.optionsChanged
+    ) {
+      this.dashboardLayout.options.api.optionsChanged();
+    }
+  }
+}

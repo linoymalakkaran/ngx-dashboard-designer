@@ -1,0 +1,161 @@
+.svgBgIcon {
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 24px;
+  font-size: 32px;
+  color: $primary-color;
+  cursor: pointer;
+  &:after {
+    display: none;
+    // content: '';
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+// .widget_tab_icon {
+//   &:after {
+//     background-image: url(/assets/dashboard-designer/images/widget-layout-ico.svg);
+//   }
+// }
+
+// .layout_tab_icon {
+//   &:after {
+//     background-image: url(/assets/dashboard-designer/images/layout-svg-ico.svg);
+//   }
+// }
+
+.layout_settings_icon {
+  &:after {
+    background-image: url(/assets/dashboard-designer/images/settings-ico.svg);
+  }
+}
+
+.save_icon {
+  &:after {
+    background-image: url(/assets/dashboard-designer/images/diskette-ico.svg);
+  }
+}
+
+.menu_main_icon {
+  &:after {
+    background-image: url(/assets/dashboard-designer/images/menu-svgr-ico.svg);
+  }
+}
+
+.iconSize32 {
+  width: 32px !important;
+  height: 32px !important;
+}
+.iconSize24 {
+  width: 24px !important;
+  height: 24px !important;
+}
+.iconSize16 {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+@mixin layoutIcon($columns: 21) {
+  @for $i from 1 through $columns {
+    .layoutIcon-#{$i} {
+      &:after {
+        background-image: url(/assets/dashboard-designer/images/layout-icons/layout-#{$i}.svg);
+      }
+    }
+  }
+}
+
+// .delete-icon {
+//   &:after {
+//     background-image: url(/assets/dashboard-designer/images/delete-icon.svg);
+//   }
+// }
+@include layoutIcon;
+
+[class^='dashicon-'],
+[class*=' dashicon-'] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'dash_layout_icon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dashicon-layout-1:before {
+  content: '\e900';
+}
+.dashicon-layout-2:before {
+  content: '\e901';
+}
+.dashicon-layout-3:before {
+  content: '\e902';
+}
+.dashicon-layout-4:before {
+  content: '\e903';
+}
+.dashicon-layout-5:before {
+  content: '\e904';
+}
+.dashicon-layout-6:before {
+  content: '\e905';
+}
+.dashicon-layout-7:before {
+  content: '\e906';
+}
+.dashicon-layout-8:before {
+  content: '\e907';
+}
+.dashicon-layout-9:before {
+  content: '\e908';
+}
+.dashicon-layout-10:before {
+  content: '\e909';
+}
+.dashicon-layout-11:before {
+  content: '\e90a';
+}
+.dashicon-layout-12:before {
+  content: '\e90b';
+}
+.dashicon-layout-13:before {
+  content: '\e90c';
+}
+.dashicon-layout-14:before {
+  content: '\e90d';
+}
+.dashicon-layout-15:before {
+  content: '\e90e';
+}
+.dashicon-layout-16:before {
+  content: '\e90f';
+}
+.dashicon-layout-17:before {
+  content: '\e910';
+}
+.dashicon-layout-18:before {
+  content: '\e911';
+}
+.dashicon-layout-19:before {
+  content: '\e912';
+}
+.dashicon-layout-20:before {
+  content: '\e913';
+}
+.dashicon-layout-21:before {
+  content: '\e914';
+}

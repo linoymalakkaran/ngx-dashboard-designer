@@ -1,0 +1,100 @@
+{
+  "name": "ngx-dashboard-designer",
+  "version": "1.0.1",
+  "license": "MIT",
+  "scripts": {
+    "husky": "husky",
+    "commitlint": "commitlint",
+    "lint-staged": "lint-staged",
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --c production --project gridster-app",
+    "test": "ng test",
+    "lint": "ng lint",
+    "watch": "ng build --watch --configuration development",
+    "deploy": "ng deploy --base-href=/dashboard-designer/  --no-silent",
+    "postinstall": "husky install",
+    "publish:local": "npm run package:all && npm publish dist/dashboard-designer --registry http://localhost:4873",
+    "build:schematics": "tsc -p projects/dashboard-designer/tsconfig.schematics.json && copyfiles -u 3 projects/dashboard-designer/schematics/collection.json projects/dashboard-designer/schematics/*/schema.json projects/dashboard-designer/schematics/*/files/** ./dist/dashboard-designer/schematics/",
+    "build:sass": "sass projects/dashboard-designer/styles/dashboard-designer-theme.scss projects/dashboard-designer/assets/dashboard-designer/dashboard-designer-theme.css",
+    "build_lib_dashboard_designer": "npm run build:sass && ng build dashboard-designer --configuration production && npm run build:schematics",
+    "npm_pack_dashboard_designer": "cd dist/dashboard-designer && npm pack",
+    "package_dashboard_designer": "npm run build_lib_dashboard_designer && npm run npm_pack_dashboard_designer",
+    "package:all": "npm run package_dashboard_designer",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+    "publish_lib": "npm run build_lib_dashboard_designer && cd dist/dashboard-designer && npm publish --access public",
+    "build:all": "npm run package:all && npm run build"
+  },
+  "description": "ngx dashboard designer",
+  "dependencies": {
+    "@angular-architects/module-federation": "^14.3.10",
+    "@angular/animations": "13.3.9",
+    "@angular/cdk": "13.3.9",
+    "@angular/common": "13.3.9",
+    "@angular/compiler": "13.3.9",
+    "@angular/core": "13.3.9",
+    "@angular/forms": "^13.3.9",
+    "@angular/platform-browser": "13.3.9",
+    "@angular/platform-browser-dynamic": "13.3.9",
+    "@angular/router": "13.3.9",
+    "bootstrap": "^5.2.0",
+    "ngx-bootstrap": "^6.2.0",
+    "rxjs": "6.6.7",
+    "tslib": "2.4.0",
+    "zone.js": "0.11.5"
+  },
+  "devDependencies": {
+    "@angular-devkit/architect": "^0.1303.9",
+    "@angular-devkit/build-angular": "13.3.6",
+    "@angular-devkit/schematics": "^13.0.0",
+    "@angular-eslint/builder": "13.2.1",
+    "@angular-eslint/eslint-plugin": "13.2.1",
+    "@angular-eslint/eslint-plugin-template": "13.2.1",
+    "@angular-eslint/schematics": "13.2.1",
+    "@angular-eslint/template-parser": "13.2.1",
+    "@angular/cli": "13.3.6",
+    "@angular/compiler-cli": "13.3.9",
+    "@commitlint/cli": "17.0.0",
+    "@commitlint/config-conventional": "17.0.0",
+    "@types/jasmine": "4.0.3",
+    "@types/node": "17.0.35",
+    "@typescript-eslint/eslint-plugin": "5.25.0",
+    "@typescript-eslint/parser": "5.25.0",
+    "angular-cli-ghpages": "1.0.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "8.16.0",
+    "husky": "8.0.1",
+    "jasmine-core": "4.1.1",
+    "karma": "6.3.20",
+    "karma-chrome-launcher": "3.1.1",
+    "karma-coverage": "2.2.0",
+    "karma-jasmine": "5.0.1",
+    "karma-jasmine-html-reporter": "1.7.0",
+    "lint-staged": "12.4.1",
+    "ng-packagr": "13.3.1",
+    "ngx-build-plus": "^13.0.0",
+    "prettier": "2.6.2",
+    "typescript": "4.6.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linoymalakkaran/ngx-dashboard-designer/tree/angular-v13"
+  },
+  "keywords": [
+    "angular v13",
+    "gridster2",
+    "dashboard",
+    "@angular-architects/module-federation"
+  ],
+  "author": "Linoy Pappachan Malakkaran",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{html,scss,js,ts,md}": [
+      "prettier --write"
+    ]
+  }
+}

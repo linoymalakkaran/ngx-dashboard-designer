@@ -1,0 +1,98 @@
+<div id="topblockComponent" class="inheritSize p-0">
+  <div class="row m-0 fit-height">
+    <div class="col-md-6 p-0 fit-height d-flex justify-content-start">
+      <ul class="col-auto d-flex">
+        <li
+          class="rightblock-trigger fit-height"
+          [ngClass]="{ active: layout.left.show }"
+          (click)="layout.left.show = !layout.left.show"
+        >
+          <dash-icon svgIcon="menu-ico" aria-hidden="false"></dash-icon>
+        </li>
+      </ul>
+
+      <div class="layout-title">
+        {{ 'DASHBOARD_DESIGNER' | dashTranslate }}
+      </div>
+    </div>
+
+    <div class="col-md-6 p-0 fit-height d-flex justify-content-end">
+      <ul class="col-auto d-flex">
+        <!-- don't delete may need in future -->
+        <!-- <li class="fit-height">
+          <a
+            (click)="openModal(saveModalTemplate)"
+            class="svgBgIcon inheritSize save_icon"
+          >
+          </a>
+        </li> -->
+        <li
+          class="rightblock-trigger fit-height"
+          [ngClass]="{ active: layout.right.show }"
+          (click)="layout.right.show = !layout.right.show"
+          *ngIf="layout.right.isShowSettings"
+        >
+          <dash-icon
+            class=""
+            svgIcon="settings-icon"
+            aria-hidden="false"
+          ></dash-icon>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- <ng-template #saveModalTemplate>
+  <div class="saveModal dashDesignerModal">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{ 'SAVE_LAYOUT' | dashTranslate }}</h4>
+      <button
+        type="button"
+        class="btn-close close pull-right"
+        aria-label="Close"
+        (click)="modalRef?.hide()"
+      >
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body p-3">
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col-md-6">
+            <small>{{ 'LAYOUT_NAME' | dashTranslate }}</small>
+            <input
+              autocomplete="off"
+              placeholder="{{ 'LAYOUT_NAME' | dashTranslate }}"
+              formControlName="layoutname"
+              class="form-control p-2 f-small"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <small> {{ 'LAYOUT_ID' | dashTranslate }} </small>
+            <input
+              autocomplete="off"
+              placeholder="{{ 'LAYOUT_ID' | dashTranslate }}"
+              formControlName="layoutid"
+              class="form-control p-2 f-small"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-footer p-3">
+      <div class="row col-lg-12 gap-2 justify-content-end align-items-center">
+        <button class="btn btn-primary col-auto p-2" (click)="saveLayout()">
+          Save Layout
+        </button>
+
+        <button class="btn btn-dark col-auto p-2" (click)="modalRef?.hide()">
+          {{ 'CANCEL' | dashTranslate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template> -->

@@ -1,0 +1,22 @@
+.layouticonWrap {
+  .svgBgIcon {
+    &:hover {
+      transform: scale(1.2);
+      transition: all ease-in-out 0.05s;
+    }
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+dash-icon[svgicon='down-chevron'] {
+  height: 15px !important;
+  width: 15px !important;
+}
+
+dash-icon[svgicon='plus-icon'] {
+  height: 31px !important;
+  width: 31px !important;
+}

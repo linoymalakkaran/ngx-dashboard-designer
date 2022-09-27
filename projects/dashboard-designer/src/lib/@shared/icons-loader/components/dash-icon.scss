@@ -1,0 +1,78 @@
+// stylelint-disable material/no-prefixes
+@mixin user-select($value) {
+  -webkit-user-select: $value;
+  user-select: $value;
+}
+
+@mixin input-placeholder {
+  &::placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  // Note: this isn't necessary anymore since we don't support
+  // IE, but it caused some presubmit failures in #23416.
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin backface-visibility($value) {
+  -webkit-backface-visibility: $value;
+  backface-visibility: $value;
+}
+
+@mixin color-adjust($value) {
+  -webkit-print-color-adjust: $value;
+  color-adjust: $value;
+}
+
+@mixin private-background-clip($value) {
+  -webkit-background-clip: $value;
+  background-clip: $value;
+}
+
+@mixin clip-path($value) {
+  -webkit-clip-path: $value;
+  clip-path: $value;
+}
+// stylelint-enable
+
+// The width/height of the icon element.
+$size: 24px !default;
+
+.dash-icon {
+  @include user-select(none);
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: $size;
+  width: $size;
+
+  // In some cases the icon elements may extend beyond the container. Clip these cases
+  // in order to avoid weird overflows and click areas. See #11826.
+  overflow: hidden;
+
+  &.dash-icon-inline {
+    font-size: inherit;
+    height: inherit;
+    line-height: inherit;
+    width: inherit;
+  }
+
+  &.dash-ligature-font[fontIcon]::before {
+    content: attr(fontIcon);
+  }
+}
+
+// Icons that will be mirrored in RTL.
+[dir='rtl'] .dash-icon-rtl-mirror {
+  transform: scale(-1, 1);
+}

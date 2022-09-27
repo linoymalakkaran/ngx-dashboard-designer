@@ -1,0 +1,173 @@
+#DashboardDesigner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: 12px;
+
+  @import '../../../node_modules/bootstrap/scss/functions';
+  @import '../../../node_modules/bootstrap/scss/variables';
+  @import '../../../node_modules/bootstrap/scss/mixins';
+  @import 'variables';
+  @import 'utilities';
+  @import 'layout';
+  @import 'icons';
+  @import 'custom_style';
+  @import 'fontawesome';
+
+  font-family: $font-family-normal;
+  * {
+    font-family: $font-family-normal;
+  }
+
+  //Overriding bootstrap Theme........
+  $theme-colors: map-remove($theme-colors, 'info', 'dark');
+  $theme-colors: (
+    'primary': $primary-color,
+    'secondary': $secondary-color,
+    'light': $light,
+    'warning': $warning-color
+  );
+
+  $navbar-light-color: #212529;
+  $navbar-light-hover-color: #6610f2;
+  $navbar-light-active-color: #6610f2;
+  $primary-color-rgb: red;
+
+  @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+  @import 'app';
+}
+
+#DashboardViewer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: 12px;
+  font-family: 'ADPortsGroup-Regular', 'Droid-Arabic-Kufi', sans-serif;
+
+  @import 'utilities';
+  @import 'fontawesome';
+}
+
+// @font-face {
+//   font-family: 'ADPortsGroup-Regular';
+//   src: url('/assets/dashboard-designer/fonts/ADPortsGroup-Regular.woff2')
+//       format('woff2'),
+//     url('/assets/dashboard-designer/fonts/ADPortsGroup-Regular.woff')
+//       format('woff');
+// }
+
+// @font-face {
+//   font-family: 'dash_layout_icon';
+//   src: url('/assets/dashboard-designer/fonts/dash_layout_icon.eot');
+//   src: url('/assets/dashboard-designer/fonts/dash_layout_icon.eot');
+//   src: url('/assets/dashboard-designer/fonts/dash_layout_icon.eot')
+//       format('embedded-opentype'),
+//     url('/assets/dashboard-designer/fonts/dash_layout_icon.ttf')
+//       format('truetype'),
+//     url('/assets/dashboard-designer/fonts/dash_layout_icon.woff') format('woff'),
+//     url('/assets/dashboard-designer/fonts/dash_layout_icon.svg') format('svg');
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: block;
+// }
+
+// @font-face {
+//   font-family: 'Font Awesome 5 Pro';
+//   font-style: normal;
+//   font-weight: 300;
+//   font-display: auto;
+//   src: url('/assets/dashboard-designer/webfonts/fa-light-300.eot');
+//   src: url('/assets/dashboard-designer/webfonts/fa-light-300.eot?#iefix')
+//       format('embedded-opentype'),
+//     url('/assets/dashboard-designer/webfonts/fa-light-300.woff2')
+//       format('woff2'),
+//     url('/assets/dashboard-designer/webfonts/fa-light-300.woff') format('woff'),
+//     url('/assets/dashboard-designer/webfonts/fa-light-300.ttf')
+//       format('truetype'),
+//     url('/assets/dashboard-designer/webfonts/fa-light-300.svg#fontawesome')
+//       format('svg');
+// }
+
+// start not using may use in future versions
+// @font-face {
+//   font-family: 'ADPortsGroup-Light';
+//   src: url('/assets/dashboard-designer/fonts/ADPortsGroup-Light.woff2')
+//       format('woff2'),
+//     url('/assets/dashboard-designer/fonts/ADPortsGroup-Light.woff')
+//       format('woff');
+// }
+
+// @font-face {
+//   font-family: 'ADPortsGroup-Bold';
+//   src: url('/assets/dashboard-designer/fonts/ADPortsGroup-Bold.woff2')
+//       format('woff2'),
+//     url('/assets/dashboard-designer/fonts/ADPortsGroup-Regular.woff')
+//       format('woff');
+// }
+
+// @font-face {
+//   font-family: 'Droid-Arabic-Kufi';
+//   src: url('/assets/dashboard-designer/fonts/Droid-Arabic-Kufi.woff')
+//     format('woff');
+// }
+
+// @font-face {
+//   font-family: 'ADPortsGroup-Bold';
+//   src: url('/assets/dashboard-designer/fonts/ADPortsGroup-Bold.woff2')
+//       format('woff2'),
+//     url('/assets/dashboard-designer/fonts/ADPortsGroup-Regular.woff')
+//       format('woff');
+// }
+
+// @font-face {
+//   font-family: 'Font Awesome 5 Duotone';
+//   font-style: normal;
+//   font-weight: 900;
+//   font-display: auto;
+//   src: url('/assets/dashboard-designer/webfonts/fa-duotone-900.eot');
+//   src: url('/assets/dashboard-designer/webfonts/fa-duotone-900.eot?#iefix')
+//       format('embedded-opentype'),
+//     url('/assets/dashboard-designer/webfonts/fa-duotone-900.woff2')
+//       format('woff2'),
+//     url('/assets/dashboard-designer/webfonts/fa-duotone-900.woff')
+//       format('woff'),
+//     url('/assets/dashboard-designer/webfonts/fa-duotone-900.ttf')
+//       format('truetype'),
+//     url('/assets/dashboard-designer/webfonts/fa-duotone-900.svg#fontawesome')
+//       format('svg');
+// }
+
+// @font-face {
+//   font-family: 'Font Awesome 5 Brands';
+//   font-style: normal;
+//   font-weight: normal;
+//   font-display: auto;
+//   src: url('/assets/dashboard-designer/webfonts/fa-brands-400.eot');
+//   src: url('/assets/dashboard-designer/webfonts/fa-brands-400.eot?#iefix')
+//       format('embedded-opentype'),
+//     url('/assets/dashboard-designer/webfonts/fa-brands-400.woff2')
+//       format('woff2'),
+//     url('/assets/dashboard-designer/webfonts/fa-brands-400.woff') format('woff'),
+//     url('/assets/dashboard-designer/webfonts/fa-brands-400.ttf')
+//       format('truetype'),
+//     url('/assets/dashboard-designer/webfonts/fa-brands-400.svg#fontawesome')
+//       format('svg');
+// }
+
+// @font-face {
+//   font-family: 'Font Awesome 5 Pro';
+//   font-style: normal;
+//   font-weight: 900;
+//   font-display: auto;
+//   src: url('/assets/dashboard-designer/webfonts/fa-solid-900.eot');
+//   src: url('/assets/dashboard-designer/webfonts/fa-solid-900.eot?#iefix')
+//       format('embedded-opentype'),
+//     url('/assets/dashboard-designer/webfonts/fa-solid-900.woff2')
+//       format('woff2'),
+//     url('/assets/dashboard-designer/webfonts/fa-solid-900.woff') format('woff'),
+//     url('/assets/dashboard-designer/webfonts/fa-solid-900.ttf')
+//       format('truetype'),
+//     url('/assets/dashboard-designer/webfonts/fa-solid-900.svg#fontawesome')
+//       format('svg');
+// }
+// end not using may use in future versions

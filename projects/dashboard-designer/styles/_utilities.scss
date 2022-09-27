@@ -1,0 +1,66 @@
+.makeitFit {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.inheritSize {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.fit-width {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+}
+
+.fit-height {
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
+}
+
+.p-relative {
+  position: relative !important;
+}
+.p-absolute {
+  position: absolute !important;
+}
+.p-static {
+  position: static !important;
+}
+.p-fixed {
+  position: fixed !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}
+
+.o-hidden {
+  overflow: hidden !important;
+}
+.o-auto {
+  overflow: auto !important;
+}
+.o-visible {
+  overflow: visible !important;
+}
+
+.bg-white {
+  background-color: #fff !important;
+}
+
+.bg-lightgrey {
+  background-color: #eee !important;
+}
+
+.bg-darkgrey {
+  background-color: #333 !important;
+}

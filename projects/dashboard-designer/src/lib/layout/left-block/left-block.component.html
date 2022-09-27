@@ -1,0 +1,125 @@
+<div id="leftblockComponent" class="inheritSize">
+  <tabset [vertical]="true" type="pills" class="v-tabs inheritSize">
+    <tab>
+      <ng-template tabHeading>
+        <!-- (click)="toggleWidgetDragMode(false)" -->
+        <a href="javascript:void(0);">
+          <dash-icon svgIcon="layout-svg-ico" aria-hidden="false"></dash-icon
+          ><small>{{ 'LAYOUTS' | dashTranslate }}</small></a
+        >
+      </ng-template>
+      <div class="dash-designer-accordion">
+        <accordion [isAnimated]="true">
+          <accordion-group class="accordion-group" [isOpen]="true">
+            <div
+              accordion-heading
+              class="d-flex align-items-center justify-content-between"
+            >
+              <span>{{ 'CREATE_NEW_LAYOUT' | dashTranslate }}</span>
+              <dash-icon svgIcon="down-chevron" aria-hidden="false"></dash-icon>
+              <!-- <span class="fa fas fa-chevron-down"> </span> -->
+            </div>
+
+            <div class="accordion-body p-0">
+              <div class="layouticonWrap d-flex gap-2 flex-wrap">
+                <ng-container *ngFor="let item of layoutList; let idx = index">
+                  <div
+                    (click)="createNewLayout($event)"
+                    [id]="'Layout' + (idx + 1)"
+                    [attr.title]="'Layout ' + (idx + 1)"
+                    [attr.class]="
+                      'svgBgIcon iconSize32 dashicon-layout-' + (idx + 1)
+                    "
+                  ></div>
+                </ng-container>
+                <!-- class="fa fas fa-plus svgBgIcon" -->
+                <a
+                  href="javascript:void(0)"
+                  (click)="createNewDynamicLayout($event)"
+                >
+                  <dash-icon svgIcon="plus-icon" aria-hidden="false"></dash-icon
+                ></a>
+              </div>
+            </div>
+          </accordion-group>
+          <!-- <accordion-group class="accordion-group" [isOpen]="true">
+            <div
+              accordion-heading
+              class="d-flex align-items-center justify-content-between"
+            >
+              <span>Saved Layout </span>
+              <span class="fa fas fa-chevron-down">
+              </span>
+            </div>
+
+            <div class="accordion-body p-0">
+              <ul>
+                <ng-container *ngFor="let item of savedDashLayout">
+                  <li>
+                    <a (click)="loadDashboard(item)" class="cursor-pointer">
+                      <span>{{ item.layoutName }}</span>
+                    </a>
+                  </li>
+                </ng-container>
+              </ul>
+            </div>
+          </accordion-group> -->
+        </accordion>
+      </div>
+    </tab>
+    <tab>
+      <ng-template tabHeading>
+        <a href="javascript:void(0);" (click)="toggleWidgetDragMode(true)">
+          <dash-icon
+            svgIcon="widget-layout-ico"
+            aria-hidden="false"
+          ></dash-icon>
+          <small> {{ 'WIDGETS' | dashTranslate }}</small></a
+        >
+      </ng-template>
+
+      <div class="dash-designer-accordion">
+        <accordion [isAnimated]="true">
+          <accordion-group class="accordion-group" [isOpen]="true">
+            <div
+              accordion-heading
+              class="d-flex align-items-center justify-content-between"
+            >
+              <span> {{ 'SAVED_WIDGETS' | dashTranslate }} </span>
+              <!-- <span class="fa fas fa-chevron-down"> -->
+              <dash-icon svgIcon="down-chevron" aria-hidden="false"></dash-icon>
+              <!-- <button  class="fas fa-plus btn"  (click)="createNewLayout()"></button> -->
+              <!-- </span> -->
+            </div>
+            <!-- <cdk-drop> -->
+            <div>
+              <div
+                class="accordion-body p-0"
+                cdkDropList
+                [cdkDropListData]="widgetOptions?.mfeWidgetTypes"
+                (cdkDropListDropped)="drop($event)"
+              >
+                <ul class="widget-list">
+                  <li
+                    *ngFor="let widgetOption of widgetOptions?.mfeWidgetTypes"
+                    cdkDrag
+                  >
+                    <a>
+                      <dash-icon
+                        svgIcon="{{ widgetOption.icon }}"
+                        aria-hidden="false"
+                      ></dash-icon>
+                      <!-- <i class="svgBgIcon iconSize32 widget_tab_icon"></i> -->
+                      <small>{{ widgetOption.displayName }}</small>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- </cdk-drop> -->
+          </accordion-group>
+        </accordion>
+      </div>
+    </tab>
+  </tabset>
+</div>

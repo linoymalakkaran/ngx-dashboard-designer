@@ -1,0 +1,18 @@
+import { Injectable } from '@angular/core';
+import { IGridLayOutInstance } from 'ngx-dashboard-designer';
+import { layoutDefaultData } from '../data-provider/<%=name%>-layout-data';
+
+@Injectable({ providedIn: 'root' })
+export class <%=classify(name)%>Service {
+ private layoutData!: IGridLayOutInstance;
+
+  constructor() {}
+
+  get layoutInfo(): IGridLayOutInstance {
+    return this.layoutData || layoutDefaultData;
+  }
+
+  set layoutInfo(layoutData: IGridLayOutInstance) {
+    this.layoutData = JSON.parse(JSON.stringify(layoutData));
+  }
+}
