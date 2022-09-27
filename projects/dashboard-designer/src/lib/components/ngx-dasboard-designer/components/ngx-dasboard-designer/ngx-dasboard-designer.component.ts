@@ -1,12 +1,13 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  defaultLayoutConfig,
+  LayoutConfigModel
+} from '../../../..//models/dashboard-layout-config.model';
 import { Subject } from 'rxjs';
 import { DashResizeElementEvent } from '../../../../@shared/dashboard-resizer/resize-element-event.interface';
 import { DashResizeElementDirection } from '../../../../@shared/dashboard-resizer/resize-element.enum';
 import { IDashboardWidgetOption } from '../../../../models/dashboard-widget-options.model';
-import {
-  GridLayOutInstance,
-  IGridLayOutInstance
-} from '../../../../models/dashboard.models';
+import { IGridLayOutInstance } from '../../../../models/dashboard.models';
 import { DashboardDesignerService } from '../../../../services/dashboard-designer.service';
 import { DashboardIconService } from '../../../../services/dashboard-icon.service';
 import { DashboardLayoutService } from '../../../../services/dashboard-layout.service';
@@ -23,14 +24,8 @@ export class NgxDashboardDesignerComponent implements OnInit, OnDestroy {
   @Input() isEditMode: boolean;
   @Input() isSettings: boolean = true;
   public readonly layoutDirection = DashResizeElementDirection;
-  public layout: any = {
-    left: { show: true, slideOut: false },
-    right: { show: false, slideOut: false, isShowSettings: true },
-    top: { show: true, slideOut: false },
-    bottom: { show: true, slideOut: false },
-    center: { show: true, slideOut: false },
-    resizeFn$: new Subject()
-  };
+  @Input() layoutConfig?: LayoutConfigModel = defaultLayoutConfig;
+  layout: LayoutConfigModel;
   @Input() lang: 'en' | 'ar' = 'en';
 
   constructor(
@@ -43,6 +38,8 @@ export class NgxDashboardDesignerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.layout = this.layoutConfig;
+    this.layout.resizeFn$ = new Subject();
     this.registerIcons();
     this.dashboardDesignerService.dynamicDashboardData = null;
     this.dashboardDesignerService.isNewLayoutSelected$.next(false);

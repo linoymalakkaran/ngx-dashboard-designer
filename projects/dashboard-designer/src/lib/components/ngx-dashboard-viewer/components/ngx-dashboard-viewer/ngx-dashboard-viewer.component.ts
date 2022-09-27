@@ -1,8 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DirTypes } from '../../../../@shared';
-import { Subject } from 'rxjs';
 import { IGridLayOutInstance } from '../../../../models/dashboard.models';
 import { TranslationService } from '../../../../services/translation.service';
+import {
+  defaultLayoutConfig,
+  LayoutConfigModel
+} from '../../../../models/dashboard-layout-config.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'ngx-dashboard-viewer',
@@ -10,20 +14,16 @@ import { TranslationService } from '../../../../services/translation.service';
   styleUrls: ['./ngx-dashboard-viewer.component.scss']
 })
 export class NgxDashboardViewerComponent implements OnInit {
-  public layout: any = {
-    left: { show: true, slideOut: false },
-    right: { show: true, slideOut: false },
-    top: { show: true, slideOut: false },
-    bottom: { show: true, slideOut: false },
-    center: { show: true, slideOut: false },
-    resizeFn$: new Subject()
-  };
+  @Input() layoutConfig?: any = defaultLayoutConfig;
+  layout: LayoutConfigModel;
   @Input() dashboardLayout: IGridLayOutInstance;
   @Input() lang: 'en' | 'ar' = 'en';
 
   constructor(private translationService: TranslationService) {}
 
   ngOnInit(): void {
+    this.layout = this.layoutConfig;
+    this.layout.resizeFn$ = new Subject();
     this.translationService.language = this.lang;
     this.dashboardLayout.options.dirType =
       this.lang == 'ar' ? DirTypes.RTL : DirTypes.LTR;
