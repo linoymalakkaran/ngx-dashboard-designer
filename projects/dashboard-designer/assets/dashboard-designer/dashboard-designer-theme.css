@@ -12,7 +12,7 @@
   readers do not read off random characters that represent icons */
   font-family: "ADPortsGroup-Regular", "Droid-Arabic-Kufi", sans-serif;
   /*!
-   * Bootstrap  v5.2.0 (https://getbootstrap.com/)
+   * Bootstrap  v5.2.1 (https://getbootstrap.com/)
    * Copyright 2011-2022 The Bootstrap Authors
    * Copyright 2011-2022 Twitter, Inc.
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
@@ -140,7 +140,7 @@
   max-width: 350px !important;
 }
 #DashboardDesigner .mainBlock .leftBlock .tab-content {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding: 1rem;
   width: 250px !important;
 }
@@ -14339,7 +14339,7 @@ a > #DashboardDesigner code {
   color: #212529;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #70707038;
+  border: 1px solid rgba(112, 112, 112, 0.2196078431);
   appearance: none;
   border-radius: 0.375rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -14733,6 +14733,7 @@ a > #DashboardDesigner code {
   height: 100%;
   padding: 1rem 0.75rem;
   overflow: hidden;
+  text-align: start;
   text-overflow: ellipsis;
   white-space: nowrap;
   pointer-events: none;
@@ -14800,14 +14801,14 @@ a > #DashboardDesigner code {
 #DashboardDesigner .input-group > .form-control:focus,
 #DashboardDesigner .input-group > .form-select:focus,
 #DashboardDesigner .input-group > .form-floating:focus-within {
-  z-index: 3;
+  z-index: 5;
 }
 #DashboardDesigner .input-group .btn {
   position: relative;
   z-index: 2;
 }
 #DashboardDesigner .input-group .btn:focus {
-  z-index: 3;
+  z-index: 5;
 }
 #DashboardDesigner .input-group-text {
   display: flex;
@@ -14820,7 +14821,7 @@ a > #DashboardDesigner code {
   text-align: center;
   white-space: nowrap;
   background-color: transparent;
-  border: 1px solid #70707038;
+  border: 1px solid rgba(112, 112, 112, 0.2196078431);
   border-radius: 0.375rem;
 }
 #DashboardDesigner .input-group-lg > .form-control,
@@ -14857,10 +14858,13 @@ a > #DashboardDesigner code {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-#DashboardDesigner .input-group > :not(:first-child):not(.dropdown-menu):not(.form-floating):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback),
+#DashboardDesigner .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  margin-left: -1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 #DashboardDesigner .input-group > .form-floating:not(:first-child) > .form-control,
 #DashboardDesigner .input-group > .form-floating:not(:first-child) > .form-select {
-  margin-left: -1px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -14936,14 +14940,11 @@ a > #DashboardDesigner code {
 #DashboardDesigner .form-check-inline .form-check-input ~ .valid-feedback {
   margin-left: 0.5em;
 }
-.was-validated #DashboardDesigner .input-group .form-control:valid, #DashboardDesigner .input-group .form-control.is-valid,
-.was-validated #DashboardDesigner .input-group .form-select:valid,
-#DashboardDesigner .input-group .form-select.is-valid {
-  z-index: 1;
-}
-.was-validated #DashboardDesigner .input-group .form-control:valid:focus, #DashboardDesigner .input-group .form-control.is-valid:focus,
-.was-validated #DashboardDesigner .input-group .form-select:valid:focus,
-#DashboardDesigner .input-group .form-select.is-valid:focus {
+.was-validated #DashboardDesigner .input-group > .form-control:not(:focus):valid, #DashboardDesigner .input-group > .form-control:not(:focus).is-valid,
+.was-validated #DashboardDesigner .input-group > .form-select:not(:focus):valid,
+#DashboardDesigner .input-group > .form-select:not(:focus).is-valid,
+.was-validated #DashboardDesigner .input-group > .form-floating:not(:focus-within):valid,
+#DashboardDesigner .input-group > .form-floating:not(:focus-within).is-valid {
   z-index: 3;
 }
 #DashboardDesigner .invalid-feedback {
@@ -15018,15 +15019,12 @@ a > #DashboardDesigner code {
 #DashboardDesigner .form-check-inline .form-check-input ~ .invalid-feedback {
   margin-left: 0.5em;
 }
-.was-validated #DashboardDesigner .input-group .form-control:invalid, #DashboardDesigner .input-group .form-control.is-invalid,
-.was-validated #DashboardDesigner .input-group .form-select:invalid,
-#DashboardDesigner .input-group .form-select.is-invalid {
-  z-index: 2;
-}
-.was-validated #DashboardDesigner .input-group .form-control:invalid:focus, #DashboardDesigner .input-group .form-control.is-invalid:focus,
-.was-validated #DashboardDesigner .input-group .form-select:invalid:focus,
-#DashboardDesigner .input-group .form-select.is-invalid:focus {
-  z-index: 3;
+.was-validated #DashboardDesigner .input-group > .form-control:not(:focus):invalid, #DashboardDesigner .input-group > .form-control:not(:focus).is-invalid,
+.was-validated #DashboardDesigner .input-group > .form-select:not(:focus):invalid,
+#DashboardDesigner .input-group > .form-select:not(:focus).is-invalid,
+.was-validated #DashboardDesigner .input-group > .form-floating:not(:focus-within):invalid,
+#DashboardDesigner .input-group > .form-floating:not(:focus-within).is-invalid {
+  z-index: 4;
 }
 #DashboardDesigner .btn {
   --bs-btn-padding-x: 0.8rem;
@@ -15040,6 +15038,7 @@ a > #DashboardDesigner code {
   --bs-btn-border-width: 1px;
   --bs-btn-border-color: transparent;
   --bs-btn-border-radius: 0.4rem;
+  --bs-btn-hover-border-color: transparent;
   --bs-btn-box-shadow: none;
   --bs-btn-disabled-opacity: 0.65;
   --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
@@ -15064,24 +15063,29 @@ a > #DashboardDesigner code {
     transition: none;
   }
 }
-#DashboardDesigner .btn:hover {
+:not(.btn-check) + #DashboardDesigner .btn:hover, #DashboardDesigner .btn:first-child:hover {
   color: var(--bs-btn-hover-color);
   background-color: var(--bs-btn-hover-bg);
   border-color: var(--bs-btn-hover-border-color);
 }
-.btn-check:focus + #DashboardDesigner .btn, #DashboardDesigner .btn:focus {
+#DashboardDesigner .btn:focus-visible {
   color: var(--bs-btn-hover-color);
   background-color: var(--bs-btn-hover-bg);
   border-color: var(--bs-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn-check:checked + #DashboardDesigner .btn, .btn-check:active + #DashboardDesigner .btn, #DashboardDesigner .btn:active, #DashboardDesigner .btn.active, #DashboardDesigner .btn.show {
+.btn-check:focus-visible + #DashboardDesigner .btn {
+  border-color: var(--bs-btn-hover-border-color);
+  outline: 0;
+  box-shadow: var(--bs-btn-focus-box-shadow);
+}
+.btn-check:checked + #DashboardDesigner .btn, :not(.btn-check) + #DashboardDesigner .btn:active, #DashboardDesigner .btn:first-child:active, #DashboardDesigner .btn.active, #DashboardDesigner .btn.show {
   color: var(--bs-btn-active-color);
   background-color: var(--bs-btn-active-bg);
   border-color: var(--bs-btn-active-border-color);
 }
-.btn-check:checked + #DashboardDesigner .btn:focus, .btn-check:active + #DashboardDesigner .btn:focus, #DashboardDesigner .btn:active:focus, #DashboardDesigner .btn.active:focus, #DashboardDesigner .btn.show:focus {
+.btn-check:checked + #DashboardDesigner .btn:focus-visible, :not(.btn-check) + #DashboardDesigner .btn:active:focus-visible, #DashboardDesigner .btn:first-child:active:focus-visible, #DashboardDesigner .btn.active:focus-visible, #DashboardDesigner .btn.show:focus-visible {
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
 #DashboardDesigner .btn:disabled, #DashboardDesigner .btn.disabled, fieldset:disabled #DashboardDesigner .btn {
@@ -15234,7 +15238,7 @@ a > #DashboardDesigner code {
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
   text-decoration: none;
 }
-#DashboardDesigner .btn-link:focus {
+#DashboardDesigner .btn-link:focus-visible {
   color: var(--bs-btn-color);
 }
 #DashboardDesigner .btn-link:hover {
@@ -15311,6 +15315,7 @@ a > #DashboardDesigner code {
   margin-left: 0;
 }
 #DashboardDesigner .dropdown-menu {
+  --bs-dropdown-zindex: 1000;
   --bs-dropdown-min-width: 10rem;
   --bs-dropdown-padding-x: 0;
   --bs-dropdown-padding-y: 0.5rem;
@@ -15337,7 +15342,7 @@ a > #DashboardDesigner code {
   --bs-dropdown-header-padding-x: 1rem;
   --bs-dropdown-header-padding-y: 0.5rem;
   position: absolute;
-  z-index: 1000;
+  z-index: var(--bs-dropdown-zindex);
   display: none;
   min-width: var(--bs-dropdown-min-width);
   padding: var(--bs-dropdown-padding-y) var(--bs-dropdown-padding-x);
@@ -15622,7 +15627,7 @@ a > #DashboardDesigner code {
 #DashboardDesigner .btn-group {
   border-radius: 0.4rem;
 }
-#DashboardDesigner .btn-group > .btn:not(:first-child),
+#DashboardDesigner .btn-group > :not(.btn-check:first-child) + .btn,
 #DashboardDesigner .btn-group > .btn-group:not(:first-child) {
   margin-left: -1px;
 }
@@ -15724,7 +15729,7 @@ a > #DashboardDesigner code {
   border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
 }
 #DashboardDesigner .nav-tabs .nav-link {
-  margin-bottom: calc(var(--bs-nav-tabs-border-width) * -1);
+  margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
   background: none;
   border: var(--bs-nav-tabs-border-width) solid transparent;
   border-top-left-radius: var(--bs-nav-tabs-border-radius);
@@ -15746,7 +15751,7 @@ a > #DashboardDesigner code {
   border-color: var(--bs-nav-tabs-link-active-border-color);
 }
 #DashboardDesigner .nav-tabs .dropdown-menu {
-  margin-top: calc(var(--bs-nav-tabs-border-width) * -1);
+  margin-top: calc(-1 * var(--bs-nav-tabs-border-width));
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -16372,7 +16377,7 @@ a > #DashboardDesigner code {
   }
 }
 #DashboardDesigner .accordion {
-  --bs-accordion-color: #000;
+  --bs-accordion-color: var(--bs-body-color);
   --bs-accordion-bg: #fff;
   --bs-accordion-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
   --bs-accordion-border-color: var(--bs-border-color);
@@ -16423,7 +16428,7 @@ a > #DashboardDesigner code {
 #DashboardDesigner .accordion-button:not(.collapsed) {
   color: var(--bs-accordion-active-color);
   background-color: var(--bs-accordion-active-bg);
-  box-shadow: inset 0 calc(var(--bs-accordion-border-width) * -1) 0 var(--bs-accordion-border-color);
+  box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
 }
 #DashboardDesigner .accordion-button:not(.collapsed)::after {
   background-image: var(--bs-accordion-btn-active-icon);
@@ -16502,7 +16507,7 @@ a > #DashboardDesigner code {
 #DashboardDesigner .accordion-flush .accordion-item:last-child {
   border-bottom: 0;
 }
-#DashboardDesigner .accordion-flush .accordion-item .accordion-button {
+#DashboardDesigner .accordion-flush .accordion-item .accordion-button, #DashboardDesigner .accordion-flush .accordion-item .accordion-button.collapsed {
   border-radius: 0;
 }
 #DashboardDesigner .breadcrumb {
@@ -16841,21 +16846,21 @@ a > #DashboardDesigner code {
   background-color: var(--bs-list-group-active-bg);
   border-color: var(--bs-list-group-active-border-color);
 }
-#DashboardDesigner .list-group-item + #DashboardDesigner .list-group-item {
+#DashboardDesigner .list-group-item + .list-group-item {
   border-top-width: 0;
 }
-#DashboardDesigner .list-group-item + #DashboardDesigner .list-group-item.active {
-  margin-top: calc(var(--bs-list-group-border-width) * -1);
+#DashboardDesigner .list-group-item + .list-group-item.active {
+  margin-top: calc(-1 * var(--bs-list-group-border-width));
   border-top-width: var(--bs-list-group-border-width);
 }
 #DashboardDesigner .list-group-horizontal {
   flex-direction: row;
 }
-#DashboardDesigner .list-group-horizontal > .list-group-item:first-child {
+#DashboardDesigner .list-group-horizontal > .list-group-item:first-child:not(:last-child) {
   border-bottom-left-radius: var(--bs-list-group-border-radius);
   border-top-right-radius: 0;
 }
-#DashboardDesigner .list-group-horizontal > .list-group-item:last-child {
+#DashboardDesigner .list-group-horizontal > .list-group-item:last-child:not(:first-child) {
   border-top-right-radius: var(--bs-list-group-border-radius);
   border-bottom-left-radius: 0;
 }
@@ -16867,18 +16872,18 @@ a > #DashboardDesigner code {
   border-left-width: 0;
 }
 #DashboardDesigner .list-group-horizontal > .list-group-item + .list-group-item.active {
-  margin-left: calc(var(--bs-list-group-border-width) * -1);
+  margin-left: calc(-1 * var(--bs-list-group-border-width));
   border-left-width: var(--bs-list-group-border-width);
 }
 @media (min-width: 576px) {
   #DashboardDesigner .list-group-horizontal-sm {
     flex-direction: row;
   }
-  #DashboardDesigner .list-group-horizontal-sm > .list-group-item:first-child {
+  #DashboardDesigner .list-group-horizontal-sm > .list-group-item:first-child:not(:last-child) {
     border-bottom-left-radius: var(--bs-list-group-border-radius);
     border-top-right-radius: 0;
   }
-  #DashboardDesigner .list-group-horizontal-sm > .list-group-item:last-child {
+  #DashboardDesigner .list-group-horizontal-sm > .list-group-item:last-child:not(:first-child) {
     border-top-right-radius: var(--bs-list-group-border-radius);
     border-bottom-left-radius: 0;
   }
@@ -16890,7 +16895,7 @@ a > #DashboardDesigner code {
     border-left-width: 0;
   }
   #DashboardDesigner .list-group-horizontal-sm > .list-group-item + .list-group-item.active {
-    margin-left: calc(var(--bs-list-group-border-width) * -1);
+    margin-left: calc(-1 * var(--bs-list-group-border-width));
     border-left-width: var(--bs-list-group-border-width);
   }
 }
@@ -16898,11 +16903,11 @@ a > #DashboardDesigner code {
   #DashboardDesigner .list-group-horizontal-md {
     flex-direction: row;
   }
-  #DashboardDesigner .list-group-horizontal-md > .list-group-item:first-child {
+  #DashboardDesigner .list-group-horizontal-md > .list-group-item:first-child:not(:last-child) {
     border-bottom-left-radius: var(--bs-list-group-border-radius);
     border-top-right-radius: 0;
   }
-  #DashboardDesigner .list-group-horizontal-md > .list-group-item:last-child {
+  #DashboardDesigner .list-group-horizontal-md > .list-group-item:last-child:not(:first-child) {
     border-top-right-radius: var(--bs-list-group-border-radius);
     border-bottom-left-radius: 0;
   }
@@ -16914,7 +16919,7 @@ a > #DashboardDesigner code {
     border-left-width: 0;
   }
   #DashboardDesigner .list-group-horizontal-md > .list-group-item + .list-group-item.active {
-    margin-left: calc(var(--bs-list-group-border-width) * -1);
+    margin-left: calc(-1 * var(--bs-list-group-border-width));
     border-left-width: var(--bs-list-group-border-width);
   }
 }
@@ -16922,11 +16927,11 @@ a > #DashboardDesigner code {
   #DashboardDesigner .list-group-horizontal-lg {
     flex-direction: row;
   }
-  #DashboardDesigner .list-group-horizontal-lg > .list-group-item:first-child {
+  #DashboardDesigner .list-group-horizontal-lg > .list-group-item:first-child:not(:last-child) {
     border-bottom-left-radius: var(--bs-list-group-border-radius);
     border-top-right-radius: 0;
   }
-  #DashboardDesigner .list-group-horizontal-lg > .list-group-item:last-child {
+  #DashboardDesigner .list-group-horizontal-lg > .list-group-item:last-child:not(:first-child) {
     border-top-right-radius: var(--bs-list-group-border-radius);
     border-bottom-left-radius: 0;
   }
@@ -16938,7 +16943,7 @@ a > #DashboardDesigner code {
     border-left-width: 0;
   }
   #DashboardDesigner .list-group-horizontal-lg > .list-group-item + .list-group-item.active {
-    margin-left: calc(var(--bs-list-group-border-width) * -1);
+    margin-left: calc(-1 * var(--bs-list-group-border-width));
     border-left-width: var(--bs-list-group-border-width);
   }
 }
@@ -16946,11 +16951,11 @@ a > #DashboardDesigner code {
   #DashboardDesigner .list-group-horizontal-xl {
     flex-direction: row;
   }
-  #DashboardDesigner .list-group-horizontal-xl > .list-group-item:first-child {
+  #DashboardDesigner .list-group-horizontal-xl > .list-group-item:first-child:not(:last-child) {
     border-bottom-left-radius: var(--bs-list-group-border-radius);
     border-top-right-radius: 0;
   }
-  #DashboardDesigner .list-group-horizontal-xl > .list-group-item:last-child {
+  #DashboardDesigner .list-group-horizontal-xl > .list-group-item:last-child:not(:first-child) {
     border-top-right-radius: var(--bs-list-group-border-radius);
     border-bottom-left-radius: 0;
   }
@@ -16962,7 +16967,7 @@ a > #DashboardDesigner code {
     border-left-width: 0;
   }
   #DashboardDesigner .list-group-horizontal-xl > .list-group-item + .list-group-item.active {
-    margin-left: calc(var(--bs-list-group-border-width) * -1);
+    margin-left: calc(-1 * var(--bs-list-group-border-width));
     border-left-width: var(--bs-list-group-border-width);
   }
 }
@@ -16970,11 +16975,11 @@ a > #DashboardDesigner code {
   #DashboardDesigner .list-group-horizontal-xxl {
     flex-direction: row;
   }
-  #DashboardDesigner .list-group-horizontal-xxl > .list-group-item:first-child {
+  #DashboardDesigner .list-group-horizontal-xxl > .list-group-item:first-child:not(:last-child) {
     border-bottom-left-radius: var(--bs-list-group-border-radius);
     border-top-right-radius: 0;
   }
-  #DashboardDesigner .list-group-horizontal-xxl > .list-group-item:last-child {
+  #DashboardDesigner .list-group-horizontal-xxl > .list-group-item:last-child:not(:first-child) {
     border-top-right-radius: var(--bs-list-group-border-radius);
     border-bottom-left-radius: 0;
   }
@@ -16986,7 +16991,7 @@ a > #DashboardDesigner code {
     border-left-width: 0;
   }
   #DashboardDesigner .list-group-horizontal-xxl > .list-group-item + .list-group-item.active {
-    margin-left: calc(var(--bs-list-group-border-width) * -1);
+    margin-left: calc(-1 * var(--bs-list-group-border-width));
     border-left-width: var(--bs-list-group-border-width);
   }
 }
@@ -17081,6 +17086,7 @@ a > #DashboardDesigner code {
   filter: invert(1) grayscale(100%) brightness(200%);
 }
 #DashboardDesigner .toast {
+  --bs-toast-zindex: 1090;
   --bs-toast-padding-x: 0.75rem;
   --bs-toast-padding-y: 0.5rem;
   --bs-toast-spacing: 1.5rem;
@@ -17114,7 +17120,7 @@ a > #DashboardDesigner code {
 }
 #DashboardDesigner .toast-container {
   position: absolute;
-  z-index: 1090;
+  z-index: var(--bs-toast-zindex);
   width: max-content;
   max-width: 100%;
   pointer-events: none;
@@ -17134,7 +17140,7 @@ a > #DashboardDesigner code {
   border-top-right-radius: calc(var(--bs-toast-border-radius) - var(--bs-toast-border-width));
 }
 #DashboardDesigner .toast-header .btn-close {
-  margin-right: calc(var(--bs-toast-padding-x) * -0.5);
+  margin-right: calc(-0.5 * var(--bs-toast-padding-x));
   margin-left: var(--bs-toast-padding-x);
 }
 #DashboardDesigner .toast-body {
@@ -17253,7 +17259,7 @@ a > #DashboardDesigner code {
 }
 #DashboardDesigner .modal-header .btn-close {
   padding: calc(var(--bs-modal-header-padding-y) * 0.5) calc(var(--bs-modal-header-padding-x) * 0.5);
-  margin: calc(var(--bs-modal-header-padding-y) * -0.5) calc(var(--bs-modal-header-padding-x) * -0.5) calc(var(--bs-modal-header-padding-y) * -0.5) auto;
+  margin: calc(-0.5 * var(--bs-modal-header-padding-y)) calc(-0.5 * var(--bs-modal-header-padding-x)) calc(-0.5 * var(--bs-modal-header-padding-y)) auto;
 }
 #DashboardDesigner .modal-title {
   margin-bottom: 0;
@@ -17528,7 +17534,7 @@ a > #DashboardDesigner code {
   --bs-popover-header-padding-x: 1rem;
   --bs-popover-header-padding-y: 0.5rem;
   --bs-popover-header-font-size: 1rem;
-  --bs-popover-header-color: var(--bs-heading-color);
+  --bs-popover-header-color: ;
   --bs-popover-header-bg: #f0f0f0;
   --bs-popover-body-padding-x: 1rem;
   --bs-popover-body-padding-y: 1rem;
@@ -17574,7 +17580,7 @@ a > #DashboardDesigner code {
   border-width: 0;
 }
 #DashboardDesigner .bs-popover-top > .popover-arrow, #DashboardDesigner .bs-popover-auto[data-popper-placement^=top] > .popover-arrow {
-  bottom: calc(var(--bs-popover-arrow-height) * -1 - var(--bs-popover-border-width));
+  bottom: calc(-1 * (var(--bs-popover-arrow-height)) - var(--bs-popover-border-width));
 }
 #DashboardDesigner .bs-popover-top > .popover-arrow::before, #DashboardDesigner .bs-popover-auto[data-popper-placement^=top] > .popover-arrow::before, #DashboardDesigner .bs-popover-top > .popover-arrow::after, #DashboardDesigner .bs-popover-auto[data-popper-placement^=top] > .popover-arrow::after {
   border-width: var(--bs-popover-arrow-height) calc(var(--bs-popover-arrow-width) * 0.5) 0;
@@ -17588,7 +17594,7 @@ a > #DashboardDesigner code {
   border-top-color: var(--bs-popover-bg);
 }
 #DashboardDesigner .bs-popover-end > .popover-arrow, #DashboardDesigner .bs-popover-auto[data-popper-placement^=right] > .popover-arrow {
-  left: calc(var(--bs-popover-arrow-height) * -1 - var(--bs-popover-border-width));
+  left: calc(-1 * (var(--bs-popover-arrow-height)) - var(--bs-popover-border-width));
   width: var(--bs-popover-arrow-height);
   height: var(--bs-popover-arrow-width);
 }
@@ -17604,7 +17610,7 @@ a > #DashboardDesigner code {
   border-right-color: var(--bs-popover-bg);
 }
 #DashboardDesigner .bs-popover-bottom > .popover-arrow, #DashboardDesigner .bs-popover-auto[data-popper-placement^=bottom] > .popover-arrow {
-  top: calc(var(--bs-popover-arrow-height) * -1 - var(--bs-popover-border-width));
+  top: calc(-1 * (var(--bs-popover-arrow-height)) - var(--bs-popover-border-width));
 }
 #DashboardDesigner .bs-popover-bottom > .popover-arrow::before, #DashboardDesigner .bs-popover-auto[data-popper-placement^=bottom] > .popover-arrow::before, #DashboardDesigner .bs-popover-bottom > .popover-arrow::after, #DashboardDesigner .bs-popover-auto[data-popper-placement^=bottom] > .popover-arrow::after {
   border-width: 0 calc(var(--bs-popover-arrow-width) * 0.5) var(--bs-popover-arrow-height);
@@ -17623,12 +17629,12 @@ a > #DashboardDesigner code {
   left: 50%;
   display: block;
   width: var(--bs-popover-arrow-width);
-  margin-left: calc(var(--bs-popover-arrow-width) * -0.5);
+  margin-left: calc(-0.5 * var(--bs-popover-arrow-width));
   content: "";
   border-bottom: var(--bs-popover-border-width) solid var(--bs-popover-header-bg);
 }
 #DashboardDesigner .bs-popover-start > .popover-arrow, #DashboardDesigner .bs-popover-auto[data-popper-placement^=left] > .popover-arrow {
-  right: calc(var(--bs-popover-arrow-height) * -1 - var(--bs-popover-border-width));
+  right: calc(-1 * (var(--bs-popover-arrow-height)) - var(--bs-popover-border-width));
   width: var(--bs-popover-arrow-height);
   height: var(--bs-popover-arrow-width);
 }
@@ -17897,6 +17903,7 @@ a > #DashboardDesigner code {
   }
 }
 #DashboardDesigner .offcanvas, #DashboardDesigner .offcanvas-xxl, #DashboardDesigner .offcanvas-xl, #DashboardDesigner .offcanvas-lg, #DashboardDesigner .offcanvas-md, #DashboardDesigner .offcanvas-sm {
+  --bs-offcanvas-zindex: 1045;
   --bs-offcanvas-width: 400px;
   --bs-offcanvas-height: 30vh;
   --bs-offcanvas-padding-x: 1rem;
@@ -17911,7 +17918,7 @@ a > #DashboardDesigner code {
   #DashboardDesigner .offcanvas-sm {
     position: fixed;
     bottom: 0;
-    z-index: 1045;
+    z-index: var(--bs-offcanvas-zindex);
     display: flex;
     flex-direction: column;
     max-width: 100%;
@@ -17998,7 +18005,7 @@ a > #DashboardDesigner code {
   #DashboardDesigner .offcanvas-md {
     position: fixed;
     bottom: 0;
-    z-index: 1045;
+    z-index: var(--bs-offcanvas-zindex);
     display: flex;
     flex-direction: column;
     max-width: 100%;
@@ -18085,7 +18092,7 @@ a > #DashboardDesigner code {
   #DashboardDesigner .offcanvas-lg {
     position: fixed;
     bottom: 0;
-    z-index: 1045;
+    z-index: var(--bs-offcanvas-zindex);
     display: flex;
     flex-direction: column;
     max-width: 100%;
@@ -18172,7 +18179,7 @@ a > #DashboardDesigner code {
   #DashboardDesigner .offcanvas-xl {
     position: fixed;
     bottom: 0;
-    z-index: 1045;
+    z-index: var(--bs-offcanvas-zindex);
     display: flex;
     flex-direction: column;
     max-width: 100%;
@@ -18259,7 +18266,7 @@ a > #DashboardDesigner code {
   #DashboardDesigner .offcanvas-xxl {
     position: fixed;
     bottom: 0;
-    z-index: 1045;
+    z-index: var(--bs-offcanvas-zindex);
     display: flex;
     flex-direction: column;
     max-width: 100%;
@@ -18345,7 +18352,7 @@ a > #DashboardDesigner code {
 #DashboardDesigner .offcanvas {
   position: fixed;
   bottom: 0;
-  z-index: 1045;
+  z-index: var(--bs-offcanvas-zindex);
   display: flex;
   flex-direction: column;
   max-width: 100%;
@@ -18421,9 +18428,9 @@ a > #DashboardDesigner code {
 }
 #DashboardDesigner .offcanvas-header .btn-close {
   padding: calc(var(--bs-offcanvas-padding-y) * 0.5) calc(var(--bs-offcanvas-padding-x) * 0.5);
-  margin-top: calc(var(--bs-offcanvas-padding-y) * -0.5);
-  margin-right: calc(var(--bs-offcanvas-padding-x) * -0.5);
-  margin-bottom: calc(var(--bs-offcanvas-padding-y) * -0.5);
+  margin-top: calc(-0.5 * var(--bs-offcanvas-padding-y));
+  margin-right: calc(-0.5 * var(--bs-offcanvas-padding-x));
+  margin-bottom: calc(-0.5 * var(--bs-offcanvas-padding-y));
 }
 #DashboardDesigner .offcanvas-title {
   margin-bottom: 0;
