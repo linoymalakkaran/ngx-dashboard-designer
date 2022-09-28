@@ -324,11 +324,11 @@ function updatePackageJson(tree: Tree, context: SchematicContext): void {
   }
 
   if (!packageJson.dependencies!['ngx-bootstrap']) {
-    packageJson.dependencies!['ngx-bootstrap'] = '^9.0.0';
+    packageJson.dependencies!['ngx-bootstrap'] = '^6.2.0';
     addPackageJsonDependency(tree, {
       name: 'ngx-bootstrap',
       type: NodeDependencyType.Default,
-      version: '^9.0.0',
+      version: '^6.2.0',
       overwrite: true
     });
   }

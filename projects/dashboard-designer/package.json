@@ -1,8 +1,8 @@
 {
   "name": "ngx-dashboard-designer",
-  "version": "14.0.0-beta.3",
+  "version": "14.0.0-beta.4",
   "peerDependencies": {
-    "ngx-bootstrap": "^9.0.0",
+    "ngx-bootstrap": "^6.2.0",
     "@angular/forms": "14.0.0",
     "@angular/cdk": "14.0.0",
     "@angular-architects/module-federation": "^14.3.10"
