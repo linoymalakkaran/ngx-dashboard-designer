@@ -78,7 +78,7 @@ export const editLayoutJSON: IGridLayOutInstance = {
           icon: 'bar-chart',
           description: 'Bar Chart',
           hostUrl:
-            'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+            'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv14/remoteEntry.js',
           componentName: 'BarchartWidgetComponent',
           type: 'module',
           exposedModule: './BarChartWidget'
@@ -99,7 +99,7 @@ export const editLayoutJSON: IGridLayOutInstance = {
           icon: 'bar-chart',
           description: 'Bar Chart',
           hostUrl:
-            'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv13/remoteEntry.js',
+            'https://linoymalakkaran.github.io/ngx-dashboard-designer-demo/widgetsv14/remoteEntry.js',
           componentName: 'BarchartWidgetComponent',
           type: 'module',
           exposedModule: './BarChartWidget'
