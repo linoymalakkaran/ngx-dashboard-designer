@@ -1,6 +1,6 @@
 {
   "name": "ngx-dashboard-designer",
-  "version": "2.0.28",
+  "version": "13.0.0-beta.0",
   "peerDependencies": {
     "ngx-bootstrap": "^6.2.0",
     "@angular/forms": "13.3.9",
@@ -46,7 +46,8 @@
   "keywords": [
     "angular v13",
     "gridster2",
-    "dashboard"
+    "dashboard",
+    "@angular-architects/module-federation"
   ],
   "author": "Linoy Pappachan Malakkaran",
   "license": "ISC"

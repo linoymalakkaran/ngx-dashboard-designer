@@ -26,7 +26,7 @@ module.exports = withModuleFederationPlugin({
   //     strictVersion: true,
   //     requiredVersion: 'auto'
   //   }
-  // })
+  // }),
   // shared: [
   //   "@angular/animations",
   //   "@angular/common",

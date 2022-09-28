@@ -124,7 +124,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "repo": "http://10.0.131.131/mg_core/mg-dashboard/dashboard-libs.git",
+            "repo": "ttps://github.com/linoymalakkaran/ngx-dashboard-designer/tree/angular-v13",
             "name": "Linoy Pappachan Malakkaran",
             "email": "linoymalakkaran@gmail.com"
           }
