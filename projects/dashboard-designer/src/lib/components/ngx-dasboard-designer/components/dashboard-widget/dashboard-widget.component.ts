@@ -9,7 +9,8 @@ import {
   QueryList,
   ViewChildren,
   ElementRef,
-  AfterViewInit
+  AfterViewInit,
+  TemplateRef
 } from '@angular/core';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
@@ -22,6 +23,8 @@ import { DashboardDesignerService } from '../../../../services/dashboard-designe
 import { DashboardIconService } from '../../../../services/dashboard-icon.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { DashboardWidgetErrorViewComponent } from '../dashboard-widget-error-view/dashboard-widget-error-view.component';
 
 @Component({
   selector: 'dashboard-widget',
@@ -42,11 +45,20 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
   showMenu = false;
   @Input() numberOfDragableItems: number = 5;
   isMultipleWidgetDragEnabled: boolean = false;
+  @ViewChild('confirmModalTemplate', { static: true })
+  confirmTemplate: TemplateRef<any>;
+  modalRefs?: BsModalRef[] = [];
+  isTemplateWidgetOptionNeedsToPush: boolean;
+  tempIsWidgetOptionNeedsToPush: boolean;
+  tempWidgetOption: MfeWidgetType;
+  exceptionDetails: string;
+  totalModels: number;
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
     private _dashboardDesignerService: DashboardDesignerService,
-    private _dashboardIconService: DashboardIconService
+    private _dashboardIconService: DashboardIconService,
+    private modalService: BsModalService
   ) {
     this._dashboardIconService.registerIcons(this.icons);
   }
@@ -90,12 +102,33 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
     widgetOption: MfeWidgetType,
     isWidgetOptionNeedsToPush = true
   ): Promise<void> {
-    const m = await loadRemoteModule({
-      type: widgetOption.type as any,
-      remoteEntry: widgetOption.hostUrl,
-      exposedModule: widgetOption.exposedModule
-    });
-    this.viewContainer.createComponent(m[widgetOption.componentName]);
+    try {
+      const m = await loadRemoteModule({
+        type: widgetOption.type as any,
+        remoteEntry: widgetOption.hostUrl,
+        exposedModule: widgetOption.exposedModule
+      });
+
+      this.viewContainer.createComponent(m[widgetOption.componentName]);
+      this.setWidgetDropOption(isWidgetOptionNeedsToPush, widgetOption);
+    } catch (e) {
+      console.error(
+        'Error while loading dynamic widget => ID: ',
+        this.singleGridBoxItem.id
+      );
+      console.error(e);
+      this.exceptionDetails = e;
+      this.tempIsWidgetOptionNeedsToPush = isWidgetOptionNeedsToPush;
+      this.tempWidgetOption = widgetOption;
+      this.openModal(this.confirmTemplate);
+    }
+  }
+
+  setWidgetDropOption(
+    isWidgetOptionNeedsToPush: boolean,
+    widgetOption: MfeWidgetType,
+    isError: boolean = false
+  ): void {
     setTimeout(() => {
       this.isWidgetDropped = true;
       if (isWidgetOptionNeedsToPush) {
@@ -109,6 +142,17 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
       }
       this._changeDetectorRef.markForCheck();
     }, 1000);
+    if (isError) {
+      const dashboardWidgetErrorViewComponent =
+        this.viewContainer.createComponent(DashboardWidgetErrorViewComponent);
+      const dashboardWidgetErrorViewComponentInstance =
+        dashboardWidgetErrorViewComponent.instance;
+      dashboardWidgetErrorViewComponentInstance.exceptionDetails =
+        this.exceptionDetails;
+      dashboardWidgetErrorViewComponentInstance.widgetOptions =
+        this.tempWidgetOption;
+      this.closeModel();
+    }
   }
 
   drop(event: CdkDragDrop<MfeWidgetType[]>) {
@@ -149,6 +193,26 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
     this._dashboardDesignerService.removeDashboardItem(this.singleGridBoxItem);
   }
 
+  enableMultiwidgtDrop(e): void {
+    this.singleGridBoxItem['isMultipleWidgetDragEnabled'] =
+      this.isMultipleWidgetDragEnabled;
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRefs.push(
+      this.modalService.show(
+        template,
+        Object.assign({}, { class: 'dashDesignerModal', animated: true })
+      )
+    );
+    this.totalModels = this.modalRefs.length - 1;
+  }
+
+  closeModel(): void {
+    this.modalRefs[this.totalModels].hide();
+    this.totalModels--;
+  }
+
   private get icons(): Array<string> {
     return ['delete-icon', 'drag-icon', 'settings-icon'];
   }
@@ -156,10 +220,5 @@ export class DashboardWidgetComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this._unsubscribeAll$.next();
     this._unsubscribeAll$.complete();
-  }
-
-  enableMultiwidgtDrop(e): void {
-    this.singleGridBoxItem['isMultipleWidgetDragEnabled'] =
-      this.isMultipleWidgetDragEnabled;
   }
 }

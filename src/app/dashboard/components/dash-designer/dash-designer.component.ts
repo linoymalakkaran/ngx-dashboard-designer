@@ -41,6 +41,7 @@ export class DashDesignerComponent implements OnInit {
 
   ngOnInit(): void {
     this.layoutConfig.left = { show: true, slideOut: false };
+    this.layoutConfig.top = { show: true, slideOut: false };
   }
 
   saveLayout() {

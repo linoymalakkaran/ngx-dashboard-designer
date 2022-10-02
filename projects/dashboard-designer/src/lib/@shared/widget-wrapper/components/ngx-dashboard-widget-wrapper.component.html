@@ -1,0 +1,23 @@
+<div class="widget-wrapper">
+  <div class="widget-container">
+    <header class="widget-header" *ngIf="widgetWrapperOptions.showHeader">
+      <ng-content select="[Header]"></ng-content>
+    </header>
+    <main
+      class="widget-body"
+      [ngClass]="{
+        'o-Auto': widgetWrapperOptions.vScroll || widgetWrapperOptions.vScroll,
+        'o-Hidden':
+          !widgetWrapperOptions.vScroll && !widgetWrapperOptions.vScroll,
+        noVScroll: !widgetWrapperOptions.vScroll,
+        noHScroll: !widgetWrapperOptions.hScroll
+      }"
+    >
+      <ng-content select="[Body]"></ng-content>
+    </main>
+
+    <footer class="widget-footer" *ngIf="widgetWrapperOptions.showFooter">
+      <ng-content select="[Footer]"></ng-content>
+    </footer>
+  </div>
+</div>

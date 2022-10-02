@@ -28,7 +28,13 @@ export const translations = {
       MULTI_DRAG_WIDGET: 'تم تمكين السحب المتعدد',
       WIDTH: 'عرض',
       HEIGHT: 'ارتفاع',
-      ID: 'هوية شخصية'
+      ID: 'هوية شخصية',
+      ERROR_DETAILS: 'خطأ',
+      DO_WANT_TO_SAVE_WIDGET_CONFIG:
+        'هل تريد حفظ تكوين عنصر واجهة المستخدم ...؟',
+      OK: 'نعم',
+      WIDGET_NAMES: 'أسماء القطعة',
+      WIDGET_OPTIONS: 'خيارات القطعة'
     }
   },
   en: {
@@ -60,7 +66,13 @@ export const translations = {
       MULTI_DRAG_WIDGET: 'Multi Drag Enabled',
       WIDTH: 'Width',
       HEIGHT: 'Height',
-      ID: 'ID'
+      ID: 'ID',
+      ERROR_DETAILS: 'Error Details',
+      DO_WANT_TO_SAVE_WIDGET_CONFIG:
+        'Do you want to save widget configuration...?',
+      OK: 'Ok',
+      WIDGET_NAMES: 'Widget Names',
+      WIDGET_OPTIONS: 'Widget Options'
     }
   }
 };

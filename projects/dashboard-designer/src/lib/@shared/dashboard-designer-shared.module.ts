@@ -3,7 +3,7 @@ import { DashboardTranslatePipe } from './pipes/translate.pipe';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashIconModule } from './icons-loader/dash-icon.module';
 import { DashboardIconService } from '../services/dashboard-icon.service';
 import { TranslationService } from '../services/translation.service';
@@ -22,6 +22,7 @@ import { GridsterModule } from './angular-gridster-2';
     DashResizeElementModule,
     DragDropModule,
     FormsModule,
+    ReactiveFormsModule,
     ModalModule.forRoot(),
     DynamicModule
   ],
@@ -33,6 +34,7 @@ import { GridsterModule } from './angular-gridster-2';
     DashResizeElementModule,
     DragDropModule,
     FormsModule,
+    ReactiveFormsModule,
     DashboardTranslatePipe,
     ModalModule,
     DynamicModule

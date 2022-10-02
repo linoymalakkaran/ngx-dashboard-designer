@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+// import { FormControl, FormGroup } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DashboardIconService } from '../../services/dashboard-icon.service';
 
@@ -10,6 +11,7 @@ import { DashboardIconService } from '../../services/dashboard-icon.service';
 export class TopBlockComponent implements OnInit {
   @Input() layout: any;
   modalRef?: BsModalRef;
+  // form: FormGroup;
 
   constructor(
     private modalService: BsModalService,
@@ -18,7 +20,12 @@ export class TopBlockComponent implements OnInit {
     this._iconsService.registerIcons(this.icons);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.form = new FormGroup({
+    //   layoutname: new FormControl(),
+    //   layoutid: new FormControl()
+    // });
+  }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
@@ -26,6 +33,8 @@ export class TopBlockComponent implements OnInit {
       Object.assign({}, { class: 'DashboardDesignerModals' })
     );
   }
+
+  saveLayout(): void {}
 
   private get icons(): Array<string> {
     return ['settings-icon'];

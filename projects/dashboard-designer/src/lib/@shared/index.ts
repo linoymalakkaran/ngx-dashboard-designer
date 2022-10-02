@@ -6,3 +6,4 @@ export * from './dashboard-resizer/resize-element.directive';
 export * from './dashboard-resizer/resize-element.module';
 export * from './dash-dynamic-loader';
 export * from './angular-gridster-2';
+export * from './widget-wrapper/ngx-dashboard-widget-wrapper.module';

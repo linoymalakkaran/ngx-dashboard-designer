@@ -10,6 +10,8 @@ import {
   RightBlockComponent,
   TopBlockComponent
 } from '../../layout';
+import { DashboardWidgetErrorViewComponent } from './components/dashboard-widget-error-view/dashboard-widget-error-view.component';
+import { NgxDashboardWidgetWrapperModule } from '../../@shared';
 
 @NgModule({
   declarations: [
@@ -19,9 +21,14 @@ import {
     LeftBlockComponent,
     RightBlockComponent,
     CenterBlockComponent,
-    TopBlockComponent
+    TopBlockComponent,
+    DashboardWidgetErrorViewComponent
   ],
-  imports: [CommonModule, DashboardDesignerSharedModule],
+  imports: [
+    CommonModule,
+    DashboardDesignerSharedModule,
+    NgxDashboardWidgetWrapperModule
+  ],
   exports: [NgxDashboardDesignerComponent],
   providers: []
 })

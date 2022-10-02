@@ -98,3 +98,54 @@
     </ng-container>
   </div>
 </div>
+
+<ng-template #confirmModalTemplate>
+  <div class="confirmationModel">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">
+        {{ 'DO_WANT_TO_SAVE_WIDGET_CONFIG' | dashTranslate }} (ID:
+        {{ singleGridBoxItem.id }})
+      </h4>
+      <button
+        type="button"
+        class="btn-close close pull-right"
+        aria-label="Close"
+        (click)="closeModel()"
+      >
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body p-3">
+      <div class="row">
+        <div class="col-md-6">
+          <h4>{{ 'ERROR_DETAILS' | dashTranslate }}:</h4>
+          <div>{{ exceptionDetails }}</div>
+          <br />
+          <small>Check console for more details.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer p-3">
+      <div class="row col-lg-12 gap-2 justify-content-end align-items-center">
+        <button
+          class="btn btn-primary col-auto p-2"
+          (click)="
+            setWidgetDropOption(
+              tempIsWidgetOptionNeedsToPush,
+              tempWidgetOption,
+              true
+            )
+          "
+        >
+          {{ 'OK' | dashTranslate }}
+        </button>
+
+        <button class="btn btn-dark col-auto p-2" (click)="closeModel()">
+          {{ 'CANCEL' | dashTranslate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

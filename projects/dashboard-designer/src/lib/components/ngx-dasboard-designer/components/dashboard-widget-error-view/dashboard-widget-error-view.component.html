@@ -1,0 +1,20 @@
+<ngx-dashboard-widget-wrapper
+  [widgetWrapperOptions]="{
+    vScroll: false,
+    hScroll: false,
+    showHeader: true,
+    showFooter: true
+  }"
+>
+  <div Header class="widgetChildItems">
+    {{ 'WIDGET_NAMES' | dashTranslate }}: <strong>{{ widgetNames() }}</strong>
+  </div>
+  <div Body class="inheritWidgetSize">
+    <strong>{{ 'WIDGET_OPTIONS' | dashTranslate }}:</strong>
+    <small>{{ widgetOptions | json }}</small>
+  </div>
+  <div Footer class="widgetChildItems">
+    <strong>{{ 'ERROR_DETAILS' | dashTranslate }}:</strong>
+    <div>{{ exceptionDetails }}</div>
+  </div>
+</ngx-dashboard-widget-wrapper>
