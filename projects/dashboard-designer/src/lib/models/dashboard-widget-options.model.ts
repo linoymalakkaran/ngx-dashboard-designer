@@ -8,6 +8,7 @@ export interface MfeWidgetType {
   exposedModule: string;
   isMfeWidget: boolean;
   id?: string;
+  isMultiLoadEnabled?: boolean;
 }
 
 export interface IDashboardWidgetOption {

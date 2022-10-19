@@ -118,7 +118,12 @@ export class DashboardWidgetViewComponent<C = any>
       exposedModule: widgetOption.exposedModule
     });
 
-    this.componentInstances.push(moduleRef[widgetOption.componentName]);
+    if (widgetOption.isMultiLoadEnabled) {
+      this.componentInstances.push(moduleRef[widgetOption.componentName]);
+    } else {
+      this.componentInstances = [];
+      this.componentInstances.push(moduleRef[widgetOption.componentName]);
+    }
 
     //don't remove'
     // @deprecated
