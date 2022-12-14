@@ -7,6 +7,8 @@ import { DashboardIconService } from './services/dashboard-icon.service';
 import { NgxDashboardViewerModule } from './components/ngx-dashboard-viewer/ngx-dashboard-viewer.module';
 import { DashboardWidgetDesignerModule } from './components/ngx-dasboard-designer/dashboard-widget-designer.module';
 import { DashboardDesignerSharedModule } from './@shared/dashboard-designer-shared.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DashboardDesignerTokenInterceptor } from './interceptor/token-interceptor';
 
 @NgModule({
   declarations: [],
@@ -20,6 +22,13 @@ import { DashboardDesignerSharedModule } from './@shared/dashboard-designer-shar
     NgxDashboardViewerModule,
     DashboardWidgetDesignerModule,
     DashboardDesignerSharedModule
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: DashboardDesignerTokenInterceptor,
+      multi: true
+    }
   ]
 })
 export class NgxDashboardDesignerModule {
